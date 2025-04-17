@@ -78,10 +78,13 @@
             background-color: #34495e;
         }
         .sidebar a i {
-            font-size: 1.2em; /* Consistent icon size */
-            width: 30px; /* Fixed width for icons */
-            text-align: center; /* Center the icon within the fixed width */
-            margin-right: 10px; /* Space between icon and text */
+            font-size: 1.2em;
+            width: 30px;
+            height: 30px; /* Fixed height for centering */
+            display: flex; /* Make the icon a flex container */
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            margin-right: 10px;
         }
         .body-shift {
             margin-left: 250px;
@@ -158,10 +161,13 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         .link-btn i {
-            font-size: 1.5em; /* Consistent icon size */
-            width: 30px; /* Fixed width for icons */
-            text-align: center; /* Center the icon within the fixed width */
-            margin-right: 10px; /* Space between icon and text */
+            font-size: 1.5em;
+            width: 30px;
+            height: 30px; /* Fixed height for centering */
+            display: flex; /* Make the icon a flex container */
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            margin-right: 10px;
             color: #ffffff;
         }
         .link-btn .text {
@@ -210,7 +216,8 @@
             }
             .link-btn i {
                 font-size: 1.2em;
-                width: 25px; /* Adjusted for smaller screens */
+                width: 25px;
+                height: 25px; /* Adjusted for smaller screens */
             }
             .sidebar {
                 width: 200px;
@@ -223,8 +230,9 @@
                 margin-left: 200px;
             }
             .sidebar a i {
-                font-size: 1em; /* Smaller icon size for mobile */
-                width: 25px; /* Adjusted for smaller screens */
+                font-size: 1em;
+                width: 25px;
+                height: 25px; /* Adjusted for smaller screens */
             }
         }
     </style>

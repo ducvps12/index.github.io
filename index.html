@@ -80,10 +80,10 @@
         .sidebar a i {
             font-size: 1.2em;
             width: 30px;
-            height: 30px; /* Fixed height for centering */
-            display: flex; /* Make the icon a flex container */
-            align-items: center; /* Center vertically */
-            justify-content: center; /* Center horizontally */
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-right: 10px;
         }
         .body-shift {
@@ -154,6 +154,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            min-height: 60px; /* Ensure enough height for centering */
         }
         .link-btn:hover {
             background-color: #34495e;
@@ -163,15 +164,18 @@
         .link-btn i {
             font-size: 1.5em;
             width: 30px;
-            height: 30px; /* Fixed height for centering */
-            display: flex; /* Make the icon a flex container */
-            align-items: center; /* Center vertically */
-            justify-content: center; /* Center horizontally */
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-right: 10px;
             color: #ffffff;
         }
         .link-btn .text {
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Vertically center the text */
         }
         .link-btn .text span {
             display: block;
@@ -213,11 +217,12 @@
             .link-btn {
                 padding: 12px;
                 font-size: 0.9em;
+                min-height: 50px; /* Adjusted for smaller screens */
             }
             .link-btn i {
                 font-size: 1.2em;
                 width: 25px;
-                height: 25px; /* Adjusted for smaller screens */
+                height: 25px;
             }
             .sidebar {
                 width: 200px;
@@ -232,7 +237,7 @@
             .sidebar a i {
                 font-size: 1em;
                 width: 25px;
-                height: 25px; /* Adjusted for smaller screens */
+                height: 25px;
             }
         }
     </style>

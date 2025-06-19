@@ -318,3 +318,815 @@
 </body>
 </html>
 
+
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Chatbot Overlay - Professional Experience</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f0f2f5;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        #chatboxContainer {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 400px;
+            height: 550px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: none;
+            flex-direction: column;
+            transform: scale(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+            z-index: 999999;
+        }
+
+        #chatboxContainer[style*="display: flex"] {
+            transform: scale(1);
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #007BFF, #00C4FF);
+            color: white;
+            padding: 12px 15px;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .chat-header button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .chat-header button:hover {
+            transform: scale(1.2);
+        }
+
+        #chatbox {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: #fff;
+        }
+
+        .message {
+            display: flex;
+            align-items: flex-start;
+            margin: 10px 0;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .message .avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            margin: 0 10px;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 14px;
+            line-height: 1.4;
+            position: relative;
+        }
+
+        .user-message .message-content {
+            background-color: #007BFF;
+            color: white;
+            margin-left: auto;
+            border-bottom-right-radius: 5px;
+        }
+
+        .bot-message .message-content {
+            background-color: #e9ecef;
+            color: #333;
+            border-bottom-left-radius: 5px;
+        }
+
+        .bot-message a {
+            color: #007BFF;
+            text-decoration: underline;
+        }
+
+        .typing {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .typing .avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            margin: 0 10px;
+        }
+
+        .typing .dots {
+            display: flex;
+            gap: 5px;
+        }
+
+        .typing .dot {
+            width: 8px;
+            height: 8px;
+            background-color: #999;
+            border-radius: 50%;
+            animation: blink 1.4s infinite both;
+        }
+
+        .typing .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .input-container {
+            display: flex;
+            padding: 10px;
+            background-color: #fff;
+            border-top: 1px solid #eee;
+            border-radius: 0 0 15px 15px;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #userInput {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 14px;
+            resize: none;
+            transition: border-color 0.2s;
+        }
+
+        #userInput:focus {
+            outline: none;
+            border-color: #007BFF;
+        }
+
+        .input-container button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+        .input-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 5px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #eee;
+        }
+
+        .button-container button {
+            background-color: #007BFF;
+            color: white;
+            padding: 8px 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background-color 0.2s;
+            flex: 1;
+        }
+
+        .button-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .quick-questions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #eee;
+            overflow-x: auto;
+        }
+
+        .quick-questions button {
+            background-color: #e9ecef;
+            color: #333;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: background-color 0.2s;
+            white-space: nowrap;
+        }
+
+        .quick-questions button:hover {
+            background-color: #d1d4d9;
+        }
+
+        #chatbotToggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #007BFF, #00C4FF);
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            z-index: 1000000;
+        }
+
+        #chatbotToggle:hover {
+            transform: scale(1.1);
+        }
+
+        #chatboxContainer.fullscreen {
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 0;
+            z-index: 999999;
+        }
+
+        #supportWidget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: none;
+            padding: 10px;
+            transform: scale(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+            z-index: 999999;
+        }
+
+        #supportWidget[style*="display: block"] {
+            transform: scale(1);
+        }
+
+        .sudovn-btn-social-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s;
+        }
+
+        .sudovn-btn-social-item:hover {
+            background-color: #f1f1f1;
+        }
+
+        .sudovn-btn-social-item-icon img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .sudovn-credit {
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+        }
+
+        .sudovn-credit a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        #backToChat {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        #backToChat:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: #00C4FF;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            #chatboxContainer {
+                width: 90vw;
+                height: 80vh;
+                bottom: 10px;
+                right: 5vw;
+            }
+
+            #chatboxContainer.fullscreen {
+                width: 100vw;
+                height: 100vh;
+                bottom: 0;
+                right: 0;
+            }
+
+            #supportWidget {
+                width: 90vw;
+                bottom: 10px;
+                right: 5vw;
+            }
+
+            .quick-questions {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes blink {
+            0% { opacity: 0.2; }
+            20% { opacity: 1; }
+            100% { opacity: 0.2; }
+        }
+        .blur {
+    filter: blur(5px);
+    pointer-events: none;
+}
+    </style>
+</head>
+
+<body>
+    <div id="chatbotToggle" onclick="toggleChatbox()">💬</div>
+    <div id="chatboxContainer">
+        <div class="chat-header">
+            <span>AI Assistant</span>
+            <button onclick="toggleChatbox()">✖</button>
+        </div>
+        <div id="chatbox"></div>
+        <div class="button-container">
+            <button onclick="toggleFullscreen()">🔲 Fullscreen</button>
+            <button onclick="toggleSupport()">📞 Support</button>
+            <button onclick="clearChat()">🗑️ Clear</button>
+        </div>
+        <div class="quick-questions">
+            <button onclick="sendQuickQuestion('Giá các gói VPS tại mtdvps.com là bao nhiêu?')">Giá gói VPS</button>
+            <button onclick="sendQuickQuestion('Tư vấn máy chủ vật lý !')">Tư vấn máy chủ vật lý</button>
+            <button onclick="sendQuickQuestion('VPS hết hạn thì xử lý như thế nào?')">VPS hết hạn</button>
+            <button onclick="sendQuickQuestion('Không đăng nhập được')">Không đăng nhập được</button>
+            <button onclick="sendQuickQuestion('Không đăng ký được')">Không đăng ký được</button>
+            <button onclick="sendQuickQuestion('Làm sao để tải file Minecraft Bedrock Server?')">Tải file Minecraft</button>
+            <button onclick="sendQuickQuestion('Tôi cần hỗ trợ kỹ thuật, liên hệ thế nào?')">Hỗ trợ kỹ thuật</button>
+            <button onclick="sendQuickQuestion('Tôi có thể nâng cấp gói VPS không?')">Nâng cấp VPS</button>
+            <button onclick="sendQuickQuestion('MTDVPS.com có hỗ trợ game server không?')">Hỗ trợ game server</button>
+        </div>
+        <div class="input-container">
+            <input type="text" id="userInput" placeholder="Gõ tin nhắn..." onkeydown="if(event.key === 'Enter') debounceSend()">
+            <button onclick="debounceSend()">Gửi</button>
+        </div>
+    </div>
+
+    <div id="supportWidget">
+        <div id="sudovn-btn-social">
+            <a href="https://facebook.com/groups/512964609384511" target="_blank" rel="nofollow" class="sudovn-btn-social-item">
+                <div class="sudovn-btn-social-item-icon"><img src="https://i.imgur.com/oB74pSY.png"></div>
+                <div class="sudovn-btn-social-item-label"><b>Diễn Đàn Hỗ Trợ</b></div>
+            </a>
+            <a href="https://zalo.me/g/afdrwb295" target="_blank" rel="nofollow" class="sudovn-btn-social-item">
+                <div class="sudovn-btn-social-item-icon"><img src="https://i.imgur.com/PXKSJAP.png"></div>
+                <div class="sudovn-btn-social-item-label">Nhóm Zalo</div>
+            </a>
+            <a href="https://discord.gg/Mumgffrp5b" target="_blank" rel="nofollow" class="sudovn-btn-social-item">
+                <div class="sudovn-btn-social-item-icon"><img src="https://static.vecteezy.com/system/resources/previews/023/986/880/large_2x/discord-logo-discord-logo-transparent-discord-icon-transparent-free-free-png.png"></div>
+                <div class="sudovn-btn-social-item-label">Server Discord</div>
+            </a>
+            <a href="https://t.me/+o6KRHMd59As0OTE1" target="_blank" rel="nofollow" class="sudovn-btn-social-item">
+                <div class="sudovn-btn-social-item-icon"><img src="https://assets.mofoprod.net/network/images/telegram.width-250.jpg"></div>
+                <div class="sudovn-btn-social-item-label">Nhóm Telegram</div>
+            </a>
+            <div class="sudovn-credit">
+                <a href="https://beacons.ai/ducvps" target="_blank" rel="nofollow">Cần hỗ trợ gấp ấn đây</a>
+            </div>
+            <button id="backToChat" onclick="backToChatbot()">Quay lại Chatbot</button>
+        </div>
+    </div>
+
+    
+
+    <script>
+    const apiKey = 'AIzaSyAX5PuQhn7ZsnyspHuuDb7h6tqFosyOct4'; 
+    
+        let conversation = [
+            {
+                role: 'system',
+                content: `Bạn là trợ lý ảo của website mtdvps.com.
+Nhiệm vụ của bạn là hỗ trợ tư vấn khách hàng các dịch vụ: VPS, Hosting, Máy chủ vật lý.
+Trước khi trả lời, bạn phải đọc và tham chiếu nội dung trong file knowledge.html nếu có dữ liệu phù hợp.
+
+Bạn cần trả lời một cách nghiêm túc, rõ ràng và thân thiện.
+Không sử dụng từ lóng hoặc giọng điệu quá thoải mái.
+Mỗi câu trả lời nên được xuống dòng để người đọc dễ theo dõi.`
+            }
+        ];
+
+        let knowledgeBase = '';
+        let isBotLoaded = false;
+
+        // Biến chống spam
+        let lastMessageTime = 0;
+        const MIN_DELAY = 2000;
+        let messageCount = 0;
+        let resetCountTime = 0;
+        const MAX_MESSAGES_PER_MINUTE = 5;
+
+        function toggleChatbox() {
+            const chatboxContainer = document.getElementById('chatboxContainer');
+            const toggleButton = document.getElementById('chatbotToggle');
+            const supportWidget = document.getElementById('supportWidget');
+            const isOpen = chatboxContainer.style.display === 'flex';
+            chatboxContainer.style.display = isOpen ? 'none' : 'flex';
+            toggleButton.style.display = isOpen ? 'block' : 'none';
+            supportWidget.style.display = 'none';
+
+            if (!isBotLoaded && !isOpen) {
+                loadKnowledgeBase().then(loadChat);
+                isBotLoaded = true;
+            }
+        }
+
+        function toggleFullscreen() {
+            const chatboxContainer = document.getElementById('chatboxContainer');
+            chatboxContainer.classList.toggle('fullscreen');
+        }
+
+        function toggleSupport() {
+            const supportWidget = document.getElementById('supportWidget');
+            const chatboxContainer = document.getElementById('chatboxContainer');
+            const toggleButton = document.getElementById('chatbotToggle');
+            const isOpen = supportWidget.style.display === 'block';
+            supportWidget.style.display = isOpen ? 'none' : 'block';
+            chatboxContainer.style.display = 'none';
+            toggleButton.style.display = 'block';
+        }
+
+        function backToChatbot() {
+            const supportWidget = document.getElementById('supportWidget');
+            const chatboxContainer = document.getElementById('chatboxContainer');
+            const toggleButton = document.getElementById('chatbotToggle');
+            supportWidget.style.display = 'none';
+            chatboxContainer.style.display = 'flex';
+            toggleButton.style.display = 'none';
+        }
+
+        function clearChat() {
+            document.getElementById('chatbox').innerHTML = '';
+            conversation = [{
+                role: 'system',
+                content: 'Bạn là một trợ lý chuyên nghiệp, trả lời nghiêm túc, rõ ràng và thân thiện. Tránh dùng từ lóng hoặc giọng điệu quá thoải mái. Mỗi câu trả lời phải được xuống dòng để dễ đọc.'
+            }];
+            localStorage.removeItem('chatHistory');
+        }
+
+        function addMessage(content, isUser = false) {
+            const chatbox = document.getElementById('chatbox');
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
+
+            const avatar = document.createElement('img');
+            avatar.classList.add('avatar');
+            avatar.src = isUser 
+                ? 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' 
+                : 'https://cdn-icons-png.flaticon.com/512/8943/8943377.png';
+
+            const contentDiv = document.createElement('div');
+            contentDiv.classList.add('message-content');
+            const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            if (!isUser) {
+                content = content
+                    .split('. ')
+                    .filter(sentence => sentence.trim() !== '')
+                    .join('.<br>')
+                    .replace(/\n/g, '<br>');
+
+                content = content.replace(/(https?:\/\/[^\s]+)/g, (url) => {
+                    return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+                });
+            }
+
+            contentDiv.innerHTML = `${content} <small>(${timestamp})</small>`;
+            messageDiv.appendChild(isUser ? contentDiv : avatar);
+            messageDiv.appendChild(isUser ? avatar : contentDiv);
+            chatbox.appendChild(messageDiv);
+            chatbox.scrollTop = chatbox.scrollHeight;
+
+            let history = JSON.parse(localStorage.getItem('chatHistory')) || [];
+            history.push({ content, isUser });
+            localStorage.setItem('chatHistory', JSON.stringify(history));
+        }
+
+        function removeTyping() {
+            const typing = document.getElementById('typing');
+            if (typing) typing.remove();
+        }
+
+        function showTyping() {
+            const chatbox = document.getElementById('chatbox');
+            const typingDiv = document.createElement('div');
+            typingDiv.id = 'typing';
+            typingDiv.innerHTML = '<em>Đang trả lời...</em>';
+            chatbox.appendChild(typingDiv);
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        function isMaliciousInput(input) {
+            const maliciousPatterns = [
+                /<script/i,
+                /<iframe/i,
+                /javascript:/i,
+                /on\w+=/i,
+                /<[^>]+>/
+            ];
+            return maliciousPatterns.some(pattern => pattern.test(input));
+        }
+
+        async function loadKnowledgeBase() {
+            try {
+                const response = await fetch('knowledge.html');
+                if (!response.ok) throw new Error('Không tìm thấy knowledge.html');
+                const htmlContent = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(htmlContent, 'text/html');
+                knowledgeBase = doc.body.textContent.trim();
+                conversation.push({ role: 'system', content: `Knowledge base loaded: ${knowledgeBase}` });
+                addMessage('Chào bạn! Mình là AI Assistant, rất vui được hỗ trợ bạn. Bạn cần giúp gì hôm nay?');
+            } catch (error) {
+                addMessage('Không thể tải knowledge base, nhưng mình vẫn sẵn sàng hỗ trợ bạn.');
+                console.error(error);
+            }
+        }
+
+        async function searchWebOrX(query) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(`Mình đã tìm kiếm thông tin về "${query}" trên web và X. Có vẻ đây là một chủ đề đang được quan tâm. Bạn muốn mình cung cấp thêm chi tiết không?`);
+                }, 1000);
+            });
+        }
+
+        function sendQuickQuestion(question) {
+            document.getElementById('userInput').value = question;
+            debounceSend();
+        }
+
+        let timeout;
+        function debounceSend() {
+            clearTimeout(timeout);
+            timeout = setTimeout(sendMessage, 300);
+        }
+
+        async function sendMessage() {
+            let userInput = document.getElementById('userInput').value.trim().toLowerCase();
+            if (!userInput) return;
+
+            const currentTime = Date.now();
+            if (currentTime - resetCountTime >= 60000) {
+                messageCount = 0;
+                resetCountTime = currentTime;
+            }
+
+            if (currentTime - lastMessageTime < MIN_DELAY) {
+                addMessage('Vui lòng đợi một chút trước khi gửi tin nhắn tiếp theo.');
+                document.getElementById('userInput').value = '';
+                return;
+            }
+
+            if (messageCount >= MAX_MESSAGES_PER_MINUTE) {
+                addMessage('Bạn đã gửi quá nhiều tin nhắn trong 1 phút. Vui lòng thử lại sau.');
+                document.getElementById('userInput').value = '';
+                return;
+            }
+
+            if (isMaliciousInput(userInput)) {
+                addMessage('Tin nhắn của bạn chứa nội dung không hợp lệ. Vui lòng kiểm tra lại.');
+                document.getElementById('userInput').value = '';
+                return;
+            }
+
+            lastMessageTime = currentTime;
+            messageCount++;
+
+            addMessage(userInput, true);
+            conversation.push({ role: 'user', content: userInput });
+            document.getElementById('userInput').value = '';
+
+            if (['hi', 'chào', 'hello', 'xin chào'].includes(userInput)) {
+                addMessage('Chào bạn! Mình là AI Assistant, rất vui được hỗ trợ bạn. Bạn cần giúp gì hôm nay?');
+                conversation.push({ role: 'assistant', content: 'Chào bạn! Mình là AI Assistant, rất vui được hỗ trợ bạn. Bạn cần giúp gì hôm nay?' });
+                return;
+            }
+
+            showTyping();
+            const delay = Math.random() * 2000 + 1000;
+            await new Promise(resolve => setTimeout(resolve, delay));
+
+            if (userInput.includes('giá các gói vps tại mtdvps.com')) {
+                removeTyping();
+                addMessage('Mình xin cung cấp thông tin về giá các gói VPS tại mtdvps.com.\nVPS 1GB: 50.000đ/tháng (1 CPU, 2GB RAM, 20GB SSD).\nVPS 2GB: 89.000đ/tháng (2 CPU, 2GB RAM, 30GB SSD).\nVPS 6GB: 149.000đ/tháng (4 CPU, 6GB RAM, 40GB SSD).\nBạn cần tư vấn thêm về gói nào phù hợp với nhu cầu của mình không?');
+                conversation.push({ role: 'assistant', content: 'Mình xin cung cấp thông tin về giá các gói VPS tại mtdvps.com.\nVPS 1GB: 50.000đ/tháng (1 CPU, 2GB RAM, 20GB SSD).\nVPS 2GB: 89.000đ/tháng (2 CPU, 2GB RAM, 30GB SSD).\nVPS 6GB: 149.000đ/tháng (4 CPU, 6GB RAM, 40GB SSD).\nBạn cần tư vấn thêm về gói nào phù hợp với nhu cầu của mình không?' });
+                return;
+            }
+
+            if (userInput.includes('tư vấn máy chủ vật lý !')) {
+                removeTyping();
+                const message = 
+                    'Dưới đây là thông tin về các gói máy chủ vật lý (Dedicated Server) tại mtdvps.com:\n\n' +
+                    '- 🖥️ **Đơn E5 2696v3/8v4**: 18 nhân 36 luồng, 64GB RAM, 500GB SSD NVMe\n' +
+                    '   ➤ Giá: 1.200.000đ/tháng | Datacenter Hà Nội\n' +
+                    '   ➤ Treo khoảng: 15-20 tab giả lập\n\n' +
+                    '- ⚙️ **CPU 96v3/86v4**: 36 nhân 72 luồng, 128GB RAM, 500GB SSD NVMe\n' +
+                    '   ➤ Giá: 1.650.000đ/tháng | Mạng riêng\n' +
+                    '   ➤ Treo khoảng: 30-40 tab giả lập\n\n' +
+                    '- 🖥️ **Đơn E5 2680v4**: 14 nhân 28 luồng, 64GB RAM, 250GB SSD NVMe\n' +
+                    '   ➤ Giá: 1.050.000đ/tháng | Vị trí Việt Nam\n' +
+                    '   ➤ Treo khoảng: 10-15 tab giả lập\n\n' +
+                    '- 🧪 **Đơn E5 2676v3 (1 Tuần)**: 12 nhân 24 luồng, 64GB RAM, 500GB SSD NVMe\n' +
+                    '   ➤ Giá: 285.000đ/tuần | Băng thông 500–800Mbps\n' +
+                    '   ➤ Treo khoảng: 10 tab giả lập\n https://mtdvps.com/client/product/may-chu-gia-lap \n\n' +
+                    'Bạn cần mình tư vấn cấu hình nào phù hợp với nhu cầu sử dụng cụ thể không?';
+                addMessage(message);
+                conversation.push({ role: 'assistant', content: message });
+                return;
+            }
+
+            if (userInput.includes('vps hết hạn thì xử lý như thế nào?')) {
+                removeTyping();
+                const reply =
+                    'Khi VPS hết hạn, hệ thống sẽ thực hiện theo các bước sau:\n\n' +
+                    '1. Tạm dừng hoạt động VPS trong vòng **24h** kể từ khi hết hạn.\n' +
+                    '2. Nếu bạn gia hạn trong thời gian này, VPS sẽ hoạt động lại bình thường.\n' +
+                    '3. Sau 24h không gia hạn, hệ thống sẽ **xóa toàn bộ dữ liệu** và **không thể khôi phục**.\n\n' +
+                    '👉 Để tránh mất dữ liệu, bạn nên gia hạn trước khi hết hạn hoặc sao lưu định kỳ.\n\n' +
+                    'Bạn cần hướng dẫn gia hạn hoặc hỗ trợ khôi phục không?';
+                addMessage(reply);
+                conversation.push({ role: 'assistant', content: reply });
+                return;
+            }
+
+            if (userInput.includes('làm sao để tải file minecraft bedrock server')) {
+                removeTyping();
+                addMessage('Để tải file "Minecraft Bedrock Server", bạn có thể truy cập vào trang Downloads của mtdvps.com.\nLink tải: https://mtdvps.com/client/download.\n\nBạn chỉ cần nhấp vào link, tải file về và làm theo hướng dẫn cài đặt.\nNếu gặp khó khăn, bạn có thể liên hệ hỗ trợ qua email [email protected] hoặc qua Zalo.');
+                conversation.push({ role: 'assistant', content: 'Để tải file "Minecraft Bedrock Server", bạn có thể truy cập vào trang Downloads của mtdvps.com.\nLink tải: https://mtdvps.com/client/download.\n\nBạn chỉ cần nhấp vào link, tải file về và làm theo hướng dẫn cài đặt.\nNếu gặp khó khăn, bạn có thể liên hệ hỗ trợ qua Zalo 0376263452.' });
+                return;
+            }
+
+            if (userInput.includes('tôi cần hỗ trợ kỹ thuật, liên hệ thế nào')) {
+                removeTyping();
+                addMessage('Nếu bạn cần hỗ trợ kỹ thuật, bạn có thể liên hệ với đội ngũ của mtdvps.com qua các kênh sau.\nBạn có thể liên hệ nhanh qua Zalo hoặc các kênh hỗ trợ khác như Discord, Telegram (có trong phần Support).\nBạn đang gặp vấn đề gì cụ thể, mình có thể giúp gì thêm không?\nSupport Facebook: https://www.facebook.com/ducvps123/');
+                conversation.push({ role: 'assistant', content: 'Nếu bạn cần hỗ trợ kỹ thuật, bạn có thể liên hệ với đội ngũ của mtdvps.com qua các kênh sau.\nBạn có thể liên hệ nhanh qua Zalo hoặc các kênh hỗ trợ khác như Discord, Telegram (có trong phần Support).\nBạn đang gặp vấn đề gì cụ thể, mình có thể giúp gì thêm không?\nSupport Facebook: https://www.facebook.com/ducvps123/' });
+                return;
+            }
+
+            if (userInput.includes('không đăng nhập được') || userInput.includes('không thể đăng nhập') || userInput.includes('lỗi đăng nhập')) {
+                removeTyping();
+                addMessage('Nếu bạn không đăng nhập được, bạn vui lòng kiểm tra lại tên đăng nhập và mật khẩu trước nhé.\nBạn thử bỏ số 0 của số điện thoại xem.\nNếu vẫn không được, bạn có thể liên hệ với đội ngũ kỹ thuật của mtdvps.com để được hỗ trợ nhanh nhất.\nLiên hệ hỗ trợ qua Zalo, Discord, Telegram (trong mục Support), hoặc Facebook: https://www.facebook.com/ducvps123/');
+                conversation.push({ role: 'assistant', content: 'Nếu bạn không đăng nhập được, bạn vui lòng kiểm tra lại tên đăng nhập và mật khẩu trước nhé.\nBạn thử bỏ số 0 của số điện thoại xem.\nNếu vẫn không được, bạn có thể liên hệ với đội ngũ kỹ thuật của mtdvps.com để được hỗ trợ nhanh nhất.\nLiên hệ hỗ trợ qua Zalo, Discord, Telegram (trong mục Support), hoặc Facebook: https://www.facebook.com/ducvps123/' });
+                return;
+            }
+
+            if (userInput.includes('không đăng ký được') || userInput.includes('hỗ trợ đăng ký tài khoản') || userInput.includes('lỗi đăng ký')) {
+                removeTyping();
+                addMessage('Nếu bạn gặp khó khăn khi đăng ký tài khoản, vui lòng đảm bảo đã nhập đúng thông tin và không bỏ sót trường nào.\nNgoài ra, hãy kiểm tra xem email xác thực tài khoản có trong hòm thư rác không nếu không thấy ở hòm thư chính.\nNếu vẫn gặp lỗi, bạn có thể liên hệ với đội hỗ trợ của mtdvps.com qua Zalo, Discord, Telegram (trong phần Support), hoặc Facebook: https://www.facebook.com/ducvps123/');
+                conversation.push({ role: 'assistant', content: 'Nếu bạn gặp khó khăn khi đăng ký tài khoản, vui lòng đảm bảo đã nhập đúng thông tin và không bỏ sót trường nào.\nNgoài ra, hãy kiểm tra xem email xác thực tài khoản có trong hòm thư rác không nếu không thấy ở hòm thư chính.\nNếu vẫn gặp lỗi, bạn có thể liên hệ với đội hỗ trợ của mtdvps.com qua Zalo, Discord, Telegram (trong phần Support), hoặc Facebook: https://www.facebook.com/ducvps123/' });
+                return;
+            }
+
+            if (userInput.includes('tôi có thể nâng cấp gói vps không')) {
+                removeTyping();
+                addMessage('Bạn hoàn toàn có thể nâng cấp gói VPS tại mtdvps.com.\nĐể nâng cấp, bạn có thể tiến hành mua thêm RAM, CPU hoặc SSD sau khi đặt hàng hoặc liên hệ với đội ngũ hỗ trợ qua Zalo để được hướng dẫn chi tiết.\nBạn đang sử dụng gói nào và muốn nâng cấp lên gói nào? Mình có thể tư vấn thêm nếu cần.');
+                conversation.push({ role: 'assistant', content: 'Bạn hoàn toàn có thể nâng cấp gói VPS tại mtdvps.com.\nĐể nâng cấp, bạn có thể tiến hành mua thêm RAM, CPU hoặc SSD sau khi đặt hàng hoặc liên hệ với đội ngũ hỗ trợ qua Zalo để được hướng dẫn chi tiết.\nBạn đang sử dụng gói nào và muốn nâng cấp lên gói nào? Mình có thể tư vấn thêm nếu cần.' });
+                return;
+            }
+
+            if (userInput.includes('mtdvps.com có hỗ trợ game server không')) {
+                removeTyping();
+                addMessage('mtdvps.com có hỗ trợ game server, bao gồm cả Minecraft Bedrock Server và các loại game server khác.\nBạn có thể sử dụng các gói VPS hoặc Dedicated Server tùy theo nhu cầu.\nVí dụ, gói VPS 6GB (149.000đ/tháng) phù hợp cho game server có lượng người chơi vừa phải.\nHoặc bạn có thể tham khảo mục Hosting Game tại: https://mtdvps.com/hosting-minecraft/hosting-game-minecraft');
+                conversation.push({ role: 'assistant', content: 'mtdvps.com có hỗ trợ game server, bao gồm cả Minecraft Bedrock Server và các loại game server khác.\nBạn có thể sử dụng các gói VPS hoặc Dedicated Server tùy theo nhu cầu.\nVí dụ, gói VPS 6GB (149.000đ/tháng) phù hợp cho game server có lượng người chơi vừa phải.\nHoặc bạn có thể tham khảo mục Hosting Game tại: https://mtdvps.com/hosting-minecraft/hosting-game-minecraft' });
+                return;
+            }
+
+            if (knowledgeBase) {
+                const lines = knowledgeBase.split('\n');
+                for (let i = 0; i < lines.length; i += 2) {
+                    if (lines[i].toLowerCase().includes(userInput)) {
+                        removeTyping();
+                        const response = lines[i + 1] || 'Thông tin chưa đầy đủ, nhưng mình sẽ cố gắng hỗ trợ bạn.';
+                        addMessage(response);
+                        conversation.push({ role: 'assistant', content: response });
+                        return;
+                    }
+                }
+            }
+
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{ text: conversation.map(msg => `${msg.role}: ${msg.content}`).join('\n') }]
+                        }]
+                    })
+                });
+
+                const data = await response.json();
+                removeTyping();
+
+                if (data.candidates && data.candidates.length > 0) {
+                    let botResponse = data.candidates[0].content.parts[0].text;
+                    addMessage(botResponse);
+                    conversation.push({ role: 'assistant', content: botResponse });
+                } else {
+                    const searchResult = await searchWebOrX(userInput);
+                    addMessage(searchResult);
+                    conversation.push({ role: 'assistant', content: searchResult });
+                }
+            } catch (error) {
+                removeTyping();
+                const searchResult = await searchWebOrX(userInput);
+                addMessage(`Rất tiếc, mình gặp sự cố khi kết nối. Tuy nhiên, ${searchResult}`);
+                conversation.push({ role: 'assistant', content: searchResult });
+                console.error('Error:', error);
+            }
+        }
+
+        function loadChat() {
+            let history = JSON.parse(localStorage.getItem('chatHistory')) || [];
+            history.forEach(msg => addMessage(msg.content, msg.isUser));
+        }
+    </script>
+</body>
+</html>
+
+
+

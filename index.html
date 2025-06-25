@@ -1,10 +1,10 @@
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Link Bio - MTD VPS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="icon" type="image/png" href="https://i.imgur.com/GCITCIv.png">
+    <link rel="icon" href="https://i.imgur.com/GCITCIv.png" type="image/png">
     <style>
         * {
             box-sizing: border-box;
@@ -189,6 +189,93 @@
         .footer a:hover {
             color: #3498db;
         }
+        /* To-Do List Styles */
+        .todo-section {
+            margin-top: 20px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .todo-section h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .todo-input {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .todo-input input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        .todo-input input[type="date"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        .todo-input button {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background 0.3s;
+        }
+        .todo-input button:hover {
+            background-color: #34495e;
+        }
+        .todo-list {
+            list-style: none;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .todo-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9em;
+        }
+        .todo-item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .todo-item.completed {
+            text-decoration: line-through;
+            color: #7f8c8d;
+        }
+        .todo-item.overdue {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .todo-item span {
+            flex: 1;
+        }
+        .todo-item button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+        .todo-item button:hover {
+            background-color: #c0392b;
+        }
+        .todo-report {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #e74c3c;
+        }
         @media (max-width: 600px) {
             .container {
                 padding: 70px 15px 15px;
@@ -224,18 +311,15 @@
                 width: 25px;
                 height: 25px;
             }
+            .todo-input {
+                flex-direction: column;
+            }
+            .todo-input input[type="text"],
+            .todo-input input[type="date"],
+            .todo-input button {
+                width: 100%;
+            }
         }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <div class="header-bar">
-        <div class="menu-icon" onclick="toggleSidebar()">☰</div>
-        <a href="#" class="subscribe-btn">Subscribe</a>
-    </div>
-
-    <title>Chatbot Overlay - Professional Experience</title>
-    <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -621,8 +705,13 @@
 }
     </style>
 </head>
-
 <body>
+    <!-- Header -->
+    <div class="header-bar">
+        <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+        <a href="#" class="subscribe-btn">Subscribe</a>
+    </div>
+
     <div id="chatbotToggle" onclick="toggleChatbox()">💬</div>
     <div id="chatboxContainer">
         <div class="chat-header">
@@ -676,8 +765,6 @@
             <button id="backToChat" onclick="backToChatbot()">Quay lại Chatbot</button>
         </div>
     </div>
-
-    
 
     <script>
     const apiKey = 'AIzaSyAX5PuQhn7ZsnyspHuuDb7h6tqFosyOct4'; 
@@ -1035,9 +1122,6 @@ Mỗi câu trả lời nên được xuống dòng để người đọc dễ th
         }
     </script>
 
-
-
-
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <a href="https://mtdvps.com"><i class="fas fa-home"></i> Trang Chủ</a>
@@ -1110,8 +1194,19 @@ Mỗi câu trả lời nên được xuống dòng để người đọc dễ th
                 <span> Giao lưu - Hỗ trợ</span>
             </div>
         </a>
+        <!-- To-Do List Section -->
+        <div class="todo-section">
+            <h3>Danh Sách Nhiệm Vụ</h3>
+            <div class="todo-input">
+                <input type="text" id="taskInput" placeholder="Nhập nhiệm vụ...">
+                <input type="date" id="dueDateInput">
+                <button onclick="addTask()">Thêm</button>
+            </div>
+            <ul class="todo-list" id="todoList"></ul>
+            <div class="todo-report" id="todoReport"></div>
+        </div>
         <div class="footer">
-            <p>MTD VPS | <a href="https://mtdvps.com">mtdvps.com</a> | <a href="mailto:vipdaichienthucung@gmail.com ">vipdaichienthucung@gmail.com </a></p>
+            <p>MTD VPS | <a href="https://mtdvps.com">mtdvps.com</a> | <a href="mailto:vipdaichienthucung@gmail.com">vipdaichienthucung@gmail.com </a></p>
         </div>
     </div>
 
@@ -1124,9 +1219,87 @@ Mỗi câu trả lời nên được xuống dòng để người đọc dễ th
             overlay.classList.toggle('active');
             body.classList.toggle('body-shift');
         }
+
+        // To-Do List JavaScript
+        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+        function saveTasks() {
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        function renderTasks() {
+            const todoList = document.getElementById('todoList');
+            const todoReport = document.getElementById('todoReport');
+            todoList.innerHTML = '';
+            let overdueCount = 0;
+            const currentDate = new Date();
+
+            tasks.forEach((task, index) => {
+                const li = document.createElement('li');
+                li.classList.add('todo-item');
+                if (task.completed) {
+                    li.classList.add('completed');
+                } else if (new Date(task.deadline) < currentDate && !task.completed) {
+                    li.classList.add('overdue');
+                    overdueCount++;
+                }
+                li.innerHTML = `
+                    <input type="checkbox" ${task.completed ? 'checked' : ''} onclick="toggleTask(${index})">
+                    <span>${task.text} (Hạn: ${task.deadline})</span>
+                    <button onclick="deleteTask(${index})">Xóa</button>
+                `;
+                todoList.appendChild(li);
+            });
+
+            if (overdueCount > 0) {
+                todoReport.textContent = `Cảnh báo: Bạn có ${overdueCount} nhiệm vụ chưa hoàn thành đã quá hạn!`;
+                todoReport.style.display = 'block';
+            } else {
+                todoReport.textContent = '';
+                todoReport.style.display = 'none';
+            }
+        }
+
+        function addTask() {
+            const taskInput = document.getElementById('taskInput');
+            const dueDateInput = document.getElementById('dueDateInput');
+            const taskText = taskInput.value.trim();
+            const dueDate = dueDateInput.value;
+
+            if (!taskText || !dueDate) {
+                alert('Vui lòng nhập đầy đủ nhiệm vụ và ngày hạn!');
+                return;
+            }
+
+            tasks.push({
+                text: taskText,
+                deadline: dueDate,
+                completed: false
+            });
+
+            saveTasks();
+            renderTasks();
+            taskInput.value = '';
+            dueDateInput.value = '';
+        }
+
+        function toggleTask(index) {
+            tasks[index].completed = !tasks[index].completed;
+            saveTasks();
+            renderTasks();
+        }
+
+        function deleteTask(index) {
+            tasks.splice(index, 1);
+            saveTasks();
+            renderTasks();
+        }
+
+        // Initialize the to-do list on page load
+        renderTasks();
+
+        // Periodic check for overdue tasks (every minute)
+        setInterval(renderTasks, 60000);
     </script>
 </body>
 </html>
-
-
-    

@@ -1,6 +1,7 @@
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8859-1">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Link Bio - MTD VPS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -12,13 +13,16 @@
             padding: 0;
         }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #e0eafc, #cfdef3);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             transition: margin-left 0.3s ease;
+            margin: 0;
+            color: #333;
+            overflow-x: hidden;
         }
         /* Header */
         .header-bar {
@@ -320,30 +324,14 @@
                 width: 100%;
             }
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            background-color: #f0f2f5;
-            color: #333;
-            overflow-x: hidden;
-        }
-<script>
-      (function(d,t) {
-        var BASE_URL="https://chat-woot-web.kento28.shop/";
-        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-        g.src=BASE_URL+"/packs/js/sdk.js";
-        g.defer = true;
-        g.async = true;
-        s.parentNode.insertBefore(g,s);
-        g.onload=function(){
-          window.chatwootSDK.run({
-            websiteToken: '3fSZB9ohscy7Sy4WxTWojxoL',
-            baseUrl: BASE_URL
-          })
-        }
-      })(document,"script");
-    </script>
-     
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header-bar">
+        <i class="fas fa-bars menu-icon" onclick="toggleSidebar()"></i>
+        <a href="https://mtdvps.com/subscribe" class="subscribe-btn">Đăng Ký</a>
+    </div>
 
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
@@ -372,19 +360,19 @@
         <a href="https://mtdvps.com" class="link-btn">
             <div class="text">
                 MTDVPS.COM
-                <span>Cung Cấp Cloud VPS, Proxy , Mã Nguồn , Hosting </span>
+                <span>Cung Cấp Cloud VPS, Proxy, Mã Nguồn, Hosting</span>
             </div>
         </a>
         <a href="https://teavpn.com" class="link-btn">
             <div class="text">
                 TEAVPN.COM
-                <span>Website cung cấp Proxy IPv4,IPv6 tĩnh ,Proxy IPv4 xoay, hỗ trợ ngon các kèo airdrop</span>
+                <span>Website cung cấp Proxy IPv4, IPv6 tĩnh, Proxy IPv4 xoay, hỗ trợ ngon các kèo airdrop</span>
             </div>
         </a>
         <a href="https://mtdshop247.com/" class="link-btn">
             <div class="text">
                 mtdshop247.com
-                <span>Website cung cấp dịch vụ mxh, tài khoản pro các loạii</span>
+                <span>Website cung cấp dịch vụ mxh, tài khoản pro các loại</span>
             </div>
         </a>
         <a href="https://hci.mtdvps.com/" class="link-btn">
@@ -396,13 +384,13 @@
         <a href="https://t.me/+o6KRHMd59As0OTE1" class="link-btn">
             <div class="text">
                 Nhóm Telegram
-                <span>Tham gia để được hỗ </span>
+                <span>Tham gia để được hỗ trợ</span>
             </div>
         </a>
         <a href="https://zalo.me/g/afdrwb295" class="link-btn">
             <div class="text">
                 Nhóm Zalo Support
-                <span>Vào để nhận thêm ưu đãi, Hỗ </span>
+                <span>Vào để nhận thêm ưu đãi, hỗ trợ</span>
             </div>
         </a>
         <a href="mailto:support@mtdvps.com" class="link-btn">
@@ -414,7 +402,7 @@
         <a href="https://discord.com/invite/Mumgffrp5b" class="link-btn">
             <div class="text">
                 Server Discord
-                <span> Giao lưu - Hỗ trợ</span>
+                <span>Giao lưu - Hỗ trợ</span>
             </div>
         </a>
         <!-- To-Do List Section -->
@@ -429,11 +417,29 @@
             <div class="todo-report" id="todoReport"></div>
         </div>
         <div class="footer">
-            <p>MTD VPS | <a href="https://mtdvps.com">mtdvps.com</a> | <a href="mailto:vipdaichienthucung@gmail.com">vipdaichienthucung@gmail.com </a></p>
+            <p>MTD VPS | <a href="https://mtdvps.com">mtdvps.com</a> | <a href="mailto:vipdaichienthucung@gmail.com">vipdaichienthucung@gmail.com</a></p>
         </div>
     </div>
 
+    <!-- Scripts -->
     <script>
+        // Chatwoot SDK
+        (function(d,t) {
+            var BASE_URL="https://chat-woot-web.kento28.shop/";
+            var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=BASE_URL+"packs/js/sdk.js";
+            g.defer = true;
+            g.async = true;
+            s.parentNode.insertBefore(g,s);
+            g.onload=function(){
+                window.chatwootSDK.run({
+                    websiteToken: '3fSZB9ohscy7Sy4WxTWojxoL',
+                    baseUrl: BASE_URL
+                })
+            }
+        })(document,"script");
+
+        // Sidebar Toggle
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');

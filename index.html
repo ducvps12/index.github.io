@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Link Bio - MTD VPS</title>
+  <title>Link Bio - MTD VPS (Super)</title>
   <link rel="icon" href="https://i.imgur.com/GCITCIv.png" type="image/png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
@@ -13,12 +13,12 @@
       --card: rgba(255,255,255,.6);
       --border: rgba(255,255,255,.35);
       --text:#1f2937; --muted:#667085; --brand:#2c3e50; --brand-2:#34495e;
-      --btn:#2c3e50; --btn-hover:#34495e; --good:#16a34a; --bad:#dc2626;
+      --btn:#2c3e50; --btn-hover:#34495e; --good:#16a34a; --bad:#dc2626; --warn:#d97706;
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
     body{
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
       color:var(--text);
       background: linear-gradient(-45deg,var(--bg1),var(--bg2),var(--bg3),var(--bg4));
       background-size:400% 400%;
@@ -28,20 +28,19 @@
     }
     @keyframes bgMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 
-    /* Header bar */
     .header-bar{
       position:fixed;top:0;left:0;width:100%;
-      display:flex;align-items:center;justify-content:space-between;
+      display:flex;align-items:center;justify-content:space-between;gap:8px;
       padding:10px 18px;z-index:1000;
       backdrop-filter: blur(8px);
       background:linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.35));
       border-bottom:1px solid var(--border);
     }
     .menu-icon{font-size:1.4rem;cursor:pointer;color:var(--brand)}
-    .right-tools{display:flex;gap:8px;align-items:center}
+    .right-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
     .pill-btn{
       background:var(--btn);color:#fff;border:none;border-radius:999px;
-      padding:8px 14px;font-size:.9rem;cursor:pointer;transition:.25s;
+      padding:8px 14px;font-size:.9rem;cursor:pointer;transition:.25s;white-space:nowrap
     }
     .pill-btn:hover{background:var(--btn-hover)}
     .toggle{
@@ -49,31 +48,24 @@
       border:1px solid var(--border);border-radius:999px;padding:6px 10px;cursor:pointer;
     }
 
-    /* Sidebar */
     .sidebar{
       position:fixed;inset:0 auto 0 0;width:260px;background:#1f2937;color:#e5e7eb;
       transform:translateX(-100%);transition:.3s;z-index:1100;padding-top:64px;
-      box-shadow: 6px 0 20px rgba(0,0,0,.2);
+      box-shadow:6px 0 20px rgba(0,0,0,.2)
     }
     .sidebar.active{transform:none}
     .sidebar a{
       display:flex;align-items:center;gap:10px;padding:14px 16px;text-decoration:none;
-      color:#e5e7eb;border-bottom:1px solid rgba(255,255,255,.06);
+      color:#e5e7eb;border-bottom:1px solid rgba(255,255,255,.06)
     }
     .sidebar a:hover{background:rgba(255,255,255,.06)}
     .overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;z-index:1050}
     .overlay.active{display:block}
 
-    /* Container */
-    .container{
-      width:100%;max-width:640px;padding:96px 20px 28px;
-    }
+    .container{width:100%;max-width:960px;padding:96px 18px 28px;margin:auto}
     .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:18px;
-      box-shadow:0 8px 24px rgba(0,0,0,.08);
-      backdrop-filter: blur(10px);
+      background:var(--card);border:1px solid var(--border);border-radius:18px;
+      box-shadow:0 8px 24px rgba(0,0,0,.08);backdrop-filter: blur(10px)
     }
     .header{padding:20px 16px 10px;text-align:center}
     .avatar{
@@ -81,129 +73,101 @@
       background:url('https://i.imgur.com/GCITCIv.png') center/cover no-repeat;
       border:3px solid #fff;box-shadow:0 6px 16px rgba(0,0,0,.15)
     }
-    .title{font-size:1.8rem;font-weight:800;color:var(--brand)}
+    .title{font-size:1.9rem;font-weight:800;color:var(--brand)}
     .subtitle{color:var(--muted);font-size:.95rem;margin-top:2px}
     .social-links{margin:12px 0 2px}
-    .social-links a{
-      color:var(--brand);text-decoration:none;margin:0 8px;font-size:1.3rem;transition:.2s
-    }
+    .social-links a{color:var(--brand);text-decoration:none;margin:0 8px;font-size:1.3rem;transition:.2s}
     .social-links a:hover{color:#3498db;transform:translateY(-2px)}
 
-    /* Search */
+    .grid{display:grid;gap:14px}
+    .grid-2{grid-template-columns:1fr 1fr}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    @media (max-width:900px){.grid-3{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){.grid-2,.grid-3{grid-template-columns:1fr}}
+
     .search-row{display:flex;gap:10px;margin:12px 0 16px;padding:0 16px}
     .input{flex:1;padding:11px 12px;border-radius:12px;border:1px solid var(--border);background:#fff}
     .mini{padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:#fff;cursor:pointer}
 
-    /* Link button */
     .link{
       display:flex;align-items:center;gap:12px;position:relative;
       margin:12px 16px;padding:14px;border-radius:14px;text-decoration:none;color:#fff;
       background:linear-gradient(135deg,#2c3e50,#3b82f6);
       box-shadow:0 10px 18px rgba(17,24,39,.18);
-      overflow:hidden;isolation:isolate;transition:.25s;
+      overflow:hidden;isolation:isolate;transition:.25s
     }
     .link:hover{transform:translateY(-2px);box-shadow:0 14px 22px rgba(17,24,39,.22)}
-    .link .icon{
-      width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.18);
-      display:grid;place-items:center;font-size:1.1rem;backdrop-filter: blur(4px);
-    }
+    .icon{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.18);display:grid;place-items:center;font-size:1.1rem;backdrop-filter: blur(4px)}
     .link .txt{flex:1;display:flex;flex-direction:column;line-height:1.2}
-    .link .txt .h{font-weight:700}
-    .link .txt .s{font-size:.85rem;opacity:.85}
-    .link .tools{display:flex;gap:8px}
-    .chip{
-      background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
-      color:#fff;padding:6px 10px;border-radius:999px;font-size:.8rem
-    }
-    .tool-btn{
-      background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);
-      width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:#fff;cursor:pointer;transition:.2s
-    }
+    .link .h{font-weight:700}.link .s{font-size:.85rem;opacity:.85}
+    .tools{display:flex;gap:8px}
+    .chip{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;padding:6px 10px;border-radius:999px;font-size:.8rem}
+    .tool-btn{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:#fff;cursor:pointer;transition:.2s}
     .tool-btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.28)}
-    .link::after{
-      content:"";position:absolute;inset:-120% -60% auto auto;transform:rotate(25deg);
-      height:260%;width:40%;background:linear-gradient(transparent,rgba(255,255,255,.16),transparent);
-      transition:.35s;z-index:-1;
-    }
+    .link::after{content:"";position:absolute;inset:-120% -60% auto auto;transform:rotate(25deg);height:260%;width:40%;background:linear-gradient(transparent,rgba(255,255,255,.16),transparent);transition:.35s;z-index:-1}
     .link:hover::after{inset:-110% -40% auto auto}
 
-    /* Widgets row */
-    .widgets{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 16px}
     .widget{padding:14px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.7)}
     .widget h4{font-size:.95rem;margin-bottom:6px;color:var(--brand)}
     .clock{font-weight:800;font-size:1.4rem}
     .weather small{color:var(--muted)}
 
-    /* Todo */
-    .todo{margin:14px 16px;padding:14px}
+    .stats table{width:100%;border-collapse:collapse;font-size:.92rem}
+    .stats th,.stats td{padding:8px;border-bottom:1px solid var(--border);text-align:left}
+    .stats th{color:var(--brand)}
+
+    .quote{padding:12px;margin-top:8px;border-left:4px solid #3b82f6;background:rgba(255,255,255,.7);border-radius:10px}
+
+    .todo{padding:14px}
     .todo h3{color:var(--brand);margin-bottom:10px}
     .todo-input{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
-    .todo-input input{padding:10px;border:1px solid var(--border);border-radius:10px;background:#fff}
+    .todo-input input,.todo-input select{padding:10px;border:1px solid var(--border);border-radius:10px;background:#fff}
     .todo-input button{background:var(--btn);color:#fff;border:none;border-radius:10px;padding:10px 14px;cursor:pointer}
-    .list{max-height:220px;overflow:auto;border-top:1px dashed var(--border)}
+    .list{max-height:240px;overflow:auto;border-top:1px dashed var(--border)}
     .item{display:flex;align-items:center;gap:8px;padding:10px 0;border-bottom:1px dashed var(--border)}
     .item.completed span{text-decoration:line-through;color:var(--muted)}
     .item.overdue span{color:var(--bad);font-weight:600}
     .item .x{background:var(--bad);color:#fff;border:none;border-radius:8px;padding:6px 10px;cursor:pointer}
 
-    /* Analytics */
-    .stats{margin:14px 16px;padding:14px}
-    .stats table{width:100%;border-collapse:collapse;font-size:.92rem}
-    .stats th,.stats td{padding:8px;border-bottom:1px solid var(--border);text-align:left}
-    .stats th{color:var(--brand)}
+    .notes textarea{width:100%;min-height:120px;border:1px solid var(--border);border-radius:12px;padding:10px;background:#fff}
 
-    /* Quote */
-    .quote{margin:12px 16px;padding:12px;border-left:4px solid #3b82f6;background:rgba(255,255,255,.7);border-radius:10px}
-    .footer{margin:16px auto 8px;text-align:center;color:#f8fafc}
-
-    /* QR Modal */
     .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:1200}
     .modal.active{display:flex}
-    .modal .box{background:#fff;border-radius:16px;padding:18px 16px;max-width:92%;width:360px;text-align:center}
+    .modal .box{background:#fff;border-radius:16px;padding:18px 16px;max-width:92%;width:380px;text-align:center}
     .modal .box h3{margin-bottom:8px;color:var(--brand)}
     .qr-wrap{display:grid;place-items:center;margin:8px 0}
     .close-btn{margin-top:10px}
 
-    /* Dark Mode */
-    .dark body{} /* placeholder */
+    .danger{background:#fee2e2;border:1px solid #fecaca}
+    .good{background:#dcfce7;border:1px solid #bbf7d0}
+    .warn{background:#fef3c7;border:1px solid #fde68a}
+
+    .footer{margin:16px auto 8px;text-align:center;color:#f8fafc}
+
     .dark .header-bar{background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.35));border-bottom-color:#000}
     .dark .title{color:#e5e7eb}
     .dark .subtitle{color:#a3a3a3}
     .dark .card,.dark .widget,.dark .quote{background:rgba(0,0,0,.45);border-color:rgba(255,255,255,.12);color:#f3f4f6}
-    .dark .input,.dark .mini,.dark .todo-input input{background:#0f172a;color:#e5e7eb;border-color:rgba(255,255,255,.12)}
+    .dark .input,.dark .mini,.dark .todo-input input,.dark .notes textarea{background:#0f172a;color:#e5e7eb;border-color:rgba(255,255,255,.12)}
     .dark .pill-btn{background:#334155}
     .dark .pill-btn:hover{background:#475569}
     .dark .link{box-shadow:0 10px 18px rgba(0,0,0,.45)}
     .dark .footer{color:#e5e7eb}
 
-    /* Responsive */
-    @media (max-width:600px){
-      .widgets{grid-template-columns:1fr}
-      .sidebar{width:220px}
-    }
-
-    /* Back to top */
-    .to-top{
-      position:fixed;right:16px;bottom:16px;z-index:999;background:#111827;color:#fff;
-      width:44px;height:44px;border-radius:12px;display:grid;place-items:center;cursor:pointer;box-shadow:0 12px 22px rgba(0,0,0,.25);
-      opacity:0;transform:translateY(16px);transition:.25s;
-    }
+    .to-top{position:fixed;right:16px;bottom:16px;z-index:999;background:#111827;color:#fff;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;cursor:pointer;box-shadow:0 12px 22px rgba(0,0,0,.25);opacity:0;transform:translateY(16px);transition:.25s}
     .to-top.show{opacity:1;transform:none}
   </style>
 </head>
 <body>
-  <!-- Header -->
   <div class="header-bar card">
     <i class="fas fa-bars menu-icon" onclick="toggleSidebar()"></i>
     <div class="right-tools">
-      <button class="toggle" id="modeBtn" onclick="toggleMode()">
-        <i class="far fa-moon"></i><span id="modeText">Dark</span>
-      </button>
+      <button class="toggle" id="modeBtn" onclick="toggleMode()"><i class="far fa-moon"></i><span id="modeText">Dark</span></button>
+      <button class="pill-btn" onclick="requestNotif()">Bật thông báo 🔔</button>
       <a class="pill-btn" href="https://mtdvps.com/subscribe">Đăng Ký</a>
     </div>
   </div>
 
-  <!-- Sidebar -->
   <aside class="sidebar" id="sidebar">
     <a href="https://mtdvps.com"><i class="fas fa-home"></i>Trang Chủ</a>
     <a href="https://hci.mtdvps.com/"><i class="fas fa-server"></i>Dịch Vụ VPS</a>
@@ -213,8 +177,8 @@
   </aside>
   <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
 
-  <!-- Main -->
   <main class="container">
+    <!-- Header -->
     <section class="card header">
       <div class="avatar"></div>
       <div class="title">MTD VPS</div>
@@ -225,16 +189,14 @@
         <a href="https://www.youtube.com/@ducvps1com" title="YouTube"><i class="fab fa-youtube"></i></a>
         <a href="https://www.facebook.com/ducvps123/?locale=vi_VN" title="Facebook"><i class="fab fa-facebook"></i></a>
       </div>
-
-      <!-- search -->
       <div class="search-row">
-        <input id="searchInput" class="input" type="text" placeholder="Tìm liên kết… (ví dụ: vps, proxy, shop)" oninput="filterLinks()"/>
+        <input id="searchInput" class="input" type="text" placeholder="Tìm liên kết… (vps, proxy, shop)" oninput="filterLinks()"/>
         <button class="mini" onclick="resetFilter()"><i class="fas fa-times"></i></button>
       </div>
     </section>
 
-    <!-- Widgets -->
-    <section class="widgets">
+    <!-- Top widgets -->
+    <section class="grid grid-3">
       <div class="widget">
         <h4>⏰ Đồng hồ</h4>
         <div class="clock" id="clock">--:--:--</div>
@@ -244,131 +206,167 @@
         <div id="weatherMain">Đang tải…</div>
         <small id="weatherSub"></small>
       </div>
+      <div class="widget">
+        <h4>⏱ Pomodoro</h4>
+        <div style="font-weight:800;font-size:1.2rem" id="pomoTime">25:00</div>
+        <div style="display:flex;gap:6px;margin-top:6px">
+          <select id="pomoWork" class="input" style="max-width:90px"><option>25</option><option>30</option><option>45</option></select>
+          <select id="pomoBreak" class="input" style="max-width:90px"><option>5</option><option>10</option><option>15</option></select>
+          <button class="pill-btn" onclick="startPomo()">Start</button>
+          <button class="pill-btn" onclick="stopPomo()">Stop</button>
+        </div>
+        <small id="pomoLabel" style="color:var(--muted)">Chế độ: Work</small>
+      </div>
     </section>
 
     <!-- Quote -->
     <section class="quote card" id="quoteBox">“Loading quote…”</section>
 
     <!-- LINKS -->
-    <section class="card" id="linksWrap" style="padding:8px 0 10px;">
-      <!-- Each link uses data-id (for analytics) & data-url (for QR/Copy) -->
+    <section class="card" id="linksWrap" style="padding:8px 0 10px;margin-top:12px">
+      <!-- sample links -->
       <a class="link" href="https://mtdvps.com" data-id="mtdvps" data-url="https://mtdvps.com" onclick="track(event)">
         <div class="icon"><i class="fas fa-cloud"></i></div>
-        <div class="txt"><div class="h">MTDVPS.COM</div><div class="s">Cung Cấp Cloud VPS, Proxy, Mã Nguồn, Hosting</div></div>
-        <div class="tools">
-          <div class="tool-btn" title="QR" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div>
-          <div class="tool-btn" title="Copy link" onclick="copyURL(event)"><i class="fas fa-link"></i></div>
-        </div>
+        <div class="txt"><div class="h">MTDVPS.COM</div><div class="s">Cloud VPS, Proxy, Mã nguồn, Hosting</div></div>
+        <div class="tools"><div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div><div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div></div>
       </a>
-
       <a class="link" href="https://wescan.vn/mtdlive" data-id="wescan" data-url="https://wescan.vn/mtdlive" onclick="track(event)">
         <div class="icon"><i class="fas fa-donate"></i></div>
         <div class="txt"><div class="h">wescan.vn/mtdlive</div><div class="s">Donate qua wescan</div></div>
-        <div class="tools">
-          <div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div>
-          <div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div>
-        </div>
+        <div class="tools"><div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div><div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div></div>
       </a>
-
       <a class="link" href="https://mtdproxy.com" data-id="mtdproxy" data-url="https://mtdproxy.com" onclick="track(event)">
         <div class="icon"><i class="fas fa-shield-alt"></i></div>
-        <div class="txt"><div class="h">mtdproxy.com</div><div class="s">Proxy IPv4/IPv6 tĩnh & xoay, hỗ trợ airdrop</div></div>
+        <div class="txt"><div class="h">mtdproxy.com</div><div class="s">Proxy IPv4/IPv6 tĩnh & xoay</div></div>
         <span class="chip">-50% HOT</span>
-        <div class="tools">
-          <div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div>
-          <div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div>
-        </div>
+        <div class="tools"><div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div><div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div></div>
       </a>
-
       <a class="link" href="https://mtdshop247.com/" data-id="mtdshop" data-url="https://mtdshop247.com/" onclick="track(event)">
         <div class="icon"><i class="fas fa-store"></i></div>
         <div class="txt"><div class="h">mtdshop247.com</div><div class="s">Dịch vụ MXH, tài khoản premium</div></div>
-        <div class="tools">
-          <div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div>
-          <div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div>
-        </div>
+        <div class="tools"><div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div><div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div></div>
       </a>
-
-      <a class="link" href="https://shopvpn4g.vn/" data-id="shopvpn4g" data-url="https://shopvpn4g.vn/" onclick="track(event)">
-        <div class="icon"><i class="fas fa-signal"></i></div>
-        <div class="txt"><div class="h">shopvpn4g.vn</div><div class="s">Dịch vụ dữ liệu sim Viettel/Vina</div></div>
-        <div class="tools">
-          <div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div>
-          <div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div>
-        </div>
-      </a>
-
       <a class="link" href="https://hci.mtdvps.com/" data-id="hci" data-url="https://hci.mtdvps.com/" onclick="track(event)">
         <div class="icon"><i class="fas fa-server"></i></div>
-        <div class="txt"><div class="h">hci.mtdvps.com</div><div class="s">CLOUD VPS doanh nghiệp giá ưu đãi</div></div>
-        <div class="tools">
-          <div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div>
-          <div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div>
-        </div>
+        <div class="txt"><div class="h">hci.mtdvps.com</div><div class="s">CLOUD VPS Doanh Nghiệp</div></div>
+        <div class="tools"><div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div><div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div></div>
       </a>
-
-      <a class="link" href="https://t.me/+o6KRHMd59As0OTE1" data-id="telegram" data-url="https://t.me/+o6KRHMd59As0OTE1" onclick="track(event)">
-        <div class="icon"><i class="fab fa-telegram-plane"></i></div>
-        <div class="txt"><div class="h">Nhóm Telegram</div><div class="s">Tham gia để được hỗ trợ</div></div>
-        <div class="tools">
-          <div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div>
-          <div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div>
-        </div>
-      </a>
-
       <a class="link" href="https://zalo.me/g/afdrwb295" data-id="zalo" data-url="https://zalo.me/g/afdrwb295" onclick="track(event)">
         <div class="icon"><i class="fas fa-comments"></i></div>
         <div class="txt"><div class="h">Nhóm Zalo Support</div><div class="s">Ưu đãi & hỗ trợ</div></div>
-        <div class="tools">
-          <div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div>
-          <div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div>
-        </div>
-      </a>
-
-      <a class="link" href="https://www.facebook.com/Duc.CT845/" data-id="fb-support" data-url="https://www.facebook.com/Duc.CT845/" onclick="track(event)">
-        <div class="icon"><i class="fas fa-life-ring"></i></div>
-        <div class="txt"><div class="h">Kênh Support Chính - 24/7</div><div class="s">Hỗ trợ tận tình</div></div>
-        <div class="tools">
-          <div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div>
-          <div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div>
-        </div>
-      </a>
-
-      <a class="link" href="https://discord.com/invite/Mumgffrp5b" data-id="discord" data-url="https://discord.com/invite/Mumgffrp5b" onclick="track(event)">
-        <div class="icon"><i class="fab fa-discord"></i></div>
-        <div class="txt"><div class="h">Server Discord</div><div class="s">Giao lưu - Hỗ trợ</div></div>
-        <div class="tools">
-          <div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div>
-          <div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div>
-        </div>
+        <div class="tools"><div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div><div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div></div>
       </a>
     </section>
 
     <!-- Analytics -->
-    <section class="stats card">
+    <section class="stats card" style="padding:14px">
       <h4 style="margin-bottom:8px;color:var(--brand)">📊 Lượt click (local)</h4>
-      <table id="statTable"><thead>
-        <tr><th>Link</th><th>Lượt click</th></tr>
-      </thead><tbody></tbody></table>
-      <div style="margin-top:6px;font-size:.85rem;color:var(--muted)">* Dữ liệu lưu cục bộ trên thiết bị của bạn.</div>
+      <table id="statTable"><thead><tr><th>Link</th><th>Lượt click</th></tr></thead><tbody></tbody></table>
+      <div style="margin-top:6px;font-size:.85rem;color:var(--muted)">* Lưu cục bộ trên thiết bị.</div>
     </section>
 
-    <!-- Todo -->
-    <section class="todo card">
-      <h3>Danh Sách Nhiệm Vụ</h3>
-      <div class="todo-input">
-        <input id="taskInput" type="text" placeholder="Nhập nhiệm vụ…" />
-        <input id="dueDateInput" type="date" />
-        <button onclick="addTask()">Thêm</button>
+    <!-- Tools for forgetful humans -->
+    <section class="grid grid-2" style="margin-top:14px">
+      <!-- To-Do + ICS -->
+      <div class="card todo">
+        <h3>✅ To-Do & Nhắc hạn</h3>
+        <div class="todo-input">
+          <input id="taskInput" type="text" placeholder="Nội dung…" />
+          <input id="dueDateInput" type="date" />
+          <select id="dueTimeInput">
+            <option value="">--Giờ--</option>
+            <!-- hours -->
+          </select>
+          <select id="repeatInput">
+            <option value="none">Không lặp</option>
+            <option value="daily">Hàng ngày</option>
+            <option value="weekly">Hàng tuần</option>
+          </select>
+          <button onclick="addTask()">Thêm</button>
+          <button class="pill-btn" onclick="exportICS()">Xuất .ICS</button>
+        </div>
+        <div class="list" id="todoList"></div>
+        <div id="todoReport" style="margin-top:8px;color:var(--bad);font-weight:600"></div>
       </div>
-      <div class="list" id="todoList"></div>
-      <div id="todoReport" style="margin-top:8px;color:var(--bad);font-weight:600"></div>
+
+      <!-- Reminder Center -->
+      <div class="card todo">
+        <h3>🔔 Reminder Center</h3>
+        <div class="todo-input">
+          <input id="remText" type="text" placeholder="Nhắc: uống nước, họp, gọi KH…" />
+          <input id="remDate" type="date" />
+          <input id="remTime" type="time" />
+          <select id="remRepeat">
+            <option value="none">Không lặp</option>
+            <option value="daily">Hàng ngày</option>
+            <option value="weekly">Hàng tuần</option>
+          </select>
+          <button onclick="addReminder()">Đặt nhắc</button>
+        </div>
+        <div class="list" id="remList"></div>
+        <small style="color:var(--muted)">* Tab phải mở để hẹn giờ hoạt động. Bật “Thông báo” để nhận popup desktop.</small>
+      </div>
+    </section>
+
+    <section class="grid grid-2" style="margin-top:14px">
+      <!-- Hydration & Stretch -->
+      <div class="card widget">
+        <h4>💧 Uống nước / 🧍 Giãn cơ</h4>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <label>Chu kỳ (phút): <input id="hydrInt" type="number" min="5" value="30" class="input" style="max-width:90px"></label>
+          <button class="pill-btn" onclick="toggleHydration()"><span id="hydrBtnTxt">Bật nhắc uống nước</span></button>
+        </div>
+        <div style="margin-top:6px">Trạng thái: <b id="hydrStatus">Tắt</b></div>
+
+        <div style="height:8px"></div>
+
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <label>Chu kỳ (phút): <input id="strInt" type="number" min="15" value="60" class="input" style="max-width:90px"></label>
+          <button class="pill-btn" onclick="toggleStretch()"><span id="strBtnTxt">Bật nhắc giãn cơ</span></button>
+        </div>
+        <div style="margin-top:6px">Trạng thái: <b id="strStatus">Tắt</b></div>
+      </div>
+
+      <!-- Birthday tracker -->
+      <div class="card todo">
+        <h3>🎂 Birthday Tracker</h3>
+        <div class="todo-input">
+          <input id="bdName" type="text" placeholder="Tên…" />
+          <input id="bdDate" type="date" />
+          <button onclick="addBirthday()">Thêm</button>
+        </div>
+        <div class="list" id="bdList"></div>
+      </div>
+    </section>
+
+    <section class="grid grid-2" style="margin-top:14px">
+      <!-- Notes -->
+      <div class="card notes" style="padding:14px">
+        <h3>📝 Sticky Notes</h3>
+        <textarea id="noteBox" placeholder="Viết nhanh điều cần nhớ… (tự lưu)"></textarea>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <button class="pill-btn" onclick="clearNotes()" style="background:#b91c1c">Xóa ghi chú</button>
+          <button class="pill-btn" onclick="downloadText()">Tải .txt</button>
+        </div>
+      </div>
+
+      <!-- Backup / Restore -->
+      <div class="card widget">
+        <h3>💾 Sao lưu & Phục hồi</h3>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="pill-btn" onclick="exportBackup()">Xuất dữ liệu (.json)</button>
+          <label class="pill-btn" style="cursor:pointer">
+            Nhập dữ liệu
+            <input id="importFile" type="file" accept="application/json" style="display:none" onchange="importBackup(event)">
+          </label>
+        </div>
+        <small style="color:var(--muted)">Bao gồm: To-do, Reminders, Stats, Birthdays, Notes, cài đặt nhắc uống nước/giãn cơ, Dark/Light.</small>
+      </div>
     </section>
 
     <div class="footer">MTD VPS • <a href="https://mtdvps.com" style="color:#fff;text-decoration:underline">mtdvps.com</a></div>
   </main>
 
-  <!-- Back to top -->
   <button class="to-top" id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
 
   <!-- QR Modal -->
@@ -381,175 +379,87 @@
     </div>
   </div>
 
-  <!-- Minimal QR library (QRCode.js) -->
+  <!-- QR library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 
   <script>
-    /* ===== Sidebar ===== */
-    function toggleSidebar(){
-      document.getElementById('sidebar').classList.toggle('active');
-      document.getElementById('overlay').classList.toggle('active');
-    }
-
-    /* ===== Dark / Light Mode ===== */
-    const root = document.documentElement;
-    const modeBtn = document.getElementById('modeBtn');
-    const modeText = document.getElementById('modeText');
-    (function initMode(){
-      const saved = localStorage.getItem('mtd_mode') || 'light';
-      if(saved==='dark'){ document.body.classList.add('dark'); modeText.textContent='Light'; }
-    })();
-    function toggleMode(){
-      document.body.classList.toggle('dark');
-      const isDark = document.body.classList.contains('dark');
-      localStorage.setItem('mtd_mode', isDark?'dark':'light');
-      modeText.textContent = isDark?'Light':'Dark';
-    }
-
-    /* ===== Back to top ===== */
-    const toTop = document.getElementById('toTop');
-    window.addEventListener('scroll', () => {
-      if(window.scrollY>300) toTop.classList.add('show'); else toTop.classList.remove('show');
-    });
-
-    /* ===== Clock ===== */
-    function updateClock(){
-      const now = new Date();
-      const pad = n=>String(n).padStart(2,'0');
-      document.getElementById('clock').textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
-    }
-    setInterval(updateClock, 1000); updateClock();
-
-    /* ===== Weather (Open-Meteo, no key) ===== */
-    async function loadWeather(){
-      let lat=21.0278, lon=105.8342, label="Hà Nội (mặc định)";
-      if(navigator.geolocation){
-        try{
-          const pos = await new Promise((res,rej)=>navigator.geolocation.getCurrentPosition(res,rej,{timeout:3000}));
-          lat = pos.coords.latitude; lon = pos.coords.longitude; label = "Vị trí của bạn";
-        }catch(e){}
-      }
-      try{
-        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=auto`;
-        const r = await fetch(url); const d = await r.json();
-        const cw = d.current_weather;
-        const codeMap = {0:'Trời quang',1:'Ít mây',2:'Mây vừa',3:'Nhiều mây',45:'Sương mù',48:'Sương đóng băng',51:'Mưa phùn nhẹ',61:'Mưa nhẹ',63:'Mưa vừa',65:'Mưa to',71:'Tuyết rơi',80:'Mưa rào'};
-        document.getElementById('weatherMain').textContent = `${Math.round(cw.temperature)}°C • ${codeMap[cw.weathercode]||'Thời tiết'}`;
-        document.getElementById('weatherSub').textContent = `${label} • Gió ${Math.round(cw.windspeed)} km/h`;
-      }catch(e){
-        document.getElementById('weatherMain').textContent = 'Không tải được thời tiết';
-        document.getElementById('weatherSub').textContent = '';
-      }
-    }
-    loadWeather();
-
-    /* ===== Quote of the day ===== */
-    const quotes = [
-      "Thành công = 1% tài năng + 99% nỗ lực 💪",
-      "Muốn đi nhanh hãy đi một mình. Muốn đi xa hãy đi cùng nhau 🚀",
-      "Cơ hội không tự đến — hãy tạo ra nó 🔥",
-      "Không có thất bại, chỉ có bài học 📘",
-      "Kỷ luật là cầu nối giữa mục tiêu và thành tựu."
-    ];
-    document.getElementById('quoteBox').textContent = quotes[Math.floor(Math.random()*quotes.length)];
-
-    /* ===== Search filter ===== */
-    function filterLinks(){
-      const q = document.getElementById('searchInput').value.trim().toLowerCase();
-      const links = document.querySelectorAll('#linksWrap .link');
-      links.forEach(a=>{
-        const text = a.innerText.toLowerCase();
-        a.style.display = text.includes(q) ? '' : 'none';
-      });
-    }
-    function resetFilter(){ document.getElementById('searchInput').value=''; filterLinks(); }
-
-    /* ===== Analytics (localStorage) ===== */
-    const STAT_KEY = 'mtd_click_stats';
-    const stats = JSON.parse(localStorage.getItem(STAT_KEY) || '{}');
-    function track(e){
-      // allow link to navigate, but count
-      const a = e.currentTarget;
-      const id = a.dataset.id;
-      stats[id] = (stats[id]||0) + 1;
-      localStorage.setItem(STAT_KEY, JSON.stringify(stats));
-      renderStats();
-    }
-    function renderStats(){
-      const tbody = document.querySelector('#statTable tbody');
-      tbody.innerHTML = '';
-      const rows = [
-        ['mtdvps','MTDVPS.COM'],
-        ['wescan','wescan.vn/mtdlive'],
-        ['mtdproxy','mtdproxy.com'],
-        ['mtdshop','mtdshop247.com'],
-        ['shopvpn4g','shopvpn4g.vn'],
-        ['hci','hci.mtdvps.com'],
-        ['telegram','Telegram'],
-        ['zalo','Zalo'],
-        ['fb-support','FB Support'],
-        ['discord','Discord']
-      ];
-      rows.forEach(([id,name])=>{
-        const tr = document.createElement('tr');
-        tr.innerHTML = `<td>${name}</td><td>${stats[id]||0}</td>`;
-        tbody.appendChild(tr);
-      });
-    }
-    renderStats();
-
-    /* ===== QR Modal + Copy ===== */
-    let qr;
-    function openQR(ev){
-      ev.stopPropagation(); ev.preventDefault();
-      const a = ev.currentTarget.closest('.link');
-      const url = a.dataset.url;
-      document.getElementById('qrModal').classList.add('active');
-      document.getElementById('qrUrl').textContent = url;
-      const box = document.getElementById('qrcode');
-      box.innerHTML = '';
-      qr = new QRCode(box, { text:url, width:220, height:220, correctLevel: QRCode.CorrectLevel.M });
-    }
-    function closeQR(ev){
-      if(ev.target.id==='qrModal') document.getElementById('qrModal').classList.remove('active');
-    }
-    async function copyURL(ev){
-      ev.stopPropagation(); ev.preventDefault();
-      const a = ev.currentTarget.closest('.link');
-      const url = a.dataset.url;
-      try{ await navigator.clipboard.writeText(url); toast('Đã copy link!'); }
-      catch{ toast('Copy không thành công'); }
-    }
-
-    /* ===== Tiny toast ===== */
+    /* ===== Utils ===== */
+    const $ = s=>document.querySelector(s);
+    const $$ = s=>document.querySelectorAll(s);
+    const LS = (k,v)=>v===undefined?JSON.parse(localStorage.getItem(k)||'null'):(localStorage.setItem(k, JSON.stringify(v)),v);
     function toast(msg){
       const el = document.createElement('div');
       el.textContent = msg;
-      el.style.cssText = `
-        position:fixed;left:50%;bottom:26px;transform:translateX(-50%);
-        background:#111827;color:#fff;padding:10px 14px;border-radius:10px;
-        box-shadow:0 12px 24px rgba(0,0,0,.25);z-index:1300;opacity:0;transition:.25s
-      `;
+      el.style.cssText = `position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:#111827;color:#fff;padding:10px 14px;border-radius:10px;box-shadow:0 12px 24px rgba(0,0,0,.25);z-index:1300;opacity:0;transition:.25s`;
       document.body.appendChild(el);
       requestAnimationFrame(()=>{el.style.opacity=1;});
       setTimeout(()=>{el.style.opacity=0; setTimeout(()=>el.remove(),250)},1700);
     }
+    function requestNotif(){
+      if(!('Notification' in window)) return toast('Trình duyệt không hỗ trợ Notification');
+      Notification.requestPermission().then(p=>toast(p==='granted'?'Đã bật thông báo':'Không cấp quyền'));
+    }
+    function notify(title, body){
+      if(!('Notification' in window)) return;
+      if(Notification.permission==='granted'){ new Notification(title,{body}); }
+    }
+    function fmt2(n){return String(n).padStart(2,'0')}
 
-    /* ===== Todo List ===== */
-    let tasks = JSON.parse(localStorage.getItem('mtd_tasks')||'[]');
-    function saveTasks(){ localStorage.setItem('mtd_tasks', JSON.stringify(tasks)); }
+    /* ===== Sidebar + mode ===== */
+    function toggleSidebar(){ $('#sidebar').classList.toggle('active'); $('#overlay').classList.toggle('active'); }
+    (function initMode(){ const saved = LS('mtd_mode')||'light'; if(saved==='dark'){document.body.classList.add('dark'); $('#modeText').textContent='Light';} })();
+    function toggleMode(){ document.body.classList.toggle('dark'); const isDark=document.body.classList.contains('dark'); LS('mtd_mode', isDark?'dark':'light'); $('#modeText').textContent=isDark?'Light':'Dark'; }
+
+    /* ===== Back to top ===== */
+    const toTop = $('#toTop'); window.addEventListener('scroll', ()=>{ if(window.scrollY>300) toTop.classList.add('show'); else toTop.classList.remove('show'); });
+
+    /* ===== Clock ===== */
+    function updateClock(){ const now=new Date(); $('#clock').textContent=`${fmt2(now.getHours())}:${fmt2(now.getMinutes())}:${fmt2(now.getSeconds())}`; }
+    setInterval(updateClock, 1000); updateClock();
+
+    /* ===== Weather (Open-Meteo) ===== */
+    async function loadWeather(){
+      let lat=21.0278, lon=105.8342, label="Hà Nội";
+      if(navigator.geolocation){ try{ const pos = await new Promise((res,rej)=>navigator.geolocation.getCurrentPosition(res,rej,{timeout:2500})); lat=pos.coords.latitude; lon=pos.coords.longitude; label="Vị trí của bạn"; }catch(e){} }
+      try{ const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=auto`); const d=await r.json(); const cw=d.current_weather;
+        const map={0:'Trời quang',1:'Ít mây',2:'Mây vừa',3:'Nhiều mây',45:'Sương mù',51:'Mưa phùn',61:'Mưa nhẹ',63:'Mưa vừa',65:'Mưa to',80:'Mưa rào'}; 
+        $('#weatherMain').textContent=`${Math.round(cw.temperature)}°C • ${map[cw.weathercode]||'Thời tiết'}`; $('#weatherSub').textContent=`${label} • Gió ${Math.round(cw.windspeed)} km/h`;
+      }catch(e){ $('#weatherMain').textContent='Không tải được thời tiết'; $('#weatherSub').textContent=''; }
+    } loadWeather();
+
+    /* ===== Quote ===== */
+    const quotes=["Thành công = 1% tài năng + 99% nỗ lực 💪","Muốn đi nhanh hãy đi một mình. Muốn đi xa hãy đi cùng nhau 🚀","Cơ hội không tự đến — hãy tạo ra nó 🔥","Không có thất bại, chỉ có bài học 📘","Kỷ luật là cầu nối giữa mục tiêu và thành tựu."];
+    $('#quoteBox').textContent = quotes[Math.floor(Math.random()*quotes.length)];
+
+    /* ===== Link filter + analytics ===== */
+    function filterLinks(){ const q=$('#searchInput').value.trim().toLowerCase(); $$('#linksWrap .link').forEach(a=>{ a.style.display = a.innerText.toLowerCase().includes(q)?'':'none'; }); }
+    function resetFilter(){ $('#searchInput').value=''; filterLinks(); }
+    const STAT_KEY='mtd_click_stats'; const stats=LS(STAT_KEY) || {};
+    function track(e){ const id=e.currentTarget.dataset.id; stats[id]=(stats[id]||0)+1; LS(STAT_KEY,stats); renderStats(); }
+    function renderStats(){ const tbody=$('#statTable tbody'); tbody.innerHTML=''; $$('#linksWrap .link').forEach(a=>{ const id=a.dataset.id; const name=a.querySelector('.h').textContent; const tr=document.createElement('tr'); tr.innerHTML=`<td>${name}</td><td>${stats[id]||0}</td>`; tbody.appendChild(tr); }); }
+    renderStats();
+
+    /* ===== QR + Copy ===== */
+    let qr;
+    function openQR(ev){ ev.stopPropagation(); ev.preventDefault(); const a=ev.currentTarget.closest('.link'); const url=a.dataset.url; $('#qrModal').classList.add('active'); $('#qrUrl').textContent=url; const box=$('#qrcode'); box.innerHTML=''; qr=new QRCode(box,{text:url,width:220,height:220,correctLevel:QRCode.CorrectLevel.M}); }
+    function closeQR(ev){ if(ev.target.id==='qrModal') $('#qrModal').classList.remove('active'); }
+    async function copyURL(ev){ ev.stopPropagation(); ev.preventDefault(); const a=ev.currentTarget.closest('.link'); const url=a.dataset.url; try{ await navigator.clipboard.writeText(url); toast('Đã copy link!'); }catch{ toast('Copy không thành công'); } }
+
+    /* ===== Populate time options for To-do ===== */
+    (function(){ const t=$('#dueTimeInput'); t.innerHTML='<option value="">--Giờ--</option>'; for(let h=0;h<24;h++){ for(let m of [0,15,30,45]){ const v=`${fmt2(h)}:${fmt2(m)}`; const o=document.createElement('option'); o.value=v; o.textContent=v; t.appendChild(o);} } })();
+
+    /* ===== To-do ===== */
+    let tasks = LS('mtd_tasks') || [];
+    function saveTasks(){ LS('mtd_tasks',tasks); }
     function renderTasks(){
-      const wrap = document.getElementById('todoList');
-      const report = document.getElementById('todoReport');
-      wrap.innerHTML=''; let overdue=0;
-      const now = new Date();
-      tasks.forEach((t,i)=>{
-        const li = document.createElement('div'); li.className='item';
-        const isOver = !t.completed && new Date(t.deadline) < now;
+      const wrap=$('#todoList'), report=$('#todoReport'); wrap.innerHTML=''; let overdue=0; const now=new Date();
+      tasks.forEach((t,i)=>{ const li=document.createElement('div'); li.className='item';
+        const dueStr = t.deadline?` (${t.deadline}${t.time?(' '+t.time):''})`:''; 
+        const isOver = t.deadline && !t.completed && new Date(`${t.deadline} ${t.time||'23:59'}`) < now;
         if(t.completed) li.classList.add('completed'); else if(isOver){ li.classList.add('overdue'); overdue++; }
         li.innerHTML = `
           <input type="checkbox" ${t.completed?'checked':''} onclick="toggleTask(${i})">
-          <span>${t.text} — <small>Hạn: ${t.deadline||'—'}</small></span>
+          <span>${t.text}${dueStr}${t.repeat&&t.repeat!=='none'?' • <i>'+t.repeat+'</i>':''}</span>
           <button class="x" onclick="delTask(${i})">Xóa</button>
         `;
         wrap.appendChild(li);
@@ -557,25 +467,176 @@
       report.textContent = overdue?`⚠️ ${overdue} nhiệm vụ đã quá hạn!`: '';
     }
     function addTask(){
-      const text = document.getElementById('taskInput').value.trim();
-      const date = document.getElementById('dueDateInput').value;
-      if(!text || !date){ toast('Vui lòng nhập đủ nội dung & hạn'); return; }
-      tasks.push({text, deadline:date, completed:false}); saveTasks(); renderTasks();
-      document.getElementById('taskInput').value=''; document.getElementById('dueDateInput').value='';
+      const text=$('#taskInput').value.trim(), date=$('#dueDateInput').value, time=$('#dueTimeInput').value, rep=$('#repeatInput').value;
+      if(!text){ toast('Nhập nội dung'); return; }
+      tasks.push({text, deadline:date||'', time:time||'', repeat:rep, completed:false});
+      saveTasks(); renderTasks(); $('#taskInput').value=''; $('#dueDateInput').value=''; $('#dueTimeInput').value=''; $('#repeatInput').value='none';
     }
-    function toggleTask(i){ tasks[i].completed = !tasks[i].completed; saveTasks(); renderTasks(); }
+    function toggleTask(i){ tasks[i].completed=!tasks[i].completed; saveTasks(); renderTasks(); }
     function delTask(i){ tasks.splice(i,1); saveTasks(); renderTasks(); }
-    renderTasks();
-    setInterval(renderTasks, 60000);
+    renderTasks(); setInterval(renderTasks, 60000);
 
-    /* ===== Chatwoot (giữ nguyên) ===== */
+    /* ===== Export .ICS (To-do + Reminders) ===== */
+    function icsEscape(s){return (s||'').replace(/[,;]/g,'\\$&')}
+    function exportICS(){
+      let lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//MTD VPS LinkBio//VI'];
+      const addEvent=(t,dt,desc)=>{ if(!dt) return; const dtstr=dt.replace(/[-:]/g,'').replace(' ','T')+'00'; lines.push('BEGIN:VEVENT',`UID:${crypto.randomUUID()}@mtdvps`,`DTSTAMP:${dtstr}Z`,`DTSTART:${dtstr}Z`, `SUMMARY:${icsEscape(t)}`, `DESCRIPTION:${icsEscape(desc||'')}`,'END:VEVENT'); };
+      tasks.forEach(x=>{ if(x.deadline){ const dt = x.deadline+(x.time?(' '+x.time):' 09:00'); addEvent(x.text, dt, 'To-Do'); } });
+      (LS('mtd_reminders')||[]).forEach(r=>{ const dt=r.date+' '+r.time; addEvent('Reminder: '+r.text, dt, r.repeat!=='none'?'Repeat: '+r.repeat:''); });
+      lines.push('END:VCALENDAR');
+      const blob=new Blob([lines.join('\n')],{type:'text/calendar'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='mtd-linkbio.ics'; a.click(); URL.revokeObjectURL(a.href);
+    }
+
+    /* ===== Reminder Center ===== */
+    let reminders = LS('mtd_reminders') || [];
+    let remTimers = {}; // id -> timeoutId
+    function saveRem(){ LS('mtd_reminders',reminders); }
+    function addReminder(){
+      const text=$('#remText').value.trim(), date=$('#remDate').value, time=$('#remTime').value, rep=$('#remRepeat').value;
+      if(!text||!date||!time){ toast('Nhập đủ nội dung, ngày, giờ'); return; }
+      const id=crypto.randomUUID();
+      reminders.push({id,text,date,time,repeat:rep,done:false}); saveRem(); renderReminders(); scheduleReminder(id);
+      $('#remText').value=''; $('#remDate').value=''; $('#remTime').value=''; $('#remRepeat').value='none';
+      toast('Đã đặt nhắc');
+    }
+    function renderReminders(){
+      const wrap=$('#remList'); wrap.innerHTML='';
+      reminders.sort((a,b)=> (a.date+a.time).localeCompare(b.date+b.time));
+      reminders.forEach((r,i)=>{
+        const due = new Date(`${r.date} ${r.time}`), now=new Date(), left = Math.max(0, due-now); 
+        const mins = Math.floor(left/60000), label = left?`${mins} phút nữa`:'Đến hạn';
+        const div=document.createElement('div'); div.className='item'; if(left===0) div.classList.add('warn');
+        div.innerHTML = `
+          <span><b>${r.text}</b> — ${r.date} ${r.time} (${r.repeat}) • <i>${label}</i></span>
+          <button class="pill-btn" onclick="snooze('${r.id}',5)">Snooze 5'</button>
+          <button class="x" onclick="delReminder('${r.id}')">Xóa</button>
+        `;
+        wrap.appendChild(div);
+      });
+    }
+    function scheduleReminder(id){
+      const r=reminders.find(x=>x.id===id); if(!r) return;
+      clearTimeout(remTimers[id]);
+      const due = new Date(`${r.date} ${r.time}`).getTime(), now=Date.now(), wait = due-now;
+      if(wait<=0){ fireReminder(r); return; }
+      remTimers[id]=setTimeout(()=>fireReminder(r), wait);
+    }
+    function fireReminder(r){
+      notify('🔔 Reminder', `${r.text} — ${r.date} ${r.time}`);
+      toast('Nhắc: '+r.text);
+      // repeat
+      if(r.repeat==='daily' || r.repeat==='weekly'){
+        const d=new Date(`${r.date} ${r.time}`);
+        if(r.repeat==='daily') d.setDate(d.getDate()+1);
+        else d.setDate(d.getDate()+7);
+        r.date = d.toISOString().slice(0,10);
+        r.time = d.toTimeString().slice(0,5);
+        saveRem(); renderReminders(); scheduleReminder(r.id);
+      }
+    }
+    function snooze(id,mins){
+      const r=reminders.find(x=>x.id===id); if(!r) return;
+      const d=new Date(); d.setMinutes(d.getMinutes()+mins);
+      r.date=d.toISOString().slice(0,10); r.time=d.toTimeString().slice(0,5);
+      saveRem(); renderReminders(); scheduleReminder(id); toast(`Snooze ${mins} phút`);
+    }
+    function delReminder(id){ reminders = reminders.filter(x=>x.id!==id); saveRem(); renderReminders(); clearTimeout(remTimers[id]); }
+    // init schedules
+    reminders.forEach(r=>scheduleReminder(r.id)); renderReminders();
+
+    /* ===== Hydration / Stretch ===== */
+    let hydrTimer=null, strTimer=null;
+    function toggleHydration(){
+      if(hydrTimer){ clearInterval(hydrTimer); hydrTimer=null; LS('hydr_on',false); $('#hydrStatus').textContent='Tắt'; $('#hydrBtnTxt').textContent='Bật nhắc uống nước'; return; }
+      const mins=parseInt($('#hydrInt').value||30,10); hydrTimer=setInterval(()=>{ notify('💧 Uống nước','Đặt cốc nước xuống và làm 3 ngụm nhé!'); toast('💧 Uống nước!'); }, mins*60000);
+      LS('hydr_on',true); LS('hydr_int',mins); $('#hydrStatus').textContent='Bật'; $('#hydrBtnTxt').textContent='Tắt nhắc uống nước'; toast('Đã bật nhắc uống nước');
+    }
+    function toggleStretch(){
+      if(strTimer){ clearInterval(strTimer); strTimer=null; LS('str_on',false); $('#strStatus').textContent='Tắt'; $('#strBtnTxt').textContent='Bật nhắc giãn cơ'; return; }
+      const mins=parseInt($('#strInt').value||60,10); strTimer=setInterval(()=>{ notify('🧍 Giãn cơ','Đứng dậy vươn vai/đi lại 1-2 phút'); toast('🧍 Giãn cơ!'); }, mins*60000);
+      LS('str_on',true); LS('str_int',mins); $('#strStatus').textContent='Bật'; $('#strBtnTxt').textContent='Tắt nhắc giãn cơ'; toast('Đã bật nhắc giãn cơ');
+    }
+    // restore hydration/stretch
+    (function(){
+      const ho=LS('hydr_on'), hi=LS('hydr_int')||30; $('#hydrInt').value=hi;
+      if(ho){ toggleHydration(); } // will set interval & update UI
+      const so=LS('str_on'), si=LS('str_int')||60; $('#strInt').value=si;
+      if(so){ toggleStretch(); }
+    })();
+
+    /* ===== Birthday tracker ===== */
+    let bds = LS('mtd_birthdays') || [];
+    function saveBD(){ LS('mtd_birthdays', bds); }
+    function nextBD(d){ // d: 'YYYY-MM-DD'
+      const [Y,M,Da]=d.split('-').map(Number); const now=new Date();
+      let next = new Date(now.getFullYear(), M-1, Da);
+      if(next < new Date(now.getFullYear(), now.getMonth(), now.getDate())) next.setFullYear(next.getFullYear()+1);
+      const days=Math.ceil((next - now)/(1000*60*60*24)); return {next, days};
+    }
+    function renderBD(){
+      const wrap=$('#bdList'); wrap.innerHTML='';
+      bds.sort((a,b)=> nextBD(a.date).days - nextBD(b.date).days);
+      bds.forEach((x,i)=>{ const info=nextBD(x.date); const div=document.createElement('div'); div.className='item'; div.innerHTML=`<span><b>${x.name}</b> — ${x.date} • Còn <b>${info.days}</b> ngày</span><button class="x" onclick="delBirthday(${i})">Xóa</button>`; wrap.appendChild(div); });
+    }
+    function addBirthday(){ const n=$('#bdName').value.trim(), d=$('#bdDate').value; if(!n||!d){ toast('Nhập tên và ngày'); return; } bds.push({name:n,date:d}); saveBD(); renderBD(); $('#bdName').value=''; $('#bdDate').value=''; }
+    function delBirthday(i){ bds.splice(i,1); saveBD(); renderBD(); }
+    renderBD();
+
+    /* ===== Notes ===== */
+    const noteKey='mtd_notes'; $('#noteBox').value = LS(noteKey) || ''; $('#noteBox').addEventListener('input', e=>LS(noteKey, e.target.value));
+    function clearNotes(){ $('#noteBox').value=''; LS(noteKey,''); }
+    function downloadText(){ const blob=new Blob([$('#noteBox').value||''],{type:'text/plain'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='notes.txt'; a.click(); URL.revokeObjectURL(a.href); }
+
+    /* ===== Pomodoro ===== */
+    let pomoTimer=null, pomoLeft=0, pomoMode='work';
+    function startPomo(){
+      const w=parseInt($('#pomoWork').value,10)*60, b=parseInt($('#pomoBreak').value,10)*60;
+      if(!pomoLeft){ pomoLeft = (pomoMode==='work'?w:b); }
+      if(pomoTimer) clearInterval(pomoTimer);
+      pomoTimer=setInterval(()=>{
+        pomoLeft--; const m=Math.floor(pomoLeft/60), s=pomoLeft%60; $('#pomoTime').textContent=`${fmt2(m)}:${fmt2(s)}`;
+        if(pomoLeft<=0){ clearInterval(pomoTimer); notify('⏱ Pomodoro', pomoMode==='work'?'Hết phiên làm việc! Nghỉ thôi.':'Hết phiên nghỉ! Bắt đầu làm.'); pomoMode=(pomoMode==='work'?'break':'work'); $('#pomoLabel').textContent='Chế độ: '+(pomoMode==='work'?'Work':'Break'); pomoLeft=0; }
+      },1000);
+      $('#pomoLabel').textContent='Chế độ: '+(pomoMode==='work'?'Work':'Break');
+    }
+    function stopPomo(){ clearInterval(pomoTimer); pomoTimer=null; pomoLeft=0; pomoMode='work'; $('#pomoTime').textContent=`${fmt2(parseInt($('#pomoWork').value,10))}:00`; $('#pomoLabel').textContent='Chế độ: Work'; }
+
+    /* ===== Backup / Restore ===== */
+    function exportBackup(){
+      const payload={
+        mode: LS('mtd_mode')||'light',
+        tasks, reminders, stats, birthdays:bds,
+        notes: LS(noteKey)||'',
+        hydr_on: LS('hydr_on')||false, hydr_int: LS('hydr_int')||30,
+        str_on: LS('str_on')||false, str_int: LS('str_int')||60
+      };
+      const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+      const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='mtd-linkbio-backup.json'; a.click(); URL.revokeObjectURL(a.href);
+    }
+    function importBackup(ev){
+      const f=ev.target.files[0]; if(!f) return; const reader=new FileReader();
+      reader.onload=()=>{ try{
+          const d=JSON.parse(reader.result);
+          if(d.mode) LS('mtd_mode', d.mode);
+          tasks=d.tasks||[]; saveTasks(); renderTasks();
+          reminders=d.reminders||[]; saveRem(); renderReminders(); reminders.forEach(r=>scheduleReminder(r.id));
+          Object.assign(stats, d.stats||{}); LS(STAT_KEY,stats); renderStats();
+          bds=d.birthdays||[]; saveBD(); renderBD();
+          LS(noteKey, d.notes||''); $('#noteBox').value=d.notes||'';
+          LS('hydr_on', !!d.hydr_on); LS('hydr_int', d.hydr_int||30); LS('str_on', !!d.str_on); LS('str_int', d.str_int||60);
+          toast('Đã nhập dữ liệu');
+          location.reload(); // để khởi tạo lại timers/mode
+        }catch(e){ toast('File không hợp lệ'); }
+      };
+      reader.readAsText(f);
+    }
+
+    /* ===== Chatwoot ===== */
     (function(d,t) {
       var BASE_URL="https://chat-woot-web.kento28.shop/";
       var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
       g.src=BASE_URL+"packs/js/sdk.js"; g.defer = true; g.async = true; s.parentNode.insertBefore(g,s);
-      g.onload=function(){
-        window.chatwootSDK.run({ websiteToken: '3fSZB9ohscy7Sy4WxTWojxoL', baseUrl: BASE_URL })
-      }
+      g.onload=function(){ window.chatwootSDK.run({ websiteToken:'3fSZB9ohscy7Sy4WxTWojxoL', baseUrl:BASE_URL }) }
     })(document,"script");
   </script>
 </body>

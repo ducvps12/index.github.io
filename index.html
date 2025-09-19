@@ -1,541 +1,582 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Link Bio - MTD VPS</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="icon" href="https://i.imgur.com/GCITCIv.png" type="image/png">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #e0eafc, #cfdef3);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transition: margin-left 0.3s ease;
-            margin: 0;
-            color: #333;
-            overflow-x: hidden;
-        }
-        /* Header */
-        .header-bar {
-            width: 100%;
-            padding: 10px 20px;
-            background-color: #ffffff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-        }
-        .menu-icon {
-            font-size: 1.5em;
-            cursor: pointer;
-        }
-        .subscribe-btn {
-            background-color: #2c3e50;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 0.9em;
-            transition: background 0.3s;
-        }
-        .subscribe-btn:hover {
-            background-color: #34495e;
-        }
-        /* Sidebar */
-        .sidebar {
-            width: 250px;
-            height: 100vh;
-            background-color: #2c3e50;
-            position: fixed;
-            top: 0;
-            left: -250px;
-            z-index: 1001;
-            transition: left 0.3s ease;
-            padding-top: 60px;
-        }
-        .sidebar.active {
-            left: 0;
-        }
-        .sidebar a {
-            display: flex;
-            align-items: center;
-            color: white;
-            padding: 15px 20px;
-            text-decoration: none;
-            font-size: 1em;
-            transition: background 0.3s;
-        }
-        .sidebar a:hover {
-            background-color: #34495e;
-        }
-        .sidebar a i {
-            font-size: 1.2em;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-        }
-        .body-shift {
-            margin-left: 250px;
-        }
-        /* Overlay for closing sidebar */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            display: none;
-        }
-        .overlay.active {
-            display: block;
-        }
-        /* Main Content */
-        .container {
-            max-width: 500px;
-            width: 100%;
-            padding: 80px 20px 20px;
-            text-align: center;
-            margin: 20px;
-        }
-        .header {
-            margin-bottom: 20px;
-        }
-        .avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background-image: url('https://i.imgur.com/GCITCIv.png');
-            background-size: cover;
-            background-position: center;
-            margin: 0 auto 15px;
-            border: 3px solid #2c3e50;
-        }
-        .title {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #2c3e50;
-            margin: 5px 0;
-            text-transform: uppercase;
-        }
-        .social-links a {
-            margin: 0 10px;
-            color: #2c3e50;
-            font-size: 1.4em;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .social-links a:hover {
-            color: #3498db;
-        }
-        .link-btn {
-            display: flex;
-            align-items: center;
-            background-color: #2c3e50;
-            color: white;
-            padding: 15px;
-            margin: 12px 0;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            min-height: 60px;
-        }
-        .link-btn:hover {
-            background-color: #34495e;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-        .link-btn .text {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .link-btn .text span {
-            display: block;
-            font-size: 0.85em;
-            font-weight: normal;
-            color: #d1d1d1;
-            margin-top: 5px;
-            line-height: 1.2;
-        }
-        .footer {
-            margin-top: 25px;
-            font-size: 0.9em;
-            color: #7f8c8d;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-        }
-        .footer a {
-            color: #2c3e50;
-            text-decoration: none;
-        }
-        .footer a:hover {
-            color: #3498db;
-        }
-        /* To-Do List Styles */
-        .todo-section {
-            margin-top: 20px;
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .todo-section h3 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-        }
-        .todo-input {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        .todo-input input[type="text"] {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 0.9em;
-        }
-        .todo-input input[type="date"] {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 0.9em;
-        }
-        .todo-input button {
-            background-color: #2c3e50;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.9em;
-            transition: background 0.3s;
-        }
-        .todo-input button:hover {
-            background-color: #34495e;
-        }
-        .todo-list {
-            list-style: none;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-        .todo-item {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            border-bottom: 1px solid #eee;
-            font-size: 0.9em;
-        }
-        .todo-item input[type="checkbox"] {
-            margin-right: 10px;
-        }
-        .todo-item.completed {
-            text-decoration: line-through;
-            color: #7f8c8d;
-        }
-        .todo-item.overdue {
-            color: #e74c3c;
-            font-weight: bold;
-        }
-        .todo-item span {
-            flex: 1;
-        }
-        .todo-item button {
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.8em;
-            margin-left: 10px;
-        }
-        .todo-item button:hover {
-            background-color: #c0392b;
-        }
-        .todo-report {
-            margin-top: 15px;
-            font-size: 0.9em;
-            color: #e74c3c;
-        }
-        @media (max-width: 600px) {
-            .container {
-                padding: 70px 15px 15px;
-                margin: 10px;
-            }
-            .avatar {
-                width: 80px;
-                height: 80px;
-            }
-            .title {
-                font-size: 1.5em;
-            }
-            .social-links a {
-                font-size: 1.2em;
-            }
-            .link-btn {
-                padding: 12px;
-                font-size: 0.9em;
-                min-height: 50px;
-            }
-            .sidebar {
-                width: 200px;
-                left: -200px;
-            }
-            .sidebar.active {
-                left: 0;
-            }
-            .body-shift {
-                margin-left: 200px;
-            }
-            .sidebar a i {
-                font-size: 1em;
-                width: 25px;
-                height: 25px;
-            }
-            .todo-input {
-                flex-direction: column;
-            }
-            .todo-input input[type="text"],
-            .todo-input input[type="date"],
-            .todo-input button {
-                width: 100%;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Link Bio - MTD VPS</title>
+  <link rel="icon" href="https://i.imgur.com/GCITCIv.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <style>
+    :root{
+      --bg1:#ee7752; --bg2:#e73c7e; --bg3:#23a6d5; --bg4:#23d5ab;
+      --card: rgba(255,255,255,.6);
+      --border: rgba(255,255,255,.35);
+      --text:#1f2937; --muted:#667085; --brand:#2c3e50; --brand-2:#34495e;
+      --btn:#2c3e50; --btn-hover:#34495e; --good:#16a34a; --bad:#dc2626;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color:var(--text);
+      background: linear-gradient(-45deg,var(--bg1),var(--bg2),var(--bg3),var(--bg4));
+      background-size:400% 400%;
+      animation: bgMove 18s ease infinite;
+      display:flex;flex-direction:column;align-items:center;
+      overflow-x:hidden;
+    }
+    @keyframes bgMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+    /* Header bar */
+    .header-bar{
+      position:fixed;top:0;left:0;width:100%;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:10px 18px;z-index:1000;
+      backdrop-filter: blur(8px);
+      background:linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.35));
+      border-bottom:1px solid var(--border);
+    }
+    .menu-icon{font-size:1.4rem;cursor:pointer;color:var(--brand)}
+    .right-tools{display:flex;gap:8px;align-items:center}
+    .pill-btn{
+      background:var(--btn);color:#fff;border:none;border-radius:999px;
+      padding:8px 14px;font-size:.9rem;cursor:pointer;transition:.25s;
+    }
+    .pill-btn:hover{background:var(--btn-hover)}
+    .toggle{
+      display:flex;align-items:center;gap:8px;background:var(--card);
+      border:1px solid var(--border);border-radius:999px;padding:6px 10px;cursor:pointer;
+    }
+
+    /* Sidebar */
+    .sidebar{
+      position:fixed;inset:0 auto 0 0;width:260px;background:#1f2937;color:#e5e7eb;
+      transform:translateX(-100%);transition:.3s;z-index:1100;padding-top:64px;
+      box-shadow: 6px 0 20px rgba(0,0,0,.2);
+    }
+    .sidebar.active{transform:none}
+    .sidebar a{
+      display:flex;align-items:center;gap:10px;padding:14px 16px;text-decoration:none;
+      color:#e5e7eb;border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .sidebar a:hover{background:rgba(255,255,255,.06)}
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;z-index:1050}
+    .overlay.active{display:block}
+
+    /* Container */
+    .container{
+      width:100%;max-width:640px;padding:96px 20px 28px;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      box-shadow:0 8px 24px rgba(0,0,0,.08);
+      backdrop-filter: blur(10px);
+    }
+    .header{padding:20px 16px 10px;text-align:center}
+    .avatar{
+      width:108px;height:108px;border-radius:50%;margin:0 auto 12px;
+      background:url('https://i.imgur.com/GCITCIv.png') center/cover no-repeat;
+      border:3px solid #fff;box-shadow:0 6px 16px rgba(0,0,0,.15)
+    }
+    .title{font-size:1.8rem;font-weight:800;color:var(--brand)}
+    .subtitle{color:var(--muted);font-size:.95rem;margin-top:2px}
+    .social-links{margin:12px 0 2px}
+    .social-links a{
+      color:var(--brand);text-decoration:none;margin:0 8px;font-size:1.3rem;transition:.2s
+    }
+    .social-links a:hover{color:#3498db;transform:translateY(-2px)}
+
+    /* Search */
+    .search-row{display:flex;gap:10px;margin:12px 0 16px;padding:0 16px}
+    .input{flex:1;padding:11px 12px;border-radius:12px;border:1px solid var(--border);background:#fff}
+    .mini{padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:#fff;cursor:pointer}
+
+    /* Link button */
+    .link{
+      display:flex;align-items:center;gap:12px;position:relative;
+      margin:12px 16px;padding:14px;border-radius:14px;text-decoration:none;color:#fff;
+      background:linear-gradient(135deg,#2c3e50,#3b82f6);
+      box-shadow:0 10px 18px rgba(17,24,39,.18);
+      overflow:hidden;isolation:isolate;transition:.25s;
+    }
+    .link:hover{transform:translateY(-2px);box-shadow:0 14px 22px rgba(17,24,39,.22)}
+    .link .icon{
+      width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.18);
+      display:grid;place-items:center;font-size:1.1rem;backdrop-filter: blur(4px);
+    }
+    .link .txt{flex:1;display:flex;flex-direction:column;line-height:1.2}
+    .link .txt .h{font-weight:700}
+    .link .txt .s{font-size:.85rem;opacity:.85}
+    .link .tools{display:flex;gap:8px}
+    .chip{
+      background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
+      color:#fff;padding:6px 10px;border-radius:999px;font-size:.8rem
+    }
+    .tool-btn{
+      background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);
+      width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:#fff;cursor:pointer;transition:.2s
+    }
+    .tool-btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.28)}
+    .link::after{
+      content:"";position:absolute;inset:-120% -60% auto auto;transform:rotate(25deg);
+      height:260%;width:40%;background:linear-gradient(transparent,rgba(255,255,255,.16),transparent);
+      transition:.35s;z-index:-1;
+    }
+    .link:hover::after{inset:-110% -40% auto auto}
+
+    /* Widgets row */
+    .widgets{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 16px}
+    .widget{padding:14px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.7)}
+    .widget h4{font-size:.95rem;margin-bottom:6px;color:var(--brand)}
+    .clock{font-weight:800;font-size:1.4rem}
+    .weather small{color:var(--muted)}
+
+    /* Todo */
+    .todo{margin:14px 16px;padding:14px}
+    .todo h3{color:var(--brand);margin-bottom:10px}
+    .todo-input{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+    .todo-input input{padding:10px;border:1px solid var(--border);border-radius:10px;background:#fff}
+    .todo-input button{background:var(--btn);color:#fff;border:none;border-radius:10px;padding:10px 14px;cursor:pointer}
+    .list{max-height:220px;overflow:auto;border-top:1px dashed var(--border)}
+    .item{display:flex;align-items:center;gap:8px;padding:10px 0;border-bottom:1px dashed var(--border)}
+    .item.completed span{text-decoration:line-through;color:var(--muted)}
+    .item.overdue span{color:var(--bad);font-weight:600}
+    .item .x{background:var(--bad);color:#fff;border:none;border-radius:8px;padding:6px 10px;cursor:pointer}
+
+    /* Analytics */
+    .stats{margin:14px 16px;padding:14px}
+    .stats table{width:100%;border-collapse:collapse;font-size:.92rem}
+    .stats th,.stats td{padding:8px;border-bottom:1px solid var(--border);text-align:left}
+    .stats th{color:var(--brand)}
+
+    /* Quote */
+    .quote{margin:12px 16px;padding:12px;border-left:4px solid #3b82f6;background:rgba(255,255,255,.7);border-radius:10px}
+    .footer{margin:16px auto 8px;text-align:center;color:#f8fafc}
+
+    /* QR Modal */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:1200}
+    .modal.active{display:flex}
+    .modal .box{background:#fff;border-radius:16px;padding:18px 16px;max-width:92%;width:360px;text-align:center}
+    .modal .box h3{margin-bottom:8px;color:var(--brand)}
+    .qr-wrap{display:grid;place-items:center;margin:8px 0}
+    .close-btn{margin-top:10px}
+
+    /* Dark Mode */
+    .dark body{} /* placeholder */
+    .dark .header-bar{background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.35));border-bottom-color:#000}
+    .dark .title{color:#e5e7eb}
+    .dark .subtitle{color:#a3a3a3}
+    .dark .card,.dark .widget,.dark .quote{background:rgba(0,0,0,.45);border-color:rgba(255,255,255,.12);color:#f3f4f6}
+    .dark .input,.dark .mini,.dark .todo-input input{background:#0f172a;color:#e5e7eb;border-color:rgba(255,255,255,.12)}
+    .dark .pill-btn{background:#334155}
+    .dark .pill-btn:hover{background:#475569}
+    .dark .link{box-shadow:0 10px 18px rgba(0,0,0,.45)}
+    .dark .footer{color:#e5e7eb}
+
+    /* Responsive */
+    @media (max-width:600px){
+      .widgets{grid-template-columns:1fr}
+      .sidebar{width:220px}
+    }
+
+    /* Back to top */
+    .to-top{
+      position:fixed;right:16px;bottom:16px;z-index:999;background:#111827;color:#fff;
+      width:44px;height:44px;border-radius:12px;display:grid;place-items:center;cursor:pointer;box-shadow:0 12px 22px rgba(0,0,0,.25);
+      opacity:0;transform:translateY(16px);transition:.25s;
+    }
+    .to-top.show{opacity:1;transform:none}
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <div class="header-bar">
-        <i class="fas fa-bars menu-icon" onclick="toggleSidebar()"></i>
-        <a href="https://mtdvps.com/subscribe" class="subscribe-btn">Đăng Ký</a>
+  <!-- Header -->
+  <div class="header-bar card">
+    <i class="fas fa-bars menu-icon" onclick="toggleSidebar()"></i>
+    <div class="right-tools">
+      <button class="toggle" id="modeBtn" onclick="toggleMode()">
+        <i class="far fa-moon"></i><span id="modeText">Dark</span>
+      </button>
+      <a class="pill-btn" href="https://mtdvps.com/subscribe">Đăng Ký</a>
     </div>
+  </div>
 
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <a href="https://mtdvps.com"><i class="fas fa-home"></i> Trang Chủ</a>
-        <a href="https://hci.mtdvps.com/"><i class="fas fa-server"></i> Dịch Vụ VPS</a>
-        <a href="https://mtdproxy.com"><i class="fas fa-shield-alt"></i> Proxy</a>
-        <a href="https://www.facebook.com/ducvps123/?locale=vi_VN"><i class="fas fa-headset"></i> Hỗ Trợ</a>
-        <a href="https://beacons.ai/ducvps"><i class="fas fa-shopping-cart"></i> Cửa Hàng</a>
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <a href="https://mtdvps.com"><i class="fas fa-home"></i>Trang Chủ</a>
+    <a href="https://hci.mtdvps.com/"><i class="fas fa-server"></i>Dịch Vụ VPS</a>
+    <a href="https://mtdproxy.com"><i class="fas fa-shield-alt"></i>Proxy</a>
+    <a href="https://www.facebook.com/ducvps123/?locale=vi_VN"><i class="fas fa-headset"></i>Hỗ Trợ</a>
+    <a href="https://beacons.ai/ducvps"><i class="fas fa-shopping-cart"></i>Cửa Hàng</a>
+  </aside>
+  <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+  <!-- Main -->
+  <main class="container">
+    <section class="card header">
+      <div class="avatar"></div>
+      <div class="title">MTD VPS</div>
+      <div class="subtitle">Cloud VPS • Proxy • Hosting • Tools</div>
+      <div class="social-links">
+        <a href="mailto:support@mtdvps.com" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.tiktok.com/@ducvps001" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.youtube.com/@ducvps1com" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.facebook.com/ducvps123/?locale=vi_VN" title="Facebook"><i class="fab fa-facebook"></i></a>
+      </div>
+
+      <!-- search -->
+      <div class="search-row">
+        <input id="searchInput" class="input" type="text" placeholder="Tìm liên kết… (ví dụ: vps, proxy, shop)" oninput="filterLinks()"/>
+        <button class="mini" onclick="resetFilter()"><i class="fas fa-times"></i></button>
+      </div>
+    </section>
+
+    <!-- Widgets -->
+    <section class="widgets">
+      <div class="widget">
+        <h4>⏰ Đồng hồ</h4>
+        <div class="clock" id="clock">--:--:--</div>
+      </div>
+      <div class="widget weather">
+        <h4>🌤️ Thời tiết</h4>
+        <div id="weatherMain">Đang tải…</div>
+        <small id="weatherSub"></small>
+      </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="quote card" id="quoteBox">“Loading quote…”</section>
+
+    <!-- LINKS -->
+    <section class="card" id="linksWrap" style="padding:8px 0 10px;">
+      <!-- Each link uses data-id (for analytics) & data-url (for QR/Copy) -->
+      <a class="link" href="https://mtdvps.com" data-id="mtdvps" data-url="https://mtdvps.com" onclick="track(event)">
+        <div class="icon"><i class="fas fa-cloud"></i></div>
+        <div class="txt"><div class="h">MTDVPS.COM</div><div class="s">Cung Cấp Cloud VPS, Proxy, Mã Nguồn, Hosting</div></div>
+        <div class="tools">
+          <div class="tool-btn" title="QR" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div>
+          <div class="tool-btn" title="Copy link" onclick="copyURL(event)"><i class="fas fa-link"></i></div>
+        </div>
+      </a>
+
+      <a class="link" href="https://wescan.vn/mtdlive" data-id="wescan" data-url="https://wescan.vn/mtdlive" onclick="track(event)">
+        <div class="icon"><i class="fas fa-donate"></i></div>
+        <div class="txt"><div class="h">wescan.vn/mtdlive</div><div class="s">Donate qua wescan</div></div>
+        <div class="tools">
+          <div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div>
+          <div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div>
+        </div>
+      </a>
+
+      <a class="link" href="https://mtdproxy.com" data-id="mtdproxy" data-url="https://mtdproxy.com" onclick="track(event)">
+        <div class="icon"><i class="fas fa-shield-alt"></i></div>
+        <div class="txt"><div class="h">mtdproxy.com</div><div class="s">Proxy IPv4/IPv6 tĩnh & xoay, hỗ trợ airdrop</div></div>
+        <span class="chip">-50% HOT</span>
+        <div class="tools">
+          <div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div>
+          <div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div>
+        </div>
+      </a>
+
+      <a class="link" href="https://mtdshop247.com/" data-id="mtdshop" data-url="https://mtdshop247.com/" onclick="track(event)">
+        <div class="icon"><i class="fas fa-store"></i></div>
+        <div class="txt"><div class="h">mtdshop247.com</div><div class="s">Dịch vụ MXH, tài khoản premium</div></div>
+        <div class="tools">
+          <div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div>
+          <div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div>
+        </div>
+      </a>
+
+      <a class="link" href="https://shopvpn4g.vn/" data-id="shopvpn4g" data-url="https://shopvpn4g.vn/" onclick="track(event)">
+        <div class="icon"><i class="fas fa-signal"></i></div>
+        <div class="txt"><div class="h">shopvpn4g.vn</div><div class="s">Dịch vụ dữ liệu sim Viettel/Vina</div></div>
+        <div class="tools">
+          <div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div>
+          <div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div>
+        </div>
+      </a>
+
+      <a class="link" href="https://hci.mtdvps.com/" data-id="hci" data-url="https://hci.mtdvps.com/" onclick="track(event)">
+        <div class="icon"><i class="fas fa-server"></i></div>
+        <div class="txt"><div class="h">hci.mtdvps.com</div><div class="s">CLOUD VPS doanh nghiệp giá ưu đãi</div></div>
+        <div class="tools">
+          <div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div>
+          <div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div>
+        </div>
+      </a>
+
+      <a class="link" href="https://t.me/+o6KRHMd59As0OTE1" data-id="telegram" data-url="https://t.me/+o6KRHMd59As0OTE1" onclick="track(event)">
+        <div class="icon"><i class="fab fa-telegram-plane"></i></div>
+        <div class="txt"><div class="h">Nhóm Telegram</div><div class="s">Tham gia để được hỗ trợ</div></div>
+        <div class="tools">
+          <div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div>
+          <div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div>
+        </div>
+      </a>
+
+      <a class="link" href="https://zalo.me/g/afdrwb295" data-id="zalo" data-url="https://zalo.me/g/afdrwb295" onclick="track(event)">
+        <div class="icon"><i class="fas fa-comments"></i></div>
+        <div class="txt"><div class="h">Nhóm Zalo Support</div><div class="s">Ưu đãi & hỗ trợ</div></div>
+        <div class="tools">
+          <div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div>
+          <div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div>
+        </div>
+      </a>
+
+      <a class="link" href="https://www.facebook.com/Duc.CT845/" data-id="fb-support" data-url="https://www.facebook.com/Duc.CT845/" onclick="track(event)">
+        <div class="icon"><i class="fas fa-life-ring"></i></div>
+        <div class="txt"><div class="h">Kênh Support Chính - 24/7</div><div class="s">Hỗ trợ tận tình</div></div>
+        <div class="tools">
+          <div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div>
+          <div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div>
+        </div>
+      </a>
+
+      <a class="link" href="https://discord.com/invite/Mumgffrp5b" data-id="discord" data-url="https://discord.com/invite/Mumgffrp5b" onclick="track(event)">
+        <div class="icon"><i class="fab fa-discord"></i></div>
+        <div class="txt"><div class="h">Server Discord</div><div class="s">Giao lưu - Hỗ trợ</div></div>
+        <div class="tools">
+          <div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div>
+          <div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div>
+        </div>
+      </a>
+    </section>
+
+    <!-- Analytics -->
+    <section class="stats card">
+      <h4 style="margin-bottom:8px;color:var(--brand)">📊 Lượt click (local)</h4>
+      <table id="statTable"><thead>
+        <tr><th>Link</th><th>Lượt click</th></tr>
+      </thead><tbody></tbody></table>
+      <div style="margin-top:6px;font-size:.85rem;color:var(--muted)">* Dữ liệu lưu cục bộ trên thiết bị của bạn.</div>
+    </section>
+
+    <!-- Todo -->
+    <section class="todo card">
+      <h3>Danh Sách Nhiệm Vụ</h3>
+      <div class="todo-input">
+        <input id="taskInput" type="text" placeholder="Nhập nhiệm vụ…" />
+        <input id="dueDateInput" type="date" />
+        <button onclick="addTask()">Thêm</button>
+      </div>
+      <div class="list" id="todoList"></div>
+      <div id="todoReport" style="margin-top:8px;color:var(--bad);font-weight:600"></div>
+    </section>
+
+    <div class="footer">MTD VPS • <a href="https://mtdvps.com" style="color:#fff;text-decoration:underline">mtdvps.com</a></div>
+  </main>
+
+  <!-- Back to top -->
+  <button class="to-top" id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+
+  <!-- QR Modal -->
+  <div class="modal" id="qrModal" onclick="closeQR(event)">
+    <div class="box card" onclick="event.stopPropagation()">
+      <h3>Quét QR để mở liên kết</h3>
+      <div class="qr-wrap" id="qrcode"></div>
+      <div id="qrUrl" style="font-size:.85rem;word-break:break-all;color:#334155"></div>
+      <button class="pill-btn close-btn" onclick="document.getElementById('qrModal').classList.remove('active')">Đóng</button>
     </div>
+  </div>
 
-    <!-- Overlay for closing sidebar -->
-    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+  <!-- Minimal QR library (QRCode.js) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="header">
-            <div class="avatar"></div>
-            <div class="title">MTD VPS</div>
-            <div class="social-links">
-                <a href="mailto:support@mtdvps.com"><i class="fas fa-envelope"></i></a>
-                <a href="https://www.tiktok.com/@ducvps001"><i class="fab fa-tiktok"></i></a>
-                <a href="https://www.youtube.com/@ducvps1com"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.facebook.com/ducvps123/?locale=vi_VN"><i class="fab fa-facebook"></i></a>
-            </div>
-        </div>
-        <a href="https://mtdvps.com" class="link-btn">
-            <div class="text">
-                MTDVPS.COM
-                <span>Cung Cấp Cloud VPS, Proxy, Mã Nguồn, Hosting</span>
-            </div>
-        </a>
-        <a href="https://mtdproxy.com" class="link-btn">
-            <div class="text">
-                mtdproxy.com
-                <span>Website cung cấp Proxy IPv4, IPv6 tĩnh, Proxy IPv4 xoay, hỗ trợ ngon các kèo airdrop</span>
-            </div>
-        </a>
-        <a href="https://mtdshop247.com/" class="link-btn">
-            <div class="text">
-                mtdshop247.com
-                <span>Website cung cấp dịch vụ mxh, tài khoản pro các loại</span>
-            </div>
-        </a>
+  <script>
+    /* ===== Sidebar ===== */
+    function toggleSidebar(){
+      document.getElementById('sidebar').classList.toggle('active');
+      document.getElementById('overlay').classList.toggle('active');
+    }
 
-        <a href="https://shopvpn4g.vn/" class="link-btn">
-            <div class="text">
-             shopvpn4g.vn
-                <span>Website cung cấp dịch vụ mạng dữ liệu sim viettel, vina </span>
-            </div>
-        </a>
-        <a href="https://hci.mtdvps.com/" class="link-btn">
-            <div class="text">
-                hci.mtdvps.com
-                <span>Website cung cấp CLOUD VPS Doanh Nghiệp Giá Ưu Đãi</span>
-            </div>
-        </a>
-        <a href="https://t.me/+o6KRHMd59As0OTE1" class="link-btn">
-            <div class="text">
-                Nhóm Telegram
-                <span>Tham gia để được hỗ trợ</span>
-            </div>
-        </a>
-        <a href="https://zalo.me/g/afdrwb295" class="link-btn">
-            <div class="text">
-                Nhóm Zalo Support
-                <span>Vào để nhận thêm ưu đãi, hỗ trợ</span>
-            </div>
-        </a>
-        <a href="https://www.facebook.com/Duc.CT845/" class="link-btn">
-            <div class="text">
-                KÊNH SUPPORT CHÍNH - 24/7
-                <span>Hỗ trợ tận tình</span>
-            </div>
-        </a>
-        <a href="https://discord.com/invite/Mumgffrp5b" class="link-btn">
-            <div class="text">
-                Server Discord
-                <span>Giao lưu - Hỗ trợ</span>
-            </div>
-        </a>
-        <!-- To-Do List Section -->
-        <div class="todo-section">
-            <h3>Danh Sách Nhiệm Vụ</h3>
-            <div class="todo-input">
-                <input type="text" id="taskInput" placeholder="Nhập nhiệm vụ...">
-                <input type="date" id="dueDateInput">
-                <button onclick="addTask()">Thêm</button>
-            </div>
-            <ul class="todo-list" id="todoList"></ul>
-            <div class="todo-report" id="todoReport"></div>
-        </div>
-        <div class="footer">
-            <p>MTD VPS | <a href="https://mtdvps.com">mtdvps.com</a> | <a href="mailto:vipdaichienthucung@gmail.com">vipdaichienthucung@gmail.com</a></p>
-        </div>
-    </div>
+    /* ===== Dark / Light Mode ===== */
+    const root = document.documentElement;
+    const modeBtn = document.getElementById('modeBtn');
+    const modeText = document.getElementById('modeText');
+    (function initMode(){
+      const saved = localStorage.getItem('mtd_mode') || 'light';
+      if(saved==='dark'){ document.body.classList.add('dark'); modeText.textContent='Light'; }
+    })();
+    function toggleMode(){
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      localStorage.setItem('mtd_mode', isDark?'dark':'light');
+      modeText.textContent = isDark?'Light':'Dark';
+    }
 
-    <!-- Scripts -->
-    <script>
-        // Chatwoot SDK
-        (function(d,t) {
-            var BASE_URL="https://chat-woot-web.kento28.shop/";
-            var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=BASE_URL+"packs/js/sdk.js";
-            g.defer = true;
-            g.async = true;
-            s.parentNode.insertBefore(g,s);
-            g.onload=function(){
-                window.chatwootSDK.run({
-                    websiteToken: '3fSZB9ohscy7Sy4WxTWojxoL',
-                    baseUrl: BASE_URL
-                })
-            }
-        })(document,"script");
+    /* ===== Back to top ===== */
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY>300) toTop.classList.add('show'); else toTop.classList.remove('show');
+    });
 
-        // Sidebar Toggle
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            const body = document.body;
-            sidebar.classList.toggle('active');
-            overlay.classList.toggle('active');
-            body.classList.toggle('body-shift');
-        }
+    /* ===== Clock ===== */
+    function updateClock(){
+      const now = new Date();
+      const pad = n=>String(n).padStart(2,'0');
+      document.getElementById('clock').textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+    }
+    setInterval(updateClock, 1000); updateClock();
 
-        // To-Do List JavaScript
-        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    /* ===== Weather (Open-Meteo, no key) ===== */
+    async function loadWeather(){
+      let lat=21.0278, lon=105.8342, label="Hà Nội (mặc định)";
+      if(navigator.geolocation){
+        try{
+          const pos = await new Promise((res,rej)=>navigator.geolocation.getCurrentPosition(res,rej,{timeout:3000}));
+          lat = pos.coords.latitude; lon = pos.coords.longitude; label = "Vị trí của bạn";
+        }catch(e){}
+      }
+      try{
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=auto`;
+        const r = await fetch(url); const d = await r.json();
+        const cw = d.current_weather;
+        const codeMap = {0:'Trời quang',1:'Ít mây',2:'Mây vừa',3:'Nhiều mây',45:'Sương mù',48:'Sương đóng băng',51:'Mưa phùn nhẹ',61:'Mưa nhẹ',63:'Mưa vừa',65:'Mưa to',71:'Tuyết rơi',80:'Mưa rào'};
+        document.getElementById('weatherMain').textContent = `${Math.round(cw.temperature)}°C • ${codeMap[cw.weathercode]||'Thời tiết'}`;
+        document.getElementById('weatherSub').textContent = `${label} • Gió ${Math.round(cw.windspeed)} km/h`;
+      }catch(e){
+        document.getElementById('weatherMain').textContent = 'Không tải được thời tiết';
+        document.getElementById('weatherSub').textContent = '';
+      }
+    }
+    loadWeather();
 
-        function saveTasks() {
-            localStorage.setItem('tasks', JSON.stringify(tasks));
-        }
+    /* ===== Quote of the day ===== */
+    const quotes = [
+      "Thành công = 1% tài năng + 99% nỗ lực 💪",
+      "Muốn đi nhanh hãy đi một mình. Muốn đi xa hãy đi cùng nhau 🚀",
+      "Cơ hội không tự đến — hãy tạo ra nó 🔥",
+      "Không có thất bại, chỉ có bài học 📘",
+      "Kỷ luật là cầu nối giữa mục tiêu và thành tựu."
+    ];
+    document.getElementById('quoteBox').textContent = quotes[Math.floor(Math.random()*quotes.length)];
 
-        function renderTasks() {
-            const todoList = document.getElementById('todoList');
-            const todoReport = document.getElementById('todoReport');
-            todoList.innerHTML = '';
-            let overdueCount = 0;
-            const currentDate = new Date();
+    /* ===== Search filter ===== */
+    function filterLinks(){
+      const q = document.getElementById('searchInput').value.trim().toLowerCase();
+      const links = document.querySelectorAll('#linksWrap .link');
+      links.forEach(a=>{
+        const text = a.innerText.toLowerCase();
+        a.style.display = text.includes(q) ? '' : 'none';
+      });
+    }
+    function resetFilter(){ document.getElementById('searchInput').value=''; filterLinks(); }
 
-            tasks.forEach((task, index) => {
-                const li = document.createElement('li');
-                li.classList.add('todo-item');
-                if (task.completed) {
-                    li.classList.add('completed');
-                } else if (new Date(task.deadline) < currentDate && !task.completed) {
-                    li.classList.add('overdue');
-                    overdueCount++;
-                }
-                li.innerHTML = `
-                    <input type="checkbox" ${task.completed ? 'checked' : ''} onclick="toggleTask(${index})">
-                    <span>${task.text} (Hạn: ${task.deadline})</span>
-                    <button onclick="deleteTask(${index})">Xóa</button>
-                `;
-                todoList.appendChild(li);
-            });
+    /* ===== Analytics (localStorage) ===== */
+    const STAT_KEY = 'mtd_click_stats';
+    const stats = JSON.parse(localStorage.getItem(STAT_KEY) || '{}');
+    function track(e){
+      // allow link to navigate, but count
+      const a = e.currentTarget;
+      const id = a.dataset.id;
+      stats[id] = (stats[id]||0) + 1;
+      localStorage.setItem(STAT_KEY, JSON.stringify(stats));
+      renderStats();
+    }
+    function renderStats(){
+      const tbody = document.querySelector('#statTable tbody');
+      tbody.innerHTML = '';
+      const rows = [
+        ['mtdvps','MTDVPS.COM'],
+        ['wescan','wescan.vn/mtdlive'],
+        ['mtdproxy','mtdproxy.com'],
+        ['mtdshop','mtdshop247.com'],
+        ['shopvpn4g','shopvpn4g.vn'],
+        ['hci','hci.mtdvps.com'],
+        ['telegram','Telegram'],
+        ['zalo','Zalo'],
+        ['fb-support','FB Support'],
+        ['discord','Discord']
+      ];
+      rows.forEach(([id,name])=>{
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${name}</td><td>${stats[id]||0}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+    renderStats();
 
-            if (overdueCount > 0) {
-                todoReport.textContent = `Cảnh báo: Bạn có ${overdueCount} nhiệm vụ chưa hoàn thành đã quá hạn!`;
-                todoReport.style.display = 'block';
-            } else {
-                todoReport.textContent = '';
-                todoReport.style.display = 'none';
-            }
-        }
+    /* ===== QR Modal + Copy ===== */
+    let qr;
+    function openQR(ev){
+      ev.stopPropagation(); ev.preventDefault();
+      const a = ev.currentTarget.closest('.link');
+      const url = a.dataset.url;
+      document.getElementById('qrModal').classList.add('active');
+      document.getElementById('qrUrl').textContent = url;
+      const box = document.getElementById('qrcode');
+      box.innerHTML = '';
+      qr = new QRCode(box, { text:url, width:220, height:220, correctLevel: QRCode.CorrectLevel.M });
+    }
+    function closeQR(ev){
+      if(ev.target.id==='qrModal') document.getElementById('qrModal').classList.remove('active');
+    }
+    async function copyURL(ev){
+      ev.stopPropagation(); ev.preventDefault();
+      const a = ev.currentTarget.closest('.link');
+      const url = a.dataset.url;
+      try{ await navigator.clipboard.writeText(url); toast('Đã copy link!'); }
+      catch{ toast('Copy không thành công'); }
+    }
 
-        function addTask() {
-            const taskInput = document.getElementById('taskInput');
-            const dueDateInput = document.getElementById('dueDateInput');
-            const taskText = taskInput.value.trim();
-            const dueDate = dueDateInput.value;
+    /* ===== Tiny toast ===== */
+    function toast(msg){
+      const el = document.createElement('div');
+      el.textContent = msg;
+      el.style.cssText = `
+        position:fixed;left:50%;bottom:26px;transform:translateX(-50%);
+        background:#111827;color:#fff;padding:10px 14px;border-radius:10px;
+        box-shadow:0 12px 24px rgba(0,0,0,.25);z-index:1300;opacity:0;transition:.25s
+      `;
+      document.body.appendChild(el);
+      requestAnimationFrame(()=>{el.style.opacity=1;});
+      setTimeout(()=>{el.style.opacity=0; setTimeout(()=>el.remove(),250)},1700);
+    }
 
-            if (!taskText || !dueDate) {
-                alert('Vui lòng nhập đầy đủ nhiệm vụ và ngày hạn!');
-                return;
-            }
+    /* ===== Todo List ===== */
+    let tasks = JSON.parse(localStorage.getItem('mtd_tasks')||'[]');
+    function saveTasks(){ localStorage.setItem('mtd_tasks', JSON.stringify(tasks)); }
+    function renderTasks(){
+      const wrap = document.getElementById('todoList');
+      const report = document.getElementById('todoReport');
+      wrap.innerHTML=''; let overdue=0;
+      const now = new Date();
+      tasks.forEach((t,i)=>{
+        const li = document.createElement('div'); li.className='item';
+        const isOver = !t.completed && new Date(t.deadline) < now;
+        if(t.completed) li.classList.add('completed'); else if(isOver){ li.classList.add('overdue'); overdue++; }
+        li.innerHTML = `
+          <input type="checkbox" ${t.completed?'checked':''} onclick="toggleTask(${i})">
+          <span>${t.text} — <small>Hạn: ${t.deadline||'—'}</small></span>
+          <button class="x" onclick="delTask(${i})">Xóa</button>
+        `;
+        wrap.appendChild(li);
+      });
+      report.textContent = overdue?`⚠️ ${overdue} nhiệm vụ đã quá hạn!`: '';
+    }
+    function addTask(){
+      const text = document.getElementById('taskInput').value.trim();
+      const date = document.getElementById('dueDateInput').value;
+      if(!text || !date){ toast('Vui lòng nhập đủ nội dung & hạn'); return; }
+      tasks.push({text, deadline:date, completed:false}); saveTasks(); renderTasks();
+      document.getElementById('taskInput').value=''; document.getElementById('dueDateInput').value='';
+    }
+    function toggleTask(i){ tasks[i].completed = !tasks[i].completed; saveTasks(); renderTasks(); }
+    function delTask(i){ tasks.splice(i,1); saveTasks(); renderTasks(); }
+    renderTasks();
+    setInterval(renderTasks, 60000);
 
-            tasks.push({
-                text: taskText,
-                deadline: dueDate,
-                completed: false
-            });
-
-            saveTasks();
-            renderTasks();
-            taskInput.value = '';
-            dueDateInput.value = '';
-        }
-
-        function toggleTask(index) {
-            tasks[index].completed = !tasks[index].completed;
-            saveTasks();
-            renderTasks();
-        }
-
-        function deleteTask(index) {
-            tasks.splice(index, 1);
-            saveTasks();
-            renderTasks();
-        }
-
-        // Initialize the to-do list on page load
-        renderTasks();
-
-        // Periodic check for overdue tasks (every minute)
-        setInterval(renderTasks, 60000);
-    </script>
+    /* ===== Chatwoot (giữ nguyên) ===== */
+    (function(d,t) {
+      var BASE_URL="https://chat-woot-web.kento28.shop/";
+      var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=BASE_URL+"packs/js/sdk.js"; g.defer = true; g.async = true; s.parentNode.insertBefore(g,s);
+      g.onload=function(){
+        window.chatwootSDK.run({ websiteToken: '3fSZB9ohscy7Sy4WxTWojxoL', baseUrl: BASE_URL })
+      }
+    })(document,"script");
+  </script>
 </body>
 </html>

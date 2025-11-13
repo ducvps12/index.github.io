@@ -1,0 +1,41 @@
+{
+  "name": "mtd-linkbio",
+  "version": "2.0.0",
+  "description": "A powerful, feature-rich link-in-bio platform with productivity tools",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8000 -o",
+    "dev": "npx live-server --port=8000",
+    "build": "echo 'No build step required - static HTML/CSS/JS'",
+    "test": "echo 'No tests configured yet'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/mtd-linkbio.git"
+  },
+  "keywords": [
+    "link-in-bio",
+    "linktree",
+    "bio-link",
+    "social-media",
+    "productivity",
+    "todo",
+    "pomodoro",
+    "reminders",
+    "link-management",
+    "qr-code",
+    "analytics"
+  ],
+  "author": {
+    "name": "Mai Tien Duc",
+    "email": "mtienduc@gmail.com",
+    "url": "https://mtdvps.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourusername/mtd-linkbio/issues"
+  },
+  "homepage": "https://id.mtdvps.com",
+  "devDependencies": {},
+  "dependencies": {}
+}

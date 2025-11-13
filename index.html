@@ -156,6 +156,35 @@
 
     .to-top{position:fixed;right:16px;bottom:16px;z-index:999;background:#111827;color:#fff;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;cursor:pointer;box-shadow:0 12px 22px rgba(0,0,0,.25);opacity:0;transform:translateY(16px);transition:.25s}
     .to-top.show{opacity:1;transform:none}
+
+    /* Admin Panel */
+    .admin-panel{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:2000;overflow:auto;padding:20px}
+    .admin-panel.active{display:flex}
+    .admin-box{background:#fff;border-radius:16px;padding:24px;max-width:800px;width:100%;max-height:90vh;overflow:auto}
+    .dark .admin-box{background:#1f2937;color:#e5e7eb}
+    .admin-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;border-bottom:2px solid var(--border);padding-bottom:12px}
+    .admin-tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+    .admin-tab{padding:10px 16px;border-radius:10px;border:1px solid var(--border);background:var(--card);cursor:pointer;transition:.2s}
+    .admin-tab.active{background:var(--btn);color:#fff}
+    .admin-section{display:none}
+    .admin-section.active{display:block}
+    .form-group{margin-bottom:14px}
+    .form-group label{display:block;margin-bottom:6px;font-weight:600;color:var(--brand)}
+    .form-group input,.form-group select,.form-group textarea{width:100%;padding:10px;border:1px solid var(--border);border-radius:10px;background:#fff}
+    .dark .form-group input,.dark .form-group select,.dark .form-group textarea{background:#0f172a;color:#e5e7eb}
+    .link-item{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--border);border-radius:10px;margin-bottom:10px;background:var(--card);cursor:move}
+    .link-item.dragging{opacity:.5}
+    .link-item .drag-handle{cursor:grab;font-size:1.2rem;color:var(--muted)}
+    .link-item .info{flex:1}
+    .link-item .actions{display:flex;gap:6px}
+    .btn-edit,.btn-delete{padding:6px 12px;border:none;border-radius:8px;cursor:pointer;transition:.2s}
+    .btn-edit{background:#3b82f6;color:#fff}
+    .btn-edit:hover{background:#2563eb}
+    .btn-delete{background:#dc2626;color:#fff}
+    .btn-delete:hover{background:#b91c1c}
+    .color-picker{display:flex;gap:8px;flex-wrap:wrap}
+    .color-option{width:40px;height:40px;border-radius:8px;cursor:pointer;border:3px solid transparent;transition:.2s}
+    .color-option.selected{border-color:#000;transform:scale(1.1)}
   </style>
 </head>
 <body>
@@ -163,6 +192,7 @@
     <i class="fas fa-bars menu-icon" onclick="toggleSidebar()"></i>
     <div class="right-tools">
       <button class="toggle" id="modeBtn" onclick="toggleMode()"><i class="far fa-moon"></i><span id="modeText">Dark</span></button>
+      <button class="pill-btn" onclick="toggleAdmin()">⚙️ Quản lý</button>
       <button class="pill-btn" onclick="requestNotif()">Bật thông báo 🔔</button>
       <a class="pill-btn" href="https://mtdvps.com/subscribe">Đăng Ký</a>
     </div>
@@ -409,6 +439,110 @@
       <div class="qr-wrap" id="qrcode"></div>
       <div id="qrUrl" style="font-size:.85rem;word-break:break-all;color:#334155"></div>
       <button class="pill-btn close-btn" onclick="document.getElementById('qrModal').classList.remove('active')">Đóng</button>
+    </div>
+  </div>
+
+  <!-- Admin Panel -->
+  <div class="admin-panel" id="adminPanel">
+    <div class="admin-box card">
+      <div class="admin-header">
+        <h2>⚙️ Quản lý Link Bio</h2>
+        <button class="pill-btn" onclick="toggleAdmin()">✕ Đóng</button>
+      </div>
+
+      <div class="admin-tabs">
+        <div class="admin-tab active" onclick="switchTab('links')">🔗 Links</div>
+        <div class="admin-tab" onclick="switchTab('profile')">👤 Hồ sơ</div>
+        <div class="admin-tab" onclick="switchTab('theme')">🎨 Giao diện</div>
+      </div>
+
+      <!-- Links Management -->
+      <div class="admin-section active" id="section-links">
+        <h3 style="margin-bottom:12px">Quản lý Links</h3>
+        <button class="pill-btn" onclick="showAddLink()" style="margin-bottom:16px">➕ Thêm Link Mới</button>
+        
+        <div id="linksList"></div>
+
+        <!-- Add/Edit Form -->
+        <div id="linkForm" style="display:none;margin-top:20px;padding:16px;border:2px solid var(--brand);border-radius:12px">
+          <h4 id="formTitle">Thêm Link Mới</h4>
+          <input type="hidden" id="editIndex" value="">
+          <div class="form-group">
+            <label>Tiêu đề</label>
+            <input type="text" id="linkTitle" placeholder="VD: MTDVPS.COM">
+          </div>
+          <div class="form-group">
+            <label>Mô tả</label>
+            <input type="text" id="linkDesc" placeholder="VD: Cloud VPS, Proxy...">
+          </div>
+          <div class="form-group">
+            <label>URL</label>
+            <input type="url" id="linkUrl" placeholder="https://...">
+          </div>
+          <div class="form-group">
+            <label>Icon (Font Awesome class)</label>
+            <input type="text" id="linkIcon" placeholder="fas fa-cloud" value="fas fa-link">
+          </div>
+          <div class="form-group">
+            <label>Badge (tùy chọn)</label>
+            <input type="text" id="linkBadge" placeholder="VD: -50% HOT">
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="pill-btn" onclick="saveLink()">💾 Lưu</button>
+            <button class="pill-btn" onclick="cancelLinkForm()" style="background:#6b7280">Hủy</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Settings -->
+      <div class="admin-section" id="section-profile">
+        <h3 style="margin-bottom:12px">Thông tin hồ sơ</h3>
+        <div class="form-group">
+          <label>Tên hiển thị</label>
+          <input type="text" id="profileName" placeholder="MTD VPS">
+        </div>
+        <div class="form-group">
+          <label>Mô tả</label>
+          <input type="text" id="profileDesc" placeholder="Cloud VPS • Proxy • Hosting">
+        </div>
+        <div class="form-group">
+          <label>Avatar URL</label>
+          <input type="url" id="profileAvatar" placeholder="https://i.imgur.com/...">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="profileEmail" placeholder="support@mtdvps.com">
+        </div>
+        <div class="form-group">
+          <label>Facebook</label>
+          <input type="url" id="profileFacebook" placeholder="https://facebook.com/...">
+        </div>
+        <div class="form-group">
+          <label>YouTube</label>
+          <input type="url" id="profileYoutube" placeholder="https://youtube.com/@...">
+        </div>
+        <div class="form-group">
+          <label>TikTok</label>
+          <input type="url" id="profileTiktok" placeholder="https://tiktok.com/@...">
+        </div>
+        <button class="pill-btn" onclick="saveProfile()">💾 Lưu hồ sơ</button>
+      </div>
+
+      <!-- Theme Settings -->
+      <div class="admin-section" id="section-theme">
+        <h3 style="margin-bottom:12px">Tùy chỉnh giao diện</h3>
+        <div class="form-group">
+          <label>Màu nền gradient</label>
+          <div class="color-picker">
+            <div class="color-option" style="background:linear-gradient(-45deg,#ee7752,#e73c7e,#23a6d5,#23d5ab)" data-theme="default"></div>
+            <div class="color-option" style="background:linear-gradient(-45deg,#667eea,#764ba2,#f093fb,#4facfe)" data-theme="purple"></div>
+            <div class="color-option" style="background:linear-gradient(-45deg,#fa709a,#fee140,#30cfd0,#330867)" data-theme="sunset"></div>
+            <div class="color-option" style="background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#0f2027)" data-theme="dark"></div>
+            <div class="color-option" style="background:linear-gradient(-45deg,#56ab2f,#a8e063,#56ccf2,#2f80ed)" data-theme="nature"></div>
+          </div>
+        </div>
+        <button class="pill-btn" onclick="saveTheme()">💾 Lưu giao diện</button>
+      </div>
     </div>
   </div>
 
@@ -663,6 +797,132 @@
       };
       reader.readAsText(f);
     }
+
+    /* ===== Admin Panel ===== */
+    let linksData = LS('mtd_links_data') || [];
+    let profileData = LS('mtd_profile') || {name:'MTD VPS',desc:'Cloud VPS • Proxy • Hosting • Tools',avatar:'https://i.imgur.com/GCITCIv.png',email:'support@mtdvps.com',facebook:'https://www.facebook.com/ducvps123/?locale=vi_VN',youtube:'https://www.youtube.com/@ducvps1com',tiktok:'https://www.tiktok.com/@ducvps001'};
+    let themeData = LS('mtd_theme') || 'default';
+
+    function toggleAdmin(){ $('#adminPanel').classList.toggle('active'); if($('#adminPanel').classList.contains('active')){ loadAdminData(); } }
+    function switchTab(tab){ $$('.admin-tab').forEach(t=>t.classList.remove('active')); $$('.admin-section').forEach(s=>s.classList.remove('active')); event.target.classList.add('active'); $(`#section-${tab}`).classList.add('active'); }
+
+    function loadAdminData(){
+      // Load links
+      renderLinksList();
+      // Load profile
+      $('#profileName').value = profileData.name||'';
+      $('#profileDesc').value = profileData.desc||'';
+      $('#profileAvatar').value = profileData.avatar||'';
+      $('#profileEmail').value = profileData.email||'';
+      $('#profileFacebook').value = profileData.facebook||'';
+      $('#profileYoutube').value = profileData.youtube||'';
+      $('#profileTiktok').value = profileData.tiktok||'';
+      // Load theme
+      $$('.color-option').forEach(el=>{ el.classList.remove('selected'); if(el.dataset.theme===themeData) el.classList.add('selected'); });
+    }
+
+    function renderLinksList(){
+      const wrap = $('#linksList'); wrap.innerHTML='';
+      linksData.forEach((link,i)=>{
+        const div = document.createElement('div'); div.className='link-item'; div.draggable=true; div.dataset.index=i;
+        div.innerHTML = `
+          <div class="drag-handle">☰</div>
+          <div class="info"><b>${link.title}</b><br><small>${link.url}</small></div>
+          <div class="actions">
+            <button class="btn-edit" onclick="editLink(${i})">✏️</button>
+            <button class="btn-delete" onclick="deleteLink(${i})">🗑️</button>
+          </div>
+        `;
+        div.addEventListener('dragstart', handleDragStart);
+        div.addEventListener('dragover', handleDragOver);
+        div.addEventListener('drop', handleDrop);
+        div.addEventListener('dragend', handleDragEnd);
+        wrap.appendChild(div);
+      });
+    }
+
+    let draggedIndex = null;
+    function handleDragStart(e){ draggedIndex = parseInt(e.currentTarget.dataset.index); e.currentTarget.classList.add('dragging'); }
+    function handleDragOver(e){ e.preventDefault(); }
+    function handleDrop(e){
+      e.preventDefault(); const dropIndex = parseInt(e.currentTarget.dataset.index);
+      if(draggedIndex !== dropIndex){ const item = linksData.splice(draggedIndex,1)[0]; linksData.splice(dropIndex,0,item); LS('mtd_links_data',linksData); renderLinksList(); renderPublicLinks(); }
+    }
+    function handleDragEnd(e){ e.currentTarget.classList.remove('dragging'); }
+
+    function showAddLink(){ $('#linkForm').style.display='block'; $('#formTitle').textContent='Thêm Link Mới'; $('#editIndex').value=''; $('#linkTitle').value=''; $('#linkDesc').value=''; $('#linkUrl').value=''; $('#linkIcon').value='fas fa-link'; $('#linkBadge').value=''; }
+    function cancelLinkForm(){ $('#linkForm').style.display='none'; }
+    function editLink(i){ const link=linksData[i]; $('#linkForm').style.display='block'; $('#formTitle').textContent='Chỉnh sửa Link'; $('#editIndex').value=i; $('#linkTitle').value=link.title; $('#linkDesc').value=link.desc; $('#linkUrl').value=link.url; $('#linkIcon').value=link.icon; $('#linkBadge').value=link.badge||''; }
+    function deleteLink(i){ if(confirm('Xóa link này?')){ linksData.splice(i,1); LS('mtd_links_data',linksData); renderLinksList(); renderPublicLinks(); } }
+    function saveLink(){
+      const title=$('#linkTitle').value.trim(), desc=$('#linkDesc').value.trim(), url=$('#linkUrl').value.trim(), icon=$('#linkIcon').value.trim(), badge=$('#linkBadge').value.trim(), idx=$('#editIndex').value;
+      if(!title||!url){ toast('Nhập tiêu đề và URL'); return; }
+      const link = {title,desc,url,icon:icon||'fas fa-link',badge};
+      if(idx===''){ linksData.push(link); }else{ linksData[parseInt(idx)]=link; }
+      LS('mtd_links_data',linksData); renderLinksList(); renderPublicLinks(); cancelLinkForm(); toast('Đã lưu link');
+    }
+
+    function saveProfile(){
+      profileData = {name:$('#profileName').value.trim(),desc:$('#profileDesc').value.trim(),avatar:$('#profileAvatar').value.trim(),email:$('#profileEmail').value.trim(),facebook:$('#profileFacebook').value.trim(),youtube:$('#profileYoutube').value.trim(),tiktok:$('#profileTiktok').value.trim()};
+      LS('mtd_profile',profileData); renderProfile(); toast('Đã lưu hồ sơ');
+    }
+
+    function saveTheme(){
+      const selected = $('.color-option.selected'); if(selected){ themeData=selected.dataset.theme; LS('mtd_theme',themeData); applyTheme(); toast('Đã lưu giao diện'); }
+    }
+
+    $$('.color-option').forEach(el=>el.addEventListener('click',function(){ $$('.color-option').forEach(e=>e.classList.remove('selected')); this.classList.add('selected'); }));
+
+    function applyTheme(){
+      const themes = {
+        default: {bg1:'#ee7752',bg2:'#e73c7e',bg3:'#23a6d5',bg4:'#23d5ab'},
+        purple: {bg1:'#667eea',bg2:'#764ba2',bg3:'#f093fb',bg4:'#4facfe'},
+        sunset: {bg1:'#fa709a',bg2:'#fee140',bg3:'#30cfd0',bg4:'#330867'},
+        dark: {bg1:'#0f2027',bg2:'#203a43',bg3:'#2c5364',bg4:'#0f2027'},
+        nature: {bg1:'#56ab2f',bg2:'#a8e063',bg3:'#56ccf2',bg4:'#2f80ed'}
+      };
+      const t = themes[themeData]||themes.default;
+      document.documentElement.style.setProperty('--bg1',t.bg1);
+      document.documentElement.style.setProperty('--bg2',t.bg2);
+      document.documentElement.style.setProperty('--bg3',t.bg3);
+      document.documentElement.style.setProperty('--bg4',t.bg4);
+    }
+
+    function renderProfile(){
+      $('.title').textContent = profileData.name||'MTD VPS';
+      $('.subtitle').textContent = profileData.desc||'';
+      if(profileData.avatar){ $('.avatar').style.backgroundImage = `url(${profileData.avatar})`; }
+      const socials = $('.social-links'); socials.innerHTML='';
+      if(profileData.email){ const a=document.createElement('a'); a.href=`mailto:${profileData.email}`; a.title='Email'; a.innerHTML='<i class="fas fa-envelope"></i>'; socials.appendChild(a); }
+      if(profileData.tiktok){ const a=document.createElement('a'); a.href=profileData.tiktok; a.title='TikTok'; a.innerHTML='<i class="fab fa-tiktok"></i>'; socials.appendChild(a); }
+      if(profileData.youtube){ const a=document.createElement('a'); a.href=profileData.youtube; a.title='YouTube'; a.innerHTML='<i class="fab fa-youtube"></i>'; socials.appendChild(a); }
+      if(profileData.facebook){ const a=document.createElement('a'); a.href=profileData.facebook; a.title='Facebook'; a.innerHTML='<i class="fab fa-facebook"></i>'; socials.appendChild(a); }
+    }
+
+    function renderPublicLinks(){
+      const wrap = $('#linksWrap'); 
+      // Keep existing links if no custom data
+      if(linksData.length===0) return;
+      wrap.innerHTML='';
+      linksData.forEach((link,i)=>{
+        const a = document.createElement('a'); a.className='link'; a.href=link.url; a.dataset.id=`link-${i}`; a.dataset.url=link.url; a.onclick=track;
+        a.innerHTML = `
+          <div class="icon"><i class="${link.icon}"></i></div>
+          <div class="txt"><div class="h">${link.title}</div><div class="s">${link.desc}</div></div>
+          ${link.badge?`<span class="chip">${link.badge}</span>`:''}
+          <div class="tools"><div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div><div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div></div>
+        `;
+        wrap.appendChild(a);
+      });
+      renderStats();
+    }
+
+    // Init on load
+    (function(){
+      applyTheme();
+      renderProfile();
+      if(linksData.length>0) renderPublicLinks();
+    })();
 
     /* ===== Chatwoot ===== */
     (function(d,t) {

@@ -1,0 +1,85 @@
+/* ===== Dark Mode Styles ===== */
+
+.dark .header-bar {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.35));
+  border-bottom-color: #000;
+}
+
+.dark .title {
+  color: #e5e7eb;
+}
+
+.dark .subtitle {
+  color: #a3a3a3;
+}
+
+.dark .card,
+.dark .widget,
+.dark .quote {
+  background: rgba(0, 0, 0, 0.45);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #f3f4f6;
+}
+
+.dark .input,
+.dark .mini,
+.dark .todo-input input,
+.dark .notes textarea {
+  background: #0f172a;
+  color: #e5e7eb;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.dark .pill-btn {
+  background: #334155;
+}
+
+.dark .pill-btn:hover {
+  background: #475569;
+}
+
+.dark .link {
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.45);
+}
+
+.dark .footer {
+  color: #e5e7eb;
+}
+
+.dark .stats th,
+.dark .stats td {
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+.dark .stats th {
+  color: #e5e7eb;
+}
+
+.dark .widget h4 {
+  color: #e5e7eb;
+}
+
+.dark .clock {
+  color: #e5e7eb;
+}
+
+.dark .menu-icon {
+  color: #e5e7eb;
+}
+
+.dark .toggle {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.dark .mini:hover {
+  background: #1f2937;
+}
+
+.dark .social-links a {
+  color: #60a5fa;
+}
+
+.dark .social-links a:hover {
+  color: #93c5fd;
+}

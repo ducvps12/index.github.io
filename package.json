@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/mtd-linkbio.git"
+    "url": "git+https://github.com/ducvps12/index.github.io.git"
   },
   "keywords": [
     "link-in-bio",
@@ -33,7 +33,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yourusername/mtd-linkbio/issues"
+    "url": "https://github.com/ducvps12/index.github.io/issues"
   },
   "homepage": "https://id.mtdvps.com",
   "devDependencies": {},

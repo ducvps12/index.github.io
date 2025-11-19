@@ -10,7 +10,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![Made with Love](https://img.shields.io/badge/Made%20with-❤-red.svg)](https://mtdvps.com)
 
-[Demo](https://id.mtdvps.com) • [Documentation](./HUONG-DAN.md) • [Report Bug](https://github.com/yourusername/mtd-linkbio/issues) • [Request Feature](https://github.com/yourusername/mtd-linkbio/issues)
+[Demo](https://id.mtdvps.com) • [Documentation](./HUONG-DAN.md) • [Quick Start](./QUICKSTART.md) • [Deployment Guide](./DEPLOYMENT.md) • [Report Bug](https://github.com/ducvps12/index.github.io/issues) • [Request Feature](https://github.com/ducvps12/index.github.io/issues)
 
 </div>
 
@@ -50,7 +50,8 @@
 1. Fork this repository
 2. Go to Settings → Pages
 3. Select `main` branch as source
-4. Your link bio will be live at `https://yourusername.github.io/mtd-linkbio`
+4. Your link bio will be live at `https://yourusername.github.io/index.github.io`
+5. Or use custom domain by adding `CNAME` file
 
 ### Option 3: Custom Domain
 1. Follow Option 2

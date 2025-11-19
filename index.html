@@ -3,9 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Link Bio - MTD VPS (Super)</title>
+  <meta name="description" content="MTD VPS - Link Bio Platform với đầy đủ công cụ productivity. Cloud VPS, Proxy, Hosting và nhiều dịch vụ khác. Quản lý links, to-do, reminders, Pomodoro timer và hơn thế nữa." />
+  <meta name="keywords" content="MTD VPS, Link Bio, Linktree, Cloud VPS, Proxy, Hosting, Productivity Tools, To-Do, Pomodoro, Reminders" />
+  <meta name="author" content="MTD VPS" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Link Bio - MTD VPS (Super)" />
+  <meta property="og:description" content="MTD VPS - Link Bio Platform với đầy đủ công cụ productivity. Cloud VPS, Proxy, Hosting và nhiều dịch vụ khác." />
+  <meta property="og:image" content="https://i.imgur.com/GCITCIv.png" />
+  <meta property="og:url" content="https://id.mtdvps.com" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Link Bio - MTD VPS (Super)" />
+  <meta name="twitter:description" content="MTD VPS - Link Bio Platform với đầy đủ công cụ productivity." />
+  <meta name="twitter:image" content="https://i.imgur.com/GCITCIv.png" />
+  <link rel="canonical" href="https://id.mtdvps.com" />
+  <title>Link Bio - MTD VPS (Super) | Cloud VPS • Proxy • Hosting • Productivity Tools</title>
   <link rel="icon" href="https://i.imgur.com/GCITCIv.png" type="image/png" />
+  <link rel="apple-touch-icon" href="https://i.imgur.com/GCITCIv.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com/ajax/libs" />
+  <link rel="dns-prefetch" href="https://api.open-meteo.com" />
 
   <style>
     :root{
@@ -28,6 +45,19 @@
     }
     @keyframes bgMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 
+    .skip-link{
+      position:absolute;
+      top:-40px;
+      left:16px;
+      background:#111827;
+      color:#fff;
+      padding:8px 14px;
+      border-radius:8px;
+      z-index:1200;
+      transition:top .2s ease;
+    }
+    .skip-link:focus{top:16px}
+
     .header-bar{
       position:fixed;top:0;left:0;width:100%;
       display:flex;align-items:center;justify-content:space-between;gap:8px;
@@ -36,7 +66,19 @@
       background:linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.35));
       border-bottom:1px solid var(--border);
     }
-    .menu-icon{font-size:1.4rem;cursor:pointer;color:var(--brand)}
+    .menu-icon{
+      font-size:1.4rem;
+      cursor:pointer;
+      color:var(--brand);
+      background:none;
+      border:none;
+      padding:6px;
+      border-radius:8px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .menu-icon:focus-visible{outline:2px solid var(--brand)}
     .right-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
     .pill-btn{
       background:var(--btn);color:#fff;border:none;border-radius:999px;
@@ -886,6 +928,7 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#mainContent">Bỏ qua đến nội dung chính</a>
   <!-- Loading Screen -->
   <div class="loading-screen" id="loadingScreen">
     <div class="loader"></div>
@@ -898,17 +941,19 @@
   <!-- Particles Background -->
   <div class="particles" id="particles"></div>
 
-  <div class="header-bar card">
-    <i class="fas fa-bars menu-icon" onclick="toggleSidebar()"></i>
-    <div class="right-tools">
+  <header class="header-bar card" role="banner">
+    <button class="menu-icon" type="button" aria-label="Mở menu điều hướng" onclick="toggleSidebar()">
+      <i class="fas fa-bars" aria-hidden="true"></i>
+    </button>
+    <div class="right-tools" role="navigation" aria-label="Hành động nhanh">
       <button class="toggle" id="modeBtn" onclick="toggleMode()"><i class="far fa-moon"></i><span id="modeText">Dark</span></button>
       <button class="pill-btn" onclick="toggleAdmin()">⚙️ Quản lý</button>
       <button class="pill-btn" onclick="requestNotif()">Bật thông báo 🔔</button>
       <a class="pill-btn" href="https://mtdvps.com/subscribe">Đăng Ký</a>
     </div>
-  </div>
+  </header>
 
-  <aside class="sidebar" id="sidebar">
+  <aside class="sidebar" id="sidebar" role="navigation" aria-label="Menu chính">
     <a href="https://mtdvps.com"><i class="fas fa-home"></i>Trang Chủ</a>
     <a href="https://hci.mtdvps.com/"><i class="fas fa-server"></i>Dịch Vụ VPS</a>
     <a href="https://mtdproxy.com"><i class="fas fa-shield-alt"></i>Proxy</a>
@@ -917,11 +962,11 @@
   </aside>
   <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
 
-  <main class="container">
-    <section class="hero reveal" id="c-suite">
+  <main class="container" id="mainContent" role="main">
+    <section class="hero reveal" id="c-suite" aria-labelledby="heroTitle">
       <div class="hero-content">
         <span class="hero-eyebrow">MTD GROUP • DIGITAL POWERHOUSE</span>
-        <h1>Landing page “bố đời” dành cho doanh nhân mê tốc độ & sự chuẩn chỉ.</h1>
+        <h1 id="heroTitle">Landing page “bố đời” dành cho doanh nhân mê tốc độ & sự chuẩn chỉ.</h1>
         <p>Trình diễn toàn bộ tổ hợp VPS, Proxy, Hosting và hạ tầng bảo mật của MTD theo phong cách luxury-tech, tối ưu cho chiến dịch marketing quốc tế và các buổi pitching với khách hàng doanh nghiệp.</p>
         <div class="hero-badges">
           <span class="hero-badge">Hạ tầng 5K Render</span>
@@ -1406,7 +1451,9 @@
       </div>
     </section>
 
-    <div class="footer">MTD VPS • <a href="https://mtdvps.com" style="color:#fff;text-decoration:underline">mtdvps.com</a></div>
+  <footer class="footer" role="contentinfo">
+    MTD VPS • <a href="https://mtdvps.com" style="color:#fff;text-decoration:underline">mtdvps.com</a>
+  </footer>
   </main>
 
   <button class="to-top" id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>

@@ -5,6 +5,37 @@ All notable changes to MTD Link Bio will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2024-12-XX
+
+### 🚀 SEO & Performance Improvements
+
+### Added
+- **SEO Meta Tags** - Complete SEO optimization
+  - Meta description, keywords, author, robots
+  - Open Graph tags for Facebook/LinkedIn sharing
+  - Twitter Card tags for Twitter sharing
+  - Canonical URL
+  - Apple touch icon
+- **Performance Optimization**
+  - Preconnect to CDN resources
+  - DNS prefetch for external APIs
+  - Optimized resource loading
+- **Project Structure**
+  - Comprehensive `.gitignore` file
+  - Updated repository URLs in package.json
+  - Improved documentation
+
+### Changed
+- Enhanced page title with keywords
+- Updated README.md with correct repository links
+- Improved package.json with proper repository information
+
+### Technical Details
+- All SEO tags properly configured
+- Better social media sharing preview
+- Improved search engine visibility
+- Enhanced performance with resource hints
+
 ## [2.0.0] - 2024-11-13
 
 ### 🎉 Major Release - Complete Platform Overhaul

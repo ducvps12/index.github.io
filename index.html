@@ -2,2493 +2,453 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="MTD VPS - Link Bio Platform với đầy đủ công cụ productivity. Cloud VPS, Proxy, Hosting và nhiều dịch vụ khác. Quản lý links, to-do, reminders, Pomodoro timer và hơn thế nữa." />
-  <meta name="keywords" content="MTD VPS, Link Bio, Linktree, Cloud VPS, Proxy, Hosting, Productivity Tools, To-Do, Pomodoro, Reminders" />
-  <meta name="author" content="MTD VPS" />
-  <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Link Bio - MTD VPS (Super)" />
-  <meta property="og:description" content="MTD VPS - Link Bio Platform với đầy đủ công cụ productivity. Cloud VPS, Proxy, Hosting và nhiều dịch vụ khác." />
-  <meta property="og:image" content="https://i.imgur.com/GCITCIv.png" />
-  <meta property="og:url" content="https://id.mtdvps.com" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Link Bio - MTD VPS (Super)" />
-  <meta name="twitter:description" content="MTD VPS - Link Bio Platform với đầy đủ công cụ productivity." />
-  <meta name="twitter:image" content="https://i.imgur.com/GCITCIv.png" />
-  <link rel="canonical" href="https://id.mtdvps.com" />
-  <title>Link Bio - MTD VPS (Super) | Cloud VPS • Proxy • Hosting • Productivity Tools</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>MTD VPS | Hệ Sinh Thái Dịch Vụ Số & Hạ Tầng Cloud</title>
+  <meta name="description" content="Cổng thông tin chính thức MTD VPS: Cloud Server, Proxy, VPN 4G, Tài khoản Game & Mạng xã hội." />
+  
   <link rel="icon" href="https://i.imgur.com/GCITCIv.png" type="image/png" />
-  <link rel="apple-touch-icon" href="https://i.imgur.com/GCITCIv.png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com/ajax/libs" />
-  <link rel="dns-prefetch" href="https://api.open-meteo.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg1:#ee7752; --bg2:#e73c7e; --bg3:#23a6d5; --bg4:#23d5ab;
-      --card: rgba(255,255,255,.6);
-      --border: rgba(255,255,255,.35);
-      --text:#1f2937; --muted:#667085; --brand:#2c3e50; --brand-2:#34495e;
-      --btn:#2c3e50; --btn-hover:#34495e; --good:#16a34a; --bad:#dc2626; --warn:#d97706;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
-      font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
-      color:var(--text);
-      background: linear-gradient(-45deg,var(--bg1),var(--bg2),var(--bg3),var(--bg4));
-      background-size:400% 400%;
-      animation: bgMove 18s ease infinite;
-      display:flex;flex-direction:column;align-items:center;
-      overflow-x:hidden;
-    }
-    @keyframes bgMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-
-    .skip-link{
-      position:absolute;
-      top:-40px;
-      left:16px;
-      background:#111827;
-      color:#fff;
-      padding:8px 14px;
-      border-radius:8px;
-      z-index:1200;
-      transition:top .2s ease;
-    }
-    .skip-link:focus{top:16px}
-
-    .header-bar{
-      position:fixed;top:0;left:0;width:100%;
-      display:flex;align-items:center;justify-content:space-between;gap:8px;
-      padding:10px 18px;z-index:1000;
-      backdrop-filter: blur(8px);
-      background:linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.35));
-      border-bottom:1px solid var(--border);
-    }
-    .menu-icon{
-      font-size:1.4rem;
-      cursor:pointer;
-      color:var(--brand);
-      background:none;
-      border:none;
-      padding:6px;
-      border-radius:8px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-    .menu-icon:focus-visible{outline:2px solid var(--brand)}
-    .right-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
-    .pill-btn{
-      background:var(--btn);color:#fff;border:none;border-radius:999px;
-      padding:8px 14px;font-size:.9rem;cursor:pointer;transition:.25s;white-space:nowrap
-    }
-    .pill-btn:hover{background:var(--btn-hover)}
-    .toggle{
-      display:flex;align-items:center;gap:8px;background:var(--card);
-      border:1px solid var(--border);border-radius:999px;padding:6px 10px;cursor:pointer;
+    :root {
+      --primary: #3b82f6;
+      --secondary: #8b5cf6;
+      --accent: #ec4899;
+      --dark: #0f172a;
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --glass: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.1);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
     }
 
-    .sidebar{
-      position:fixed;inset:0 auto 0 0;width:260px;background:#1f2937;color:#e5e7eb;
-      transform:translateX(-100%);transition:.3s;z-index:1100;padding-top:64px;
-      box-shadow:6px 0 20px rgba(0,0,0,.2)
-    }
-    .sidebar.active{transform:none}
-    .sidebar a{
-      display:flex;align-items:center;gap:10px;padding:14px 16px;text-decoration:none;
-      color:#e5e7eb;border-bottom:1px solid rgba(255,255,255,.06)
-    }
-    .sidebar a:hover{background:rgba(255,255,255,.06)}
-    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;z-index:1050}
-    .overlay.active{display:block}
-
-    .container{width:100%;max-width:960px;padding:96px 18px 28px;margin:auto}
-    .card{
-      background:var(--card);border:1px solid var(--border);border-radius:18px;
-      box-shadow:0 8px 24px rgba(0,0,0,.08);backdrop-filter: blur(10px)
-    }
-    .header{padding:20px 16px 10px;text-align:center}
-    .avatar{
-      width:108px;height:108px;border-radius:50%;margin:0 auto 12px;
-      background:url('https://i.imgur.com/GCITCIv.png') center/cover no-repeat;
-      border:3px solid #fff;box-shadow:0 6px 16px rgba(0,0,0,.15)
-    }
-    .title{font-size:1.9rem;font-weight:800;color:var(--brand)}
-    .subtitle{color:var(--muted);font-size:.95rem;margin-top:2px}
-    .social-links{margin:12px 0 2px}
-    .social-links a{color:var(--brand);text-decoration:none;margin:0 8px;font-size:1.3rem;transition:.2s}
-    .social-links a:hover{color:#3498db;transform:translateY(-2px)}
-
-    .grid{display:grid;gap:14px}
-    .grid-2{grid-template-columns:1fr 1fr}
-    .grid-3{grid-template-columns:repeat(3,1fr)}
-    @media (max-width:900px){.grid-3{grid-template-columns:1fr 1fr}}
-    @media (max-width:640px){.grid-2,.grid-3{grid-template-columns:1fr}}
-
-    .search-row{display:flex;gap:10px;margin:12px 0 16px;padding:0 16px}
-    .input{flex:1;padding:11px 12px;border-radius:12px;border:1px solid var(--border);background:#fff}
-    .mini{padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:#fff;cursor:pointer}
-
-    .link{
-      display:flex;align-items:center;gap:12px;position:relative;
-      margin:12px 16px;padding:14px;border-radius:14px;text-decoration:none;color:#fff;
-      background:linear-gradient(135deg,#2c3e50,#3b82f6);
-      box-shadow:0 10px 18px rgba(17,24,39,.18);
-      overflow:hidden;isolation:isolate;transition:.25s
-    }
-    .link:hover{transform:translateY(-2px);box-shadow:0 14px 22px rgba(17,24,39,.22)}
-    .icon{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.18);display:grid;place-items:center;font-size:1.1rem;backdrop-filter: blur(4px)}
-    .link .txt{flex:1;display:flex;flex-direction:column;line-height:1.2}
-    .link .h{font-weight:700}.link .s{font-size:.85rem;opacity:.85}
-    .tools{display:flex;gap:8px}
-    .chip{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;padding:6px 10px;border-radius:999px;font-size:.8rem}
-    .tool-btn{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:#fff;cursor:pointer;transition:.2s}
-    .tool-btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.28)}
-    .link::after{content:"";position:absolute;inset:-120% -60% auto auto;transform:rotate(25deg);height:260%;width:40%;background:linear-gradient(transparent,rgba(255,255,255,.16),transparent);transition:.35s;z-index:-1}
-    .link:hover::after{inset:-110% -40% auto auto}
-
-    .widget{padding:14px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.7)}
-    .widget h4{font-size:.95rem;margin-bottom:6px;color:var(--brand)}
-    .clock{font-weight:800;font-size:1.4rem}
-    .weather small{color:var(--muted)}
-
-    .stats table{width:100%;border-collapse:collapse;font-size:.92rem}
-    .stats th,.stats td{padding:8px;border-bottom:1px solid var(--border);text-align:left}
-    .stats th{color:var(--brand)}
-
-    .quote{padding:12px;margin-top:8px;border-left:4px solid #3b82f6;background:rgba(255,255,255,.7);border-radius:10px}
-
-    .todo{padding:14px}
-    .todo h3{color:var(--brand);margin-bottom:10px}
-    .todo-input{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
-    .todo-input input,.todo-input select{padding:10px;border:1px solid var(--border);border-radius:10px;background:#fff}
-    .todo-input button{background:var(--btn);color:#fff;border:none;border-radius:10px;padding:10px 14px;cursor:pointer}
-    .list{max-height:240px;overflow:auto;border-top:1px dashed var(--border)}
-    .item{display:flex;align-items:center;gap:8px;padding:10px 0;border-bottom:1px dashed var(--border)}
-    .item.completed span{text-decoration:line-through;color:var(--muted)}
-    .item.overdue span{color:var(--bad);font-weight:600}
-    .item .x{background:var(--bad);color:#fff;border:none;border-radius:8px;padding:6px 10px;cursor:pointer}
-
-    .notes textarea{width:100%;min-height:120px;border:1px solid var(--border);border-radius:12px;padding:10px;background:#fff}
-
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:1200}
-    .modal.active{display:flex}
-    .modal .box{background:#fff;border-radius:16px;padding:18px 16px;max-width:92%;width:380px;text-align:center}
-    .modal .box h3{margin-bottom:8px;color:var(--brand)}
-    .qr-wrap{display:grid;place-items:center;margin:8px 0}
-    .close-btn{margin-top:10px}
-
-    .danger{background:#fee2e2;border:1px solid #fecaca}
-    .good{background:#dcfce7;border:1px solid #bbf7d0}
-    .warn{background:#fef3c7;border:1px solid #fde68a}
-
-    .footer{margin:16px auto 8px;text-align:center;color:#f8fafc}
-
-    .dark .header-bar{background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.35));border-bottom-color:#000}
-    .dark .title{color:#e5e7eb}
-    .dark .subtitle{color:#a3a3a3}
-    .dark .card,.dark .widget,.dark .quote{background:rgba(0,0,0,.45);border-color:rgba(255,255,255,.12);color:#f3f4f6}
-    .dark .input,.dark .mini,.dark .todo-input input,.dark .notes textarea{background:#0f172a;color:#e5e7eb;border-color:rgba(255,255,255,.12)}
-    .dark .pill-btn{background:#334155}
-    .dark .pill-btn:hover{background:#475569}
-    .dark .link{box-shadow:0 10px 18px rgba(0,0,0,.45)}
-    .dark .footer{color:#e5e7eb}
-
-    .to-top{position:fixed;right:16px;bottom:16px;z-index:999;background:#111827;color:#fff;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;cursor:pointer;box-shadow:0 12px 22px rgba(0,0,0,.25);opacity:0;transform:translateY(16px);transition:.25s}
-    .to-top.show{opacity:1;transform:none}
-
-    /* ===== Landing revamp ===== */
-    html{
-      scroll-behavior:smooth;
-    }
-    .reveal{
-      opacity:0;
-      transform:translateY(40px);
-      transition:opacity .8s cubic-bezier(0.4, 0, 0.2, 1), transform .8s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .reveal.visible{
-      opacity:1;
-      transform:translateY(0);
-    }
-    .hero{
-      position:relative;
-      margin-top:120px;
-      padding:56px 48px;
-      border-radius:32px;
-      overflow:hidden;
-      background:linear-gradient(135deg,rgba(10,10,10,.92),rgba(15,23,42,.88));
-      color:#f8fafc;
-      min-height:480px;
-      display:flex;
-      gap:40px;
-      align-items:center;
-      isolation:isolate;
-      box-shadow:0 50px 100px rgba(15,23,42,.4), 0 0 0 1px rgba(255,255,255,.05);
-      backdrop-filter:blur(20px);
-    }
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background-image:
-        radial-gradient(circle at 20% 50%, rgba(59,130,246,.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(147,51,234,.15) 0%, transparent 50%),
-        linear-gradient(135deg, rgba(15,23,42,.95), rgba(30,41,59,.9));
-      background-size:cover;
-      background-position:center;
-      z-index:-2;
-    }
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      opacity:1;
-      z-index:-1;
-      animation:floaty 20s linear infinite;
-    }
-    .hero-content{
-      flex:1;
-      max-width:640px;
-      position:relative;
-      z-index:2;
-    }
-    .hero-eyebrow{
-      text-transform:uppercase;
-      letter-spacing:.5em;
-      font-size:.75rem;
-      color:#60a5fa;
-      margin-bottom:20px;
-      display:block;
-      font-weight:600;
-      opacity:.9;
-    }
-    .hero h1{
-      font-size:clamp(2.8rem,5vw,4rem);
-      line-height:1.15;
-      margin-bottom:24px;
-      font-weight:800;
-      background:linear-gradient(135deg,#ffffff,#e0e7ff,#c7d2fe);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      background-clip:text;
-      letter-spacing:-.02em;
-    }
-    .hero p{
-      font-size:1.15rem;
-      color:#cbd5f5;
-      margin-bottom:32px;
-      line-height:1.7;
-      font-weight:400;
-    }
-    .hero-media{
-      flex:0 0 380px;
-      min-height:380px;
-      border-radius:28px;
-      background:
-        linear-gradient(135deg, rgba(59,130,246,.2), rgba(147,51,234,.2)),
-        url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2048&q=90") center/cover no-repeat;
-      position:relative;
-      overflow:hidden;
-      box-shadow:0 25px 70px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.1);
-      border:1px solid rgba(255,255,255,.08);
-    }
-    .hero-media::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(135deg, rgba(59,130,246,.1), rgba(147,51,234,.1));
-      z-index:1;
-    }
-    .hero-media::after{
-      content:"";
-      position:absolute;
-      inset:-50%;
-      width:200%;
-      height:200%;
-      background:radial-gradient(circle, rgba(255,255,255,.1) 1px, transparent 1px);
-      background-size:40px 40px;
-      animation:floaty 30s linear infinite;
-      z-index:2;
-      opacity:.3;
-    }
-    .hero-badges{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-bottom:28px;
-    }
-    .hero-badge{
-      background:rgba(30,64,175,.6);
-      border:1px solid rgba(255,255,255,.25);
-      padding:10px 18px;
-      border-radius:999px;
-      font-size:.875rem;
-      color:#e0e7ff;
-      backdrop-filter:blur(16px);
-      font-weight:500;
-      transition:all .3s ease;
-      box-shadow:0 4px 12px rgba(30,64,175,.3);
-    }
-    .hero-badge:hover{
-      background:rgba(30,64,175,.75);
-      transform:translateY(-2px);
-      box-shadow:0 6px 16px rgba(30,64,175,.4);
-    }
-    .neo-btn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:16px 28px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.2);
-      background:linear-gradient(135deg,#3b82f6,#6366f1,#9333ea);
-      background-size:200% 200%;
-      color:#fff;
-      font-weight:600;
-      font-size:1rem;
-      cursor:pointer;
-      box-shadow:0 20px 40px rgba(59,130,246,.4), inset 0 1px 0 rgba(255,255,255,.2);
-      transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);
-      text-decoration:none;
-      position:relative;
-      overflow:hidden;
-    }
-    .neo-btn::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(135deg, rgba(255,255,255,.2), transparent);
-      opacity:0;
-      transition:opacity .3s;
-    }
-    .neo-btn:hover::before{
-      opacity:1;
-    }
-    .neo-btn:hover{
-      transform:translateY(-4px);
-      box-shadow:0 30px 60px rgba(147,51,234,.5), inset 0 1px 0 rgba(255,255,255,.3);
-      background-position:100% 0;
-    }
-    .neo-btn:active{
-      transform:translateY(-2px);
-    }
-    .neo-btn.secondary{
-      background:rgba(15,23,42,.7);
-      border-color:rgba(148,163,184,.3);
-      box-shadow:0 15px 35px rgba(15,23,42,.5), inset 0 1px 0 rgba(255,255,255,.1);
-    }
-    .neo-btn.secondary:hover{
-      background:rgba(15,23,42,.85);
-      box-shadow:0 20px 45px rgba(15,23,42,.6);
-    }
-    .hero-cta{
-      display:flex;
-      gap:16px;
-      flex-wrap:wrap;
-      margin-top:8px;
+    * { box-sizing: border-box; margin: 0; padding: 0; outline: none; -webkit-tap-highlight-color: transparent; }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #020617;
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
     }
 
-    .metric-board{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:20px;
-      margin:40px 0;
+    /* Dynamic Background */
+    .bg-animate {
+      position: fixed; inset: 0; z-index: -1;
+      background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #020617 70%);
     }
-    .metric{
-      padding:28px 24px;
-      border-radius:24px;
-      background:rgba(255,255,255,.9);
-      border:1px solid rgba(148,163,184,.2);
-      box-shadow:0 20px 40px rgba(15,23,42,.12);
-      backdrop-filter:blur(10px);
-      transition:all .3s ease;
-      position:relative;
-      overflow:hidden;
+    .orb {
+      position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4;
+      animation: float 20s infinite alternate;
     }
-    .metric::before{
-      content:"";
-      position:absolute;
-      top:0;
-      left:0;
-      right:0;
-      height:4px;
-      background:linear-gradient(90deg,#3b82f6,#6366f1,#9333ea);
-      transform:scaleX(0);
-      transition:transform .3s ease;
-    }
-    .metric:hover{
-      transform:translateY(-4px);
-      box-shadow:0 25px 50px rgba(15,23,42,.18);
-    }
-    .metric:hover::before{
-      transform:scaleX(1);
-    }
-    .metric h3{
-      font-size:2.5rem;
-      color:#111827;
-      margin-bottom:8px;
-      font-weight:800;
-      background:linear-gradient(135deg,#1e293b,#475569);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      background-clip:text;
-    }
-    .metric span{
-      color:#64748b;
-      font-weight:600;
-      font-size:.95rem;
-      line-height:1.5;
+    .orb-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: var(--primary); }
+    .orb-2 { bottom: -10%; right: -10%; width: 60vw; height: 60vw; background: var(--secondary); animation-delay: -5s; }
+
+    @keyframes float { 0% { transform: translate(0,0); } 100% { transform: translate(50px, 50px); } }
+
+    /* Container */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 20px 100px;
+      position: relative;
+      z-index: 1;
     }
 
-    .trust-strip{
-      margin-top:32px;
-      padding:24px 28px;
-      border-radius:20px;
-      background:rgba(255,255,255,.95);
-      border:1px solid rgba(148,163,184,.25);
-      display:flex;
-      flex-wrap:wrap;
-      gap:20px;
-      justify-content:space-between;
-      align-items:center;
-      box-shadow:0 10px 30px rgba(15,23,42,.1);
-      backdrop-filter:blur(10px);
+    /* Profile Header */
+    .profile-section {
+      text-align: center;
+      margin-bottom: 40px;
+      animation: fadeInDown 0.8s ease;
     }
-    .trust-strip span{
-      font-size:1rem;
-      color:#475569;
-      font-weight:600;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      transition:all .3s ease;
+    .avatar-wrap {
+      position: relative;
+      width: 120px; height: 120px;
+      margin: 0 auto 16px;
     }
-    .trust-strip span:hover{
-      color:#1e293b;
-      transform:translateY(-2px);
+    .avatar {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(255,255,255,0.1);
+      box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+      background: #1e293b;
     }
-    .trust-strip span i{
-      color:#3b82f6;
-      font-size:1.1rem;
+    .verified-badge {
+      position: absolute; bottom: 5px; right: 5px;
+      background: #3b82f6; color: #fff;
+      width: 28px; height: 28px; border-radius: 50%;
+      display: grid; place-items: center;
+      font-size: 14px; border: 3px solid #020617;
+    }
+    .name { font-size: 24px; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.5px; }
+    .bio { color: var(--text-muted); font-size: 15px; max-width: 400px; margin: 0 auto; line-height: 1.6; }
+    
+    /* Social Row */
+    .social-row {
+      display: flex; justify-content: center; gap: 16px;
+      margin-top: 20px;
+    }
+    .social-btn {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: var(--glass); border: 1px solid var(--border);
+      color: var(--text); display: grid; place-items: center;
+      font-size: 20px; transition: all 0.3s; text-decoration: none;
+    }
+    .social-btn:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-3px); }
+
+    /* Search Bar */
+    .search-box {
+      position: sticky; top: 20px; z-index: 100;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(12px);
+      padding: 4px; border-radius: 16px;
+      border: 1px solid var(--border);
+      display: flex; align-items: center;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    .search-icon { padding: 0 16px; color: var(--text-muted); }
+    .search-input {
+      flex: 1; background: transparent; border: none;
+      color: #fff; padding: 12px 0; font-size: 15px;
+    }
+    .filter-reset {
+      padding: 8px 16px; color: var(--text-muted); cursor: pointer;
     }
 
-    .bio-shell{
-      margin:48px 0;
-      padding:40px;
-      border-radius:32px;
-      background:rgba(15,23,42,.88);
-      border:1px solid rgba(255,255,255,.1);
-      box-shadow:0 50px 80px rgba(15,23,42,.5), 0 0 0 1px rgba(255,255,255,.05);
-      display:grid;
-      grid-template-columns:380px 1fr;
-      gap:40px;
-      position:relative;
-      overflow:hidden;
-      color:#e2e8f0;
-      backdrop-filter:blur(20px);
+    /* Link Grid - THE STAR */
+    .link-grid {
+      display: grid; gap: 16px;
+      perspective: 1000px;
     }
-    .bio-shell::after{
-      content:"";
-      position:absolute;
-      inset:-20% -10% auto auto;
-      width:520px;height:520px;
-      background:url("https://media.giphy.com/media/l0ExdMHUDKteztyfe/giphy.gif") center/cover no-repeat;
-      opacity:.22;
-      mix-blend-mode:screen;
-      filter:blur(1px);
-      animation:floaty 18s linear infinite;
-      z-index:0;
+    .link-card {
+      position: relative;
+      display: flex; align-items: center; gap: 16px;
+      padding: 18px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      text-decoration: none; color: var(--text);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
     }
-    .bio-shell>*{position:relative;z-index:1}
-    .bio-left{
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.15);
-      border-radius:26px;
-      padding:28px;
-      display:flex;
-      flex-direction:column;
-      gap:18px;
-      backdrop-filter:blur(14px);
+    .link-card:hover {
+      transform: translateY(-4px) scale(1.01);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.2);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     }
-    .bio-avatar{
-      width:180px;height:180px;border-radius:28px;
-      background:url("https://images.unsplash.com/photo-1520342868574-5fa3804e551c?auto=format&fit=crop&w=2048&q=80") center/cover no-repeat;
-      box-shadow:0 20px 50px rgba(0,0,0,.45);
-      border:3px solid rgba(255,255,255,.4);
+    /* Featured Link Style */
+    .link-card.featured {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.1));
+      border-color: rgba(59, 130, 246, 0.4);
     }
-    .badge-stack{display:flex;flex-wrap:wrap;gap:10px}
-    .badge-stack span{
-      padding:8px 14px;
-      border-radius:999px;
-      border:1px solid rgba(148,163,184,.4);
-      font-size:.85rem;
-      text-transform:uppercase;
-      letter-spacing:.2em;
+    .link-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: rgba(0,0,0,0.3);
+      display: grid; place-items: center; font-size: 22px;
+      color: var(--primary); flex-shrink: 0;
     }
-    #typedLine{
-      font-size:1.2rem;
-      font-weight:600;
-      min-height:1.5em;
+    .link-info { flex: 1; min-width: 0; }
+    .link-title { font-weight: 700; font-size: 16px; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+    .link-desc { font-size: 13px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    
+    .badge {
+      font-size: 10px; font-weight: 800; text-transform: uppercase;
+      padding: 4px 8px; border-radius: 20px; letter-spacing: 0.5px;
     }
-    .bio-detail{
-      display:flex;
-      gap:12px;
-      align-items:center;
-      font-size:.95rem;
-      color:#cbd5f5;
-    }
-    .bio-right{
-      display:flex;
-      flex-direction:column;
-      gap:18px;
-    }
-    .bio-tabs{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .bio-tab{
-      flex:1;
-      min-width:120px;
-      text-align:center;
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid rgba(148,163,184,.35);
-      background:rgba(15,23,42,.55);
-      color:#e2e8f0;
-      cursor:pointer;
-      transition:.25s;
-    }
-    .bio-tab.active{background:linear-gradient(120deg,#3b82f6,#ec4899);border-color:transparent;box-shadow:0 16px 30px rgba(236,72,153,.25);}
-    .bio-panel{
-      display:none;
-      border:1px solid rgba(148,163,184,.2);
-      border-radius:22px;
-      padding:22px;
-      background:rgba(2,6,23,.65);
-      box-shadow:inset 0 0 0 1px rgba(148,163,184,.08);
-      min-height:180px;
-    }
-    .bio-panel.active{display:block}
-    .bio-panel ul{list-style:none;display:grid;gap:12px;margin-top:12px}
-    .bio-panel li{display:flex;align-items:flex-start;gap:10px;color:#cbd5f5}
-    .gif-chip{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 16px;
-      border-radius:16px;
-      border:1px solid rgba(148,163,184,.4);
-      background:rgba(15,23,42,.6);
-      font-size:.9rem;
-    }
-    .gif-chip img{
-      width:42px;height:42px;border-radius:12px;object-fit:cover;
-      border:2px solid rgba(255,255,255,.4);
-      box-shadow:0 10px 25px rgba(15,23,42,.4);
-    }
-    .kinetic-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-      gap:10px;
-    }
-    .kinetic-card{
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid rgba(148,163,184,.25);
-      text-align:center;
-      font-size:.85rem;
-      background:rgba(15,23,42,.4);
-      color:#cbd5f5;
-      position:relative;
-      overflow:hidden;
-    }
-    .kinetic-card::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:url("https://media.giphy.com/media/xTiTnrH063wJ3lDrFS/giphy.gif") center/cover repeat;
-      opacity:.15;
-      mix-blend-mode:screen;
-      animation:floaty 20s linear infinite;
-    }
-    .kinetic-card span{position:relative;z-index:1}
+    .badge-hot { background: rgba(220, 38, 38, 0.2); color: #f87171; border: 1px solid rgba(220, 38, 38, 0.4); }
+    .badge-new { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
 
-    .experience-grid{
-      margin-top:40px;
-      display:grid;
-      gap:24px;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    .action-btn {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: rgba(255,255,255,0.1);
+      display: grid; place-items: center;
+      color: var(--text-muted); transition: 0.2s;
     }
-    .service-card{
-      position:relative;
-      padding:32px 28px;
-      border-radius:28px;
-      color:#fff;
-      min-height:280px;
-      overflow:hidden;
-      background:linear-gradient(135deg,rgba(15,23,42,.9),rgba(59,130,246,.85));
-      border:1px solid rgba(255,255,255,.15);
-      box-shadow:0 30px 60px rgba(15,23,42,.3);
-      transition:all .4s cubic-bezier(0.4, 0, 0.2, 1);
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
-    .service-card:hover{
-      transform:translateY(-8px);
-      box-shadow:0 40px 80px rgba(59,130,246,.4);
-      border-color:rgba(255,255,255,.3);
-    }
-    .service-card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:url("https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=5120&q=80") center/cover no-repeat;
-      opacity:.15;
-      mix-blend-mode:screen;
-      transition:opacity .4s;
-    }
-    .service-card:hover::before{
-      opacity:.25;
-    }
-    .service-card::after{
-      content:"";
-      position:absolute;
-      top:-50%;
-      right:-50%;
-      width:200%;
-      height:200%;
-      background:radial-gradient(circle, rgba(255,255,255,.1) 0%, transparent 70%);
-      opacity:0;
-      transition:opacity .4s;
-    }
-    .service-card:hover::after{
-      opacity:1;
-    }
-    .service-card h4{
-      position:relative;
-      z-index:2;
-      font-size:1.5rem;
-      margin-bottom:12px;
-      font-weight:700;
-      line-height:1.3;
-    }
-    .service-card p{
-      position:relative;
-      z-index:2;
-      color:#e2e8f0;
-      line-height:1.6;
-      font-size:1rem;
-    }
-    .service-card .tag{
-      position:relative;
-      z-index:2;
-      display:inline-flex;
-      margin-top:20px;
-      padding:10px 16px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.4);
-      background:rgba(255,255,255,.1);
-      backdrop-filter:blur(10px);
-      font-size:.85rem;
-      letter-spacing:.1em;
-      text-transform:uppercase;
-      font-weight:600;
-      transition:all .3s;
-    }
-    .service-card:hover .tag{
-      background:rgba(255,255,255,.2);
-      border-color:rgba(255,255,255,.6);
-    }
+    .action-btn:hover { background: #fff; color: #000; }
 
-    .media-wall{
-      margin:48px 0;
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:16px;
+    /* Stats & Trust Section (Moved to bottom) */
+    .stats-bar {
+      display: flex; justify-content: space-around;
+      margin-top: 50px; padding: 24px;
+      background: var(--card-bg); border-radius: 20px;
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
     }
-    .media-wall figure{
-      position:relative;
-      border-radius:24px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.2);
-      min-height:240px;
-      box-shadow:0 25px 50px rgba(15,23,42,.3);
-      transition:all .4s cubic-bezier(0.4, 0, 0.2, 1);
-      cursor:pointer;
-      aspect-ratio:4/3;
-    }
-    .media-wall figure:hover{
-      transform:translateY(-12px) scale(1.02);
-      box-shadow:0 35px 70px rgba(59,130,246,.4);
-      border-color:rgba(255,255,255,.4);
-    }
-    .media-wall figure.active{
-      transform:translateY(-8px);
-      box-shadow:0 30px 60px rgba(59,130,246,.35);
-    }
-    .media-wall img,.media-wall video{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      transition:transform .6s ease;
-    }
-    .media-wall figure:hover img{
-      transform:scale(1.1);
-    }
-    .media-wall figcaption{
-      position:absolute;
-      inset:auto 16px 16px 16px;
-      padding:12px 16px;
-      border-radius:14px;
-      background:rgba(15,23,42,.75);
-      color:#e2e8f0;
-      font-size:.9rem;
-      font-weight:500;
-      backdrop-filter:blur(12px);
-      border:1px solid rgba(255,255,255,.1);
-      transition:all .3s;
-    }
-    .media-wall figure:hover figcaption{
-      background:rgba(15,23,42,.85);
-      border-color:rgba(255,255,255,.2);
-    }
+    .stat-item { text-align: center; }
+    .stat-num { font-size: 20px; font-weight: 800; color: #fff; }
+    .stat-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
 
-    .executive-suite{
-      margin-top:48px;
-      padding:32px 26px;
-      border-radius:26px;
-      background:rgba(255,255,255,.75);
-      border:1px solid rgba(148,163,184,.3);
-      box-shadow:0 25px 60px rgba(15,23,42,.2);
+    /* Footer & Tools */
+    .admin-trigger {
+      position: fixed; bottom: 20px; right: 20px;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,0.05); color: #475569;
+      border: none; cursor: pointer; z-index: 99;
+      display: grid; place-items: center;
+      transition: 0.3s;
     }
-    .dark .executive-suite{background:rgba(15,23,42,.7);border-color:rgba(255,255,255,.06);}
-    .suite-heading{margin-bottom:28px;text-align:center}
-    .suite-heading .eyebrow{font-size:.85rem;letter-spacing:.4em;color:#64748b;text-transform:uppercase;margin-bottom:12px}
-    .suite-heading h2{font-size:2rem;margin-bottom:8px;color:var(--brand)}
-    .suite-heading p{color:var(--muted);max-width:720px;margin:0 auto}
+    .admin-trigger:hover { background: var(--primary); color: #fff; }
 
-    .cta-banner{
-      margin:48px 0 8px;
-      padding:34px;
-      border-radius:28px;
-      background:linear-gradient(120deg,#0f172a,#1d4ed8,#9333ea);
-      color:#fff;
-      text-align:center;
-      box-shadow:0 30px 60px rgba(79,70,229,.3);
+    /* QR Modal */
+    .modal {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.8);
+      z-index: 2000; display: none; align-items: center; justify-content: center;
+      backdrop-filter: blur(5px);
     }
-    .cta-banner h3{font-size:2rem;margin-bottom:12px}
-    .cta-banner p{color:#c7d2fe;margin-bottom:20px}
+    .modal.active { display: flex; animation: fadeIn 0.2s; }
+    .modal-box {
+      background: #1e293b; padding: 30px; border-radius: 24px;
+      text-align: center; border: 1px solid var(--border);
+      max-width: 90%; width: 340px;
+    }
+    .qr-code { background: #fff; padding: 16px; border-radius: 16px; margin: 20px auto; width: fit-content; }
 
-    @keyframes floaty{
-      0%{transform:translate3d(0,0,0)}
-      100%{transform:translate3d(-120px,-120px,0)}
-    }
-    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.8;transform:scale(1.05)}}
-    @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
-    @keyframes rotate{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
-    @keyframes slideInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-
-    /* ===== Testimonials Section ===== */
-    .testimonials-section{
-      margin:48px 0;
-      padding:40px 28px;
-      border-radius:28px;
-      background:rgba(255,255,255,.85);
-      border:1px solid rgba(148,163,184,.3);
-      box-shadow:0 25px 60px rgba(15,23,42,.15);
-      position:relative;
-      overflow:hidden;
-    }
-    .dark .testimonials-section{background:rgba(15,23,42,.75);border-color:rgba(255,255,255,.1);}
-    .testimonials-section::before{
-      content:"";
-      position:absolute;
-      top:-50%;
-      right:-10%;
-      width:400px;
-      height:400px;
-      background:url("https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif") center/cover;
-      opacity:.12;
-      border-radius:50%;
-      animation:rotate 20s linear infinite;
-    }
-    .testimonials-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:20px;
-      margin-top:28px;
-      position:relative;
-      z-index:1;
-    }
-    .testimonial-card{
-      padding:24px;
-      border-radius:20px;
-      background:rgba(15,23,42,.6);
-      border:1px solid rgba(255,255,255,.15);
-      color:#e2e8f0;
-      position:relative;
-      overflow:hidden;
-      transition:transform .3s,box-shadow .3s;
-    }
-    .testimonial-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(59,130,246,.3);}
-    .testimonial-card::after{
-      content:"";
-      position:absolute;
-      bottom:0;
-      right:0;
-      width:120px;
-      height:120px;
-      background:url("https://media.giphy.com/media/3NtY188QaxDdC/giphy.gif") center/cover;
-      opacity:.2;
-      mix-blend-mode:screen;
-      border-radius:50% 0 0 0;
-    }
-    .testimonial-avatar{
-      width:56px;
-      height:56px;
-      border-radius:50%;
-      background:linear-gradient(135deg,#3b82f6,#9333ea);
-      display:grid;
-      place-items:center;
-      font-size:1.5rem;
-      margin-bottom:12px;
-      border:3px solid rgba(255,255,255,.3);
-      box-shadow:0 8px 20px rgba(0,0,0,.3);
-    }
-    .testimonial-text{font-size:.95rem;line-height:1.6;margin-bottom:12px;position:relative;z-index:1}
-    .testimonial-author{font-weight:600;font-size:.9rem;color:#93c5fd;position:relative;z-index:1}
-
-    /* ===== Portfolio Showcase ===== */
-    .portfolio-section{
-      margin:48px 0;
-      padding:40px 28px;
-      border-radius:28px;
-      background:linear-gradient(135deg,rgba(15,23,42,.9),rgba(59,130,246,.7));
-      border:1px solid rgba(255,255,255,.2);
-      box-shadow:0 30px 70px rgba(15,23,42,.4);
-      position:relative;
-      overflow:hidden;
-    }
-    .portfolio-section::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:url("https://media.giphy.com/media/JWuBH9rCO2uZuHjfV8/giphy.gif") center/400px repeat;
-      opacity:.1;
-      mix-blend-mode:screen;
-      animation:floaty 15s linear infinite;
-    }
-    .portfolio-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:24px;
-      margin-top:32px;
-      position:relative;
-      z-index:1;
-    }
-    .portfolio-item{
-      position:relative;
-      border-radius:20px;
-      overflow:hidden;
-      aspect-ratio:16/10;
-      cursor:pointer;
-      border:2px solid rgba(255,255,255,.2);
-      box-shadow:0 15px 35px rgba(0,0,0,.3);
-      transition:transform .4s,box-shadow .4s;
-    }
-    .portfolio-item:hover{transform:scale(1.05) rotate(1deg);box-shadow:0 25px 50px rgba(59,130,246,.5);}
-    .portfolio-item img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition:transform .6s;
-    }
-    .portfolio-item:hover img{transform:scale(1.15);}
-    .portfolio-overlay{
-      position:absolute;
-      inset:0;
-      background:linear-gradient(to top,rgba(15,23,42,.95),transparent);
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      padding:24px;
-      opacity:0;
-      transition:opacity .3s;
-    }
-    .portfolio-item:hover .portfolio-overlay{opacity:1;}
-    .portfolio-title{color:#fff;font-size:1.3rem;font-weight:700;margin-bottom:8px}
-    .portfolio-desc{color:#cbd5f5;font-size:.9rem}
-
-    /* ===== Timeline Section ===== */
-    .timeline-section{
-      margin:48px 0;
-      padding:40px 28px;
-      border-radius:28px;
-      background:rgba(255,255,255,.9);
-      border:1px solid rgba(148,163,184,.3);
-      box-shadow:0 25px 60px rgba(15,23,42,.15);
-      position:relative;
-    }
-    .dark .timeline-section{background:rgba(15,23,42,.8);border-color:rgba(255,255,255,.1);}
-    .timeline{
-      position:relative;
-      padding-left:40px;
-      margin-top:32px;
-    }
-    .timeline::before{
-      content:"";
-      position:absolute;
-      left:12px;
-      top:0;
-      bottom:0;
-      width:3px;
-      background:linear-gradient(180deg,#3b82f6,#9333ea);
-      border-radius:2px;
-    }
-    .timeline-item{
-      position:relative;
-      margin-bottom:32px;
-      padding-left:32px;
-      animation:slideInUp .6s ease backwards;
-    }
-    .timeline-item::before{
-      content:"";
-      position:absolute;
-      left:-28px;
-      top:4px;
-      width:20px;
-      height:20px;
-      border-radius:50%;
-      background:linear-gradient(135deg,#3b82f6,#9333ea);
-      border:4px solid rgba(255,255,255,.9);
-      box-shadow:0 4px 12px rgba(59,130,246,.4);
-      animation:pulse 2s ease infinite;
-    }
-    .timeline-year{
-      font-size:.85rem;
-      color:#64748b;
-      font-weight:600;
-      text-transform:uppercase;
-      letter-spacing:.1em;
-      margin-bottom:6px;
-    }
-    .timeline-content{
-      background:rgba(15,23,42,.05);
-      padding:18px;
-      border-radius:14px;
-      border-left:4px solid #3b82f6;
-      transition:transform .2s,box-shadow .2s;
-    }
-    .timeline-content:hover{transform:translateX(8px);box-shadow:0 8px 20px rgba(59,130,246,.2);}
-    .dark .timeline-content{background:rgba(255,255,255,.05);}
-    .timeline-title{font-size:1.1rem;font-weight:700;color:var(--brand);margin-bottom:6px}
-    .timeline-desc{font-size:.9rem;color:var(--muted);line-height:1.6}
-
-    /* ===== Achievements Counter ===== */
-    .achievements-section{
-      margin:48px 0;
-      padding:48px 28px;
-      border-radius:28px;
-      background:linear-gradient(135deg,rgba(15,23,42,.95),rgba(99,102,241,.85));
-      border:1px solid rgba(255,255,255,.2);
-      box-shadow:0 30px 70px rgba(15,23,42,.4);
-      position:relative;
-      overflow:hidden;
-    }
-    .achievements-section::after{
-      content:"";
-      position:absolute;
-      top:20%;
-      right:10%;
-      width:300px;
-      height:300px;
-      background:url("https://media.giphy.com/media/eKDpQFqEQ8G7a/giphy.gif") center/cover;
-      opacity:.15;
-      border-radius:50%;
-      animation:rotate 25s linear infinite;
-    }
-    .achievements-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:28px;
-      margin-top:32px;
-      position:relative;
-      z-index:1;
-    }
-    .achievement-card{
-      text-align:center;
-      padding:28px 20px;
-      border-radius:20px;
-      background:rgba(255,255,255,.1);
-      border:1px solid rgba(255,255,255,.2);
-      backdrop-filter:blur(10px);
-      transition:transform .3s,background .3s;
-    }
-    .achievement-card:hover{transform:translateY(-8px);background:rgba(255,255,255,.15);}
-    .achievement-number{
-      font-size:3rem;
-      font-weight:800;
-      background:linear-gradient(135deg,#fff,#93c5fd);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      background-clip:text;
-      margin-bottom:8px;
-      line-height:1;
-    }
-    .achievement-label{
-      color:#cbd5f5;
-      font-size:.95rem;
-      font-weight:600;
-      text-transform:uppercase;
-      letter-spacing:.05em;
-    }
-
-    /* ===== Parallax Cursor Effect ===== */
-    .cursor-dot{
-      position:fixed;
-      width:20px;
-      height:20px;
-      border-radius:50%;
-      background:radial-gradient(circle,#3b82f6,#9333ea);
-      pointer-events:none;
-      z-index:9999;
-      opacity:0;
-      transition:opacity .3s;
-      mix-blend-mode:difference;
-    }
-    .cursor-dot.active{opacity:.6;}
-
-    /* ===== Particle Background ===== */
-    .particles{
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      z-index:0;
-      overflow:hidden;
-    }
-    .particle{
-      position:absolute;
-      width:4px;
-      height:4px;
-      background:#fff;
-      border-radius:50%;
-      opacity:.4;
-      animation:floaty 15s linear infinite;
-    }
-
-    /* ===== Loading Screen ===== */
-    .loading-screen{
-      position:fixed;
-      inset:0;
-      background:linear-gradient(135deg,#0f172a,#1d4ed8);
-      z-index:10000;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex-direction:column;
-      transition:opacity .5s,visibility .5s;
-    }
-    .loading-screen.hidden{opacity:0;visibility:hidden;}
-    .loader{
-      width:60px;
-      height:60px;
-      border:4px solid rgba(255,255,255,.2);
-      border-top-color:#3b82f6;
-      border-radius:50%;
-      animation:rotate 1s linear infinite;
-      margin-bottom:20px;
-    }
-    .loading-text{
-      color:#fff;
-      font-size:1.1rem;
-      font-weight:600;
-      letter-spacing:.1em;
-    }
-
-    @media (max-width:960px){
-      .hero{
-        flex-direction:column;
-        padding:40px 32px;
-        gap:32px;
-      }
-      .hero-media{
-        width:100%;
-        min-height:280px;
-        flex:1;
-      }
-      .hero h1{
-        font-size:2.5rem;
-      }
-      .hero-content{
-        max-width:100%;
-      }
-      .bio-shell{
-        grid-template-columns:1fr;
-        padding:32px 28px;
-        gap:32px;
-      }
-      .bio-left{
-        align-items:center;
-        text-align:center;
-      }
-      .experience-grid{
-        grid-template-columns:1fr;
-      }
-      .media-wall{
-        grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      }
-    }
-    @media (max-width:640px){
-      .hero{
-        padding:32px 24px;
-        margin-top:100px;
-        min-height:auto;
-      }
-      .hero h1{
-        font-size:2rem;
-      }
-      .hero p{
-        font-size:1rem;
-      }
-      .hero-media{
-        min-height:240px;
-      }
-      .trust-strip{
-        flex-direction:column;
-        align-items:flex-start;
-        padding:20px;
-        gap:16px;
-      }
-      .metric-board{
-        grid-template-columns:1fr;
-        gap:16px;
-      }
-      .executive-suite{
-        padding:24px 20px;
-      }
-      .bio-shell{
-        padding:24px 20px;
-        border-radius:24px;
-      }
-      .bio-tab{
-        flex:1 1 45%;
-        font-size:.85rem;
-        padding:10px 12px;
-      }
-      .service-card{
-        min-height:240px;
-        padding:24px 20px;
-      }
-      .media-wall{
-        grid-template-columns:1fr;
-        gap:12px;
-      }
-      .hero-cta{
-        flex-direction:column;
-      }
-      .neo-btn{
-        width:100%;
-        justify-content:center;
-      }
-    }
-
-    /* Admin Panel */
-    .admin-panel{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:2000;overflow:auto;padding:20px}
-    .admin-panel.active{display:flex}
-    .admin-box{background:#fff;border-radius:16px;padding:24px;max-width:800px;width:100%;max-height:90vh;overflow:auto}
-    .dark .admin-box{background:#1f2937;color:#e5e7eb}
-    .admin-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;border-bottom:2px solid var(--border);padding-bottom:12px}
-    .admin-tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
-    .admin-tab{padding:10px 16px;border-radius:10px;border:1px solid var(--border);background:var(--card);cursor:pointer;transition:.2s}
-    .admin-tab.active{background:var(--btn);color:#fff}
-    .admin-section{display:none}
-    .admin-section.active{display:block}
-    .form-group{margin-bottom:14px}
-    .form-group label{display:block;margin-bottom:6px;font-weight:600;color:var(--brand)}
-    .form-group input,.form-group select,.form-group textarea{width:100%;padding:10px;border:1px solid var(--border);border-radius:10px;background:#fff}
-    .dark .form-group input,.dark .form-group select,.dark .form-group textarea{background:#0f172a;color:#e5e7eb}
-    .link-item{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--border);border-radius:10px;margin-bottom:10px;background:var(--card);cursor:move}
-    .link-item.dragging{opacity:.5}
-    .link-item .drag-handle{cursor:grab;font-size:1.2rem;color:var(--muted)}
-    .link-item .info{flex:1}
-    .link-item .actions{display:flex;gap:6px}
-    .btn-edit,.btn-delete{padding:6px 12px;border:none;border-radius:8px;cursor:pointer;transition:.2s}
-    .btn-edit{background:#3b82f6;color:#fff}
-    .btn-edit:hover{background:#2563eb}
-    .btn-delete{background:#dc2626;color:#fff}
-    .btn-delete:hover{background:#b91c1c}
-    .color-picker{display:flex;gap:8px;flex-wrap:wrap}
-    .color-option{width:40px;height:40px;border-radius:8px;cursor:pointer;border:3px solid transparent;transition:.2s}
-    .color-option.selected{border-color:#000;transform:scale(1.1)}
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#mainContent">Bỏ qua đến nội dung chính</a>
-  <!-- Loading Screen -->
-  <div class="loading-screen" id="loadingScreen">
-    <div class="loader"></div>
-    <div class="loading-text">ĐANG TẢI...</div>
+
+  <div class="bg-animate">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
   </div>
 
-  <!-- Cursor Dot -->
-  <div class="cursor-dot" id="cursorDot"></div>
-
-  <!-- Particles Background -->
-  <div class="particles" id="particles"></div>
-
-  <header class="header-bar card" role="banner">
-    <button class="menu-icon" type="button" aria-label="Mở menu điều hướng" onclick="toggleSidebar()">
-      <i class="fas fa-bars" aria-hidden="true"></i>
-    </button>
-    <div class="right-tools" role="navigation" aria-label="Hành động nhanh">
-      <button class="toggle" id="modeBtn" onclick="toggleMode()"><i class="far fa-moon"></i><span id="modeText">Dark</span></button>
-      <button class="pill-btn" onclick="toggleAdmin()">⚙️ Quản lý</button>
-      <button class="pill-btn" onclick="requestNotif()">Bật thông báo 🔔</button>
-      <a class="pill-btn" href="https://mtdvps.com/subscribe">Đăng Ký</a>
-    </div>
-  </header>
-
-  <aside class="sidebar" id="sidebar" role="navigation" aria-label="Menu chính">
-    <a href="https://mtdvps.com"><i class="fas fa-home"></i>Trang Chủ</a>
-    <a href="https://hci.mtdvps.com/"><i class="fas fa-server"></i>Dịch Vụ VPS</a>
-    <a href="https://mtdproxy.com"><i class="fas fa-shield-alt"></i>Proxy</a>
-    <a href="https://www.facebook.com/ducvps123/?locale=vi_VN"><i class="fas fa-headset"></i>Hỗ Trợ</a>
-    <a href="https://beacons.ai/ducvps"><i class="fas fa-shopping-cart"></i>Cửa Hàng</a>
-  </aside>
-  <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
-
-  <main class="container" id="mainContent" role="main">
-    <section class="hero reveal" id="c-suite" aria-labelledby="heroTitle">
-      <div class="hero-content">
-        <span class="hero-eyebrow">MTD GROUP • DIGITAL POWERHOUSE</span>
-        <h1 id="heroTitle">Landing page “bố đời” dành cho doanh nhân mê tốc độ & sự chuẩn chỉ.</h1>
-        <p>Trình diễn toàn bộ tổ hợp VPS, Proxy, Hosting và hạ tầng bảo mật của MTD theo phong cách luxury-tech, tối ưu cho chiến dịch marketing quốc tế và các buổi pitching với khách hàng doanh nghiệp.</p>
-        <div class="hero-badges">
-          <span class="hero-badge">Hạ tầng 5K Render</span>
-          <span class="hero-badge">Bảng điều khiển tức thì</span>
-          <span class="hero-badge">Bảo mật Zero-Trust</span>
-        </div>
-        <div class="hero-cta">
-          <a class="neo-btn" href="https://mtdvps.com/subscribe" target="_blank" rel="noopener">Đặt lịch tư vấn <i class="fas fa-arrow-right"></i></a>
-          <button class="neo-btn secondary" onclick="document.getElementById('linksWrap').scrollIntoView({behavior:'smooth'})">Trải nghiệm Command Center</button>
-        </div>
+  <div class="container">
+    <div class="profile-section">
+      <div class="avatar-wrap">
+        <img src="https://i.imgur.com/GCITCIv.png" alt="MTD Avatar" class="avatar" />
+        <div class="verified-badge"><i class="fas fa-check"></i></div>
       </div>
-      <div class="hero-media"></div>
-    </section>
-
-    <section class="trust-strip reveal">
-      <span><i class="fas fa-award"></i> 18.000+ phiên triển khai hạ tầng</span>
-      <span><i class="fas fa-globe"></i> Vận hành tại 24 quốc gia</span>
-      <span><i class="fas fa-bolt"></i> SLA cam kết 99.982%</span>
-      <span><i class="fas fa-lock"></i> SOC 2-ready • ISO 27001</span>
-    </section>
-
-    <div class="metric-board reveal">
-      <div class="metric">
-        <h3>45ms</h3>
-        <span>Độ trễ trung bình multi-region</span>
-      </div>
-      <div class="metric">
-        <h3>4.8/5</h3>
-        <span>Điểm hài lòng khách hàng doanh nghiệp</span>
-      </div>
-      <div class="metric">
-        <h3>+320%</h3>
-        <span>Tăng trưởng request sau 6 tháng</span>
+      <h1 class="name">MTD VPS Group</h1>
+      <p class="bio">Hệ sinh thái hạ tầng số cho doanh nghiệp & cá nhân.<br>Cloud VPS • Proxy • Hosting • Tài khoản Premium.</p>
+      
+      <div class="social-row">
+        <a href="https://www.facebook.com/ducvps123/?locale=vi_VN" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.youtube.com/@ducvps1com" class="social-btn"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.tiktok.com/@ducvps001" class="social-btn"><i class="fab fa-tiktok"></i></a>
+        <a href="mailto:support@mtdvps.com" class="social-btn"><i class="fas fa-envelope"></i></a>
       </div>
     </div>
 
-    <section class="bio-shell reveal" id="bioHub">
-      <div class="bio-left">
-        <div class="bio-avatar"></div>
-        <div id="typedLine"></div>
-        <div class="badge-stack">
-          <span>CEO</span>
-          <span>Builder</span>
-          <span>Investor</span>
-        </div>
-        <div class="bio-detail"><i class="fas fa-map-marker-alt"></i>Hà Nội • TP.HCM • Singapore</div>
-        <div class="bio-detail"><i class="fas fa-user-tie"></i>15+ năm tư vấn hạ tầng & data</div>
-        <div class="gif-chip">
-          <img id="gifBadgeImg" src="https://media.giphy.com/media/3NtY188QaxDdC/giphy.gif" alt="gif badge">
-          <div>
-            <div style="font-weight:600">Cảm hứng realtime</div>
-            <small id="gifBadgeTxt">Luxury boardroom energy</small>
-          </div>
-        </div>
-        <div class="kinetic-grid">
-          <div class="kinetic-card"><span>VC Pitch</span></div>
-          <div class="kinetic-card"><span>Fortune 500</span></div>
-          <div class="kinetic-card"><span>Web3 Growth</span></div>
-          <div class="kinetic-card"><span>Gov Cloud</span></div>
-        </div>
-      </div>
-      <div class="bio-right">
-        <div class="bio-tabs">
-          <button class="bio-tab active" data-panel="mission">Tầm nhìn</button>
-          <button class="bio-tab" data-panel="clients">Clientele</button>
-          <button class="bio-tab" data-panel="lifestyle">Lifestyle</button>
-        </div>
-        <div class="bio-panel active" id="panel-mission">
-          <p>Biến mọi chiến dịch digital của bạn thành trải nghiệm executive, kết hợp hạ tầng chuẩn Tier III+ với storytelling chuyển đổi.</p>
-          <ul>
-            <li><i class="fas fa-check"></i>Blueprint cloud + bảo mật zero-trust đa tầng</li>
-            <li><i class="fas fa-check"></i>Studio 5K cá nhân hóa cho deck, landing, email</li>
-            <li><i class="fas fa-check"></i>Bộ công cụ automation + data sync realtime</li>
-          </ul>
-        </div>
-        <div class="bio-panel" id="panel-clients">
-          <p>Đồng hành với tập đoàn tài chính, agency toàn cầu, cộng đồng builder và nhà sáng lập tăng trưởng siêu tốc.</p>
-          <ul>
-            <li><i class="fas fa-star"></i>Private banker, quỹ VC, family office khu vực APAC</li>
-            <li><i class="fas fa-star"></i>Đội tăng trưởng Web2/Web3, influencer network</li>
-            <li><i class="fas fa-star"></i>Founder Việt muốn “đem cả command center” lên bio</li>
-          </ul>
-        </div>
-        <div class="bio-panel" id="panel-lifestyle">
-          <p>Work-play balance với art, âm nhạc và retreat sang trọng để nuôi dưỡng cảm hứng vận hành.</p>
-          <ul>
-            <li><i class="fas fa-music"></i>Playlist Deep Focus + vinyl lo-fi</li>
-            <li><i class="fas fa-plane"></i>Quarterly offsite: Bali • Paris • Dubai</li>
-            <li><i class="fas fa-camera"></i>Bộ sưu tập GIF 4K curated mỗi tuần</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+    <div class="search-box">
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" class="search-input" id="searchInput" placeholder="Tìm dịch vụ (vps, game, proxy, shop)...">
+      <div class="filter-reset" onclick="document.getElementById('searchInput').value=''; renderLinks()">✕</div>
+    </div>
 
-    <section class="experience-grid reveal">
-      <article class="service-card">
-        <h4>Hạ tầng Cloud đẳng cấp C-suite</h4>
-        <p>Cluster HCI, load-balancer đa vùng, backup nóng, toàn bộ trực quan hóa trên dashboard realtime.</p>
-        <div class="tag">Hybrid Cloud</div>
-      </article>
-      <article class="service-card">
-        <h4>Proxy & Data Intelligence</h4>
-        <p>Hệ thống proxy IPv4/IPv6 tĩnh – xoay, tối ưu social listening & automation ở quy mô toàn cầu.</p>
-        <div class="tag">DataOps</div>
-      </article>
-      <article class="service-card">
-        <h4>Studio sáng tạo 4K/5K</h4>
-        <p>Asset 4K/5K, motion GIF chuẩn branding, phù hợp landing page, email flow và deck thuyết trình.</p>
-        <div class="tag">Creative Ops</div>
-      </article>
-    </section>
-
-    <section class="media-wall reveal" id="mediaWall">
-      <figure>
-        <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=5120&q=80" alt="Boardroom">
-        <figcaption>Boardroom 5K • Vision session</figcaption>
-      </figure>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1485988412941-77a35537dae4?auto=format&fit=crop&w=5120&q=80" alt="Datacenter">
-        <figcaption>Data center layer • Tier III+</figcaption>
-      </figure>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=4096&q=80" alt="Cybersecurity">
-        <figcaption>An ninh mạng realtime</figcaption>
-      </figure>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=4096&q=80" alt="Luxury workspace">
-        <figcaption>Studio sáng tạo 4K GIF động</figcaption>
-      </figure>
-    </section>
-
-    <!-- Achievements Counter Section -->
-    <section class="achievements-section reveal">
-      <h2 style="text-align:center;font-size:2.2rem;color:#fff;margin-bottom:12px;position:relative;z-index:1">Thành tựu & Số liệu</h2>
-      <p style="text-align:center;color:#cbd5f5;margin-bottom:0;position:relative;z-index:1">Những con số biết nói về hành trình xây dựng hạ tầng doanh nghiệp</p>
-      <div class="achievements-grid">
-        <div class="achievement-card">
-          <div class="achievement-number" data-target="18000">0</div>
-          <div class="achievement-label">Triển khai hạ tầng</div>
-        </div>
-        <div class="achievement-card">
-          <div class="achievement-number" data-target="24">0</div>
-          <div class="achievement-label">Quốc gia phục vụ</div>
-        </div>
-        <div class="achievement-card">
-          <div class="achievement-number" data-target="99.982">0</div>
-          <div class="achievement-label">% Uptime SLA</div>
-        </div>
-        <div class="achievement-card">
-          <div class="achievement-number" data-target="500">0</div>
-          <div class="achievement-label">Khách hàng doanh nghiệp</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials-section reveal">
-      <h2 style="text-align:center;font-size:2.2rem;color:var(--brand);margin-bottom:12px">Khách hàng nói gì</h2>
-      <p style="text-align:center;color:var(--muted);margin-bottom:0">Phản hồi từ các doanh nghiệp đã tin tưởng MTD</p>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="testimonial-avatar">🏢</div>
-          <div class="testimonial-text">"Hạ tầng MTD giúp chúng tôi scale từ 0 đến 1 triệu users trong 6 tháng. Độ ổn định và tốc độ phản hồi support vượt ngoài mong đợi."</div>
-          <div class="testimonial-author">— CEO, Tech Startup</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-avatar">🌐</div>
-          <div class="testimonial-text">"Proxy network của MTD đã giải quyết bài toán geo-blocking cho toàn bộ team marketing. Chi phí hợp lý, hiệu suất cao."</div>
-          <div class="testimonial-author">— CMO, E-commerce Platform</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-avatar">💼</div>
-          <div class="testimonial-text">"Từ VPS đến managed services, MTD là đối tác công nghệ đáng tin cậy nhất của chúng tôi trong 3 năm qua."</div>
-          <div class="testimonial-author">— CTO, Financial Services</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Portfolio Showcase -->
-    <section class="portfolio-section reveal">
-      <h2 style="text-align:center;font-size:2.2rem;color:#fff;margin-bottom:12px;position:relative;z-index:1">Portfolio & Case Studies</h2>
-      <p style="text-align:center;color:#cbd5f5;margin-bottom:0;position:relative;z-index:1">Những dự án đã triển khai thành công</p>
-      <div class="portfolio-grid">
-        <div class="portfolio-item">
-          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=4096&q=80" alt="Cloud Infrastructure">
-          <div class="portfolio-overlay">
-            <div class="portfolio-title">Cloud Infrastructure Migration</div>
-            <div class="portfolio-desc">Di chuyển 500+ servers lên hybrid cloud trong 30 ngày</div>
-          </div>
-        </div>
-        <div class="portfolio-item">
-          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=4096&q=80" alt="Data Pipeline">
-          <div class="portfolio-overlay">
-            <div class="portfolio-title">Real-time Data Pipeline</div>
-            <div class="portfolio-desc">Xử lý 10TB+ dữ liệu mỗi ngày với độ trễ < 100ms</div>
-          </div>
-        </div>
-        <div class="portfolio-item">
-          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=4096&q=80" alt="Security">
-          <div class="portfolio-overlay">
-            <div class="portfolio-title">Zero-Trust Security</div>
-            <div class="portfolio-desc">Triển khai mô hình bảo mật zero-trust cho Fortune 500</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Timeline Section -->
-    <section class="timeline-section reveal">
-      <h2 style="text-align:center;font-size:2.2rem;color:var(--brand);margin-bottom:12px">Hành trình phát triển</h2>
-      <p style="text-align:center;color:var(--muted);margin-bottom:0">Những cột mốc quan trọng trong hành trình xây dựng MTD</p>
-      <div class="timeline">
-        <div class="timeline-item" style="animation-delay:0s">
-          <div class="timeline-year">2020</div>
-          <div class="timeline-content">
-            <div class="timeline-title">Khởi nghiệp với VPS</div>
-            <div class="timeline-desc">Bắt đầu với 10 servers đầu tiên, phục vụ 50 khách hàng đầu tiên</div>
-          </div>
-        </div>
-        <div class="timeline-item" style="animation-delay:.2s">
-          <div class="timeline-year">2021</div>
-          <div class="timeline-content">
-            <div class="timeline-title">Mở rộng Proxy Network</div>
-            <div class="timeline-desc">Triển khai mạng proxy toàn cầu với 1000+ IPs tại 15 quốc gia</div>
-          </div>
-        </div>
-        <div class="timeline-item" style="animation-delay:.4s">
-          <div class="timeline-year">2022</div>
-          <div class="timeline-content">
-            <div class="timeline-title">Enterprise Solutions</div>
-            <div class="timeline-desc">Ra mắt dịch vụ hạ tầng doanh nghiệp, đạt 200+ khách hàng B2B</div>
-          </div>
-        </div>
-        <div class="timeline-item" style="animation-delay:.6s">
-          <div class="timeline-year">2023</div>
-          <div class="timeline-content">
-            <div class="timeline-title">AI & Automation</div>
-            <div class="timeline-desc">Tích hợp AI vào quản lý hạ tầng, tự động hóa 80% quy trình vận hành</div>
-          </div>
-        </div>
-        <div class="timeline-item" style="animation-delay:.8s">
-          <div class="timeline-year">2024</div>
-          <div class="timeline-content">
-            <div class="timeline-title">Global Expansion</div>
-            <div class="timeline-desc">Mở rộng đến 24 quốc gia, phục vụ 18.000+ triển khai hạ tầng</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="executive-suite reveal" id="executiveSuite">
-      <div class="suite-heading">
-        <div class="eyebrow">Executive Command Center</div>
-        <h2>Digital HQ của bạn — mọi thứ realtime trên một màn hình.</h2>
-        <p>Bên dưới là toàn bộ hệ tiện ích productivity + link hub cũ, được giữ nguyên nhưng phủ lớp giao diện mới để bạn vừa khoe năng lực, vừa quản lý công việc cá nhân.</p>
-      </div>
-    <!-- Header -->
-    <section class="card header">
-      <div class="avatar"></div>
-      <div class="title">MTD VPS</div>
-      <div class="subtitle">Cloud VPS • Proxy • Hosting • Tools</div>
-      <div class="social-links">
-        <a href="mailto:support@mtdvps.com" title="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://www.tiktok.com/@ducvps001" title="TikTok"><i class="fab fa-tiktok"></i></a>
-        <a href="https://www.youtube.com/@ducvps1com" title="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="https://www.facebook.com/ducvps123/?locale=vi_VN" title="Facebook"><i class="fab fa-facebook"></i></a>
-      </div>
-      <div class="search-row">
-        <input id="searchInput" class="input" type="text" placeholder="Tìm liên kết… (vps, proxy, shop)" oninput="filterLinks()"/>
-        <button class="mini" onclick="resetFilter()"><i class="fas fa-times"></i></button>
-      </div>
-    </section>
-    <!-- Top widgets -->
-    <section class="grid grid-3">
-      <div class="widget">
-        <h4>⏰ Đồng hồ</h4>
-        <div class="clock" id="clock">--:--:--</div>
-      </div>
-      <div class="widget weather">
-        <h4>🌤️ Thời tiết</h4>
-        <div id="weatherMain">Đang tải…</div>
-        <small id="weatherSub"></small>
-      </div>
-      <div class="widget">
-        <h4>⏱ Pomodoro</h4>
-        <div style="font-weight:800;font-size:1.2rem" id="pomoTime">25:00</div>
-        <div style="display:flex;gap:6px;margin-top:6px">
-          <select id="pomoWork" class="input" style="max-width:90px"><option>25</option><option>30</option><option>45</option></select>
-          <select id="pomoBreak" class="input" style="max-width:90px"><option>5</option><option>10</option><option>15</option></select>
-          <button class="pill-btn" onclick="startPomo()">Start</button>
-          <button class="pill-btn" onclick="stopPomo()">Stop</button>
-        </div>
-        <small id="pomoLabel" style="color:var(--muted)">Chế độ: Work</small>
-      </div>
-    </section>
-
-    <!-- Quote -->
-    <section class="quote card" id="quoteBox">“Loading quote…”</section>
-
-    <!-- LINKS -->
-    <section class="card" id="linksWrap" style="padding:8px 0 10px;margin-top:12px">
-      <!-- sample links -->
-      <a class="link" href="https://mtdvps.com" data-id="mtdvps" data-url="https://mtdvps.com" onclick="track(event)">
-        <div class="icon"><i class="fas fa-cloud"></i></div>
-        <div class="txt"><div class="h">MTDVPS.COM</div><div class="s">Cloud VPS, Proxy, Mã nguồn, Hosting</div></div>
-        <div class="tools"><div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div><div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div></div>
-      </a>
-      <a class="link" href="https://wescan.vn/mtdlive" data-id="wescan" data-url="https://wescan.vn/mtdlive" onclick="track(event)">
-        <div class="icon"><i class="fas fa-donate"></i></div>
-        <div class="txt"><div class="h">wescan.vn/mtdlive</div><div class="s">Donate qua wescan</div></div>
-        <div class="tools"><div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div><div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div></div>
-      </a>
-      <a class="link" href="https://mtdproxy.com" data-id="mtdproxy" data-url="https://mtdproxy.com" onclick="track(event)">
-        <div class="icon"><i class="fas fa-shield-alt"></i></div>
-        <div class="txt"><div class="h">mtdproxy.com</div><div class="s">Proxy IPv4/IPv6 tĩnh & xoay</div></div>
-        <span class="chip">-50% HOT</span>
-        <div class="tools"><div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div><div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div></div>
-      </a>
-      <a class="link" href="https://mtdshop247.com/" data-id="mtdshop" data-url="https://mtdshop247.com/" onclick="track(event)">
-        <div class="icon"><i class="fas fa-store"></i></div>
-        <div class="txt"><div class="h">mtdshop247.com</div><div class="s">Dịch vụ MXH, tài khoản premium</div></div>
-        <div class="tools"><div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div><div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div></div>
-      </a>
-      <a class="link" href="https://hci.mtdvps.com/" data-id="hci" data-url="https://hci.mtdvps.com/" onclick="track(event)">
-        <div class="icon"><i class="fas fa-server"></i></div>
-        <div class="txt"><div class="h">hci.mtdvps.com</div><div class="s">CLOUD VPS Doanh Nghiệp</div></div>
-        <div class="tools"><div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div><div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div></div>
-      </a>
-
-          
-  <a class="link" href="https://mtdgame.com/" data-id="hci" data-url="https://mtdgame.com/" onclick="track(event)">
-        <div class="icon"><i class="fas fa-server"></i></div>
-        <div class="txt"><div class="h">mtdgame.com</div><div class="s">shop game lq, ff đa nền tảng, thanh lý thu mua và tư vấn thêm liên hệ zalo : 0376263452 </div></div>
-        <div class="tools"><div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div><div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div></div>
-      </a>
-
-            
-  <a class="link" href="https://shopvpn4g.vn/" data-id="hci" data-url="https://shopvpn4g.vn/" onclick="track(event)">
-        <div class="icon"><i class="fas fa-server"></i></div>
-        <div class="txt"><div class="h">shopvpn4g.vn</div><div class="s">VPN 4G 5G </div></div>
-        <div class="tools"><div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div><div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div></div>
-      </a>
-
-      
-  <a class="link" href="https://dataquocte.com/" data-id="hci" data-url="https://dataquocte.com/" onclick="track(event)">
-        <div class="icon"><i class="fas fa-server"></i></div>
-        <div class="txt"><div class="h">dataquocte.com</div><div class="s">VPN Mở khóa tất cả Mạng Xã Hội</div></div>
-        <div class="tools"><div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div><div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div></div>
-      </a>
-
-      
-      <a class="link" href="https://zalo.me/g/afdrwb295" data-id="zalo" data-url="https://zalo.me/g/afdrwb295" onclick="track(event)">
-        <div class="icon"><i class="fas fa-comments"></i></div>
-        <div class="txt"><div class="h">Nhóm Zalo Support</div><div class="s">Ưu đãi & hỗ trợ</div></div>
-        <div class="tools"><div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div><div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div></div>
-      </a>
-
-
-       <a class="link" href="https://discord.gg/Mumgffrp5b" data-id="zalo" data-url="https://zalo.me/g/afdrwb295" onclick="track(event)">
-        <div class="icon"><i class="fas fa-comments"></i></div>
-        <div class="txt"><div class="h">Discord Server </div><div class="s">Ưu đãi & hỗ trợ</div></div>
-        <div class="tools"><div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div><div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div></div>
-      </a>
-
-
-      
-    </section>
-    <!-- Analytics -->
-    <section class="stats card" style="padding:14px">
-      <h4 style="margin-bottom:8px;color:var(--brand)">📊 Lượt click (local)</h4>
-      <table id="statTable"><thead><tr><th>Link</th><th>Lượt click</th></tr></thead><tbody></tbody></table>
-      <div style="margin-top:6px;font-size:.85rem;color:var(--muted)">* Lưu cục bộ trên thiết bị.</div>
-    </section>
-
-    <!-- Tools for forgetful humans -->
-    <section class="grid grid-2" style="margin-top:14px">
-      <!-- To-Do + ICS -->
-      <div class="card todo">
-        <h3>✅ To-Do & Nhắc hạn</h3>
-        <div class="todo-input">
-          <input id="taskInput" type="text" placeholder="Nội dung…" />
-          <input id="dueDateInput" type="date" />
-          <select id="dueTimeInput">
-            <option value="">--Giờ--</option>
-            <!-- hours -->
-          </select>
-          <select id="repeatInput">
-            <option value="none">Không lặp</option>
-            <option value="daily">Hàng ngày</option>
-            <option value="weekly">Hàng tuần</option>
-          </select>
-          <button onclick="addTask()">Thêm</button>
-          <button class="pill-btn" onclick="exportICS()">Xuất .ICS</button>
-        </div>
-        <div class="list" id="todoList"></div>
-        <div id="todoReport" style="margin-top:8px;color:var(--bad);font-weight:600"></div>
+    <div class="link-grid" id="linkContainer">
       </div>
 
-      <!-- Reminder Center -->
-      <div class="card todo">
-        <h3>🔔 Reminder Center</h3>
-        <div class="todo-input">
-          <input id="remText" type="text" placeholder="Nhắc: uống nước, họp, gọi KH…" />
-          <input id="remDate" type="date" />
-          <input id="remTime" type="time" />
-          <select id="remRepeat">
-            <option value="none">Không lặp</option>
-            <option value="daily">Hàng ngày</option>
-            <option value="weekly">Hàng tuần</option>
-          </select>
-          <button onclick="addReminder()">Đặt nhắc</button>
-        </div>
-        <div class="list" id="remList"></div>
-        <small style="color:var(--muted)">* Tab phải mở để hẹn giờ hoạt động. Bật “Thông báo” để nhận popup desktop.</small>
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-num">18K+</div>
+        <div class="stat-label">Khách hàng</div>
       </div>
-    </section>
-
-    <section class="grid grid-2" style="margin-top:14px">
-      <!-- Hydration & Stretch -->
-      <div class="card widget">
-        <h4>💧 Uống nước / 🧍 Giãn cơ</h4>
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <label>Chu kỳ (phút): <input id="hydrInt" type="number" min="5" value="30" class="input" style="max-width:90px"></label>
-          <button class="pill-btn" onclick="toggleHydration()"><span id="hydrBtnTxt">Bật nhắc uống nước</span></button>
-        </div>
-        <div style="margin-top:6px">Trạng thái: <b id="hydrStatus">Tắt</b></div>
-
-        <div style="height:8px"></div>
-
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <label>Chu kỳ (phút): <input id="strInt" type="number" min="15" value="60" class="input" style="max-width:90px"></label>
-          <button class="pill-btn" onclick="toggleStretch()"><span id="strBtnTxt">Bật nhắc giãn cơ</span></button>
-        </div>
-        <div style="margin-top:6px">Trạng thái: <b id="strStatus">Tắt</b></div>
+      <div class="stat-item">
+        <div class="stat-num">99.9%</div>
+        <div class="stat-label">Uptime</div>
       </div>
-
-      <!-- Birthday tracker -->
-      <div class="card todo">
-        <h3>🎂 Birthday Tracker</h3>
-        <div class="todo-input">
-          <input id="bdName" type="text" placeholder="Tên…" />
-          <input id="bdDate" type="date" />
-          <button onclick="addBirthday()">Thêm</button>
-        </div>
-        <div class="list" id="bdList"></div>
+      <div class="stat-item">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Support</div>
       </div>
-    </section>
+    </div>
 
-    <section class="grid grid-2" style="margin-top:14px">
-      <!-- Notes -->
-      <div class="card notes" style="padding:14px">
-        <h3>📝 Sticky Notes</h3>
-        <textarea id="noteBox" placeholder="Viết nhanh điều cần nhớ… (tự lưu)"></textarea>
-        <div style="display:flex;gap:8px;margin-top:8px">
-          <button class="pill-btn" onclick="clearNotes()" style="background:#b91c1c">Xóa ghi chú</button>
-          <button class="pill-btn" onclick="downloadText()">Tải .txt</button>
-        </div>
-      </div>
+    <div style="text-align: center; margin-top: 40px; color: var(--text-muted); font-size: 13px;">
+      © 2025 MTD Group. All rights reserved.<br>Designed for High Performance.
+    </div>
+  </div>
 
-      <!-- Backup / Restore -->
-      <div class="card widget">
-        <h3>💾 Sao lưu & Phục hồi</h3>
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <button class="pill-btn" onclick="exportBackup()">Xuất dữ liệu (.json)</button>
-          <label class="pill-btn" style="cursor:pointer">
-            Nhập dữ liệu
-            <input id="importFile" type="file" accept="application/json" style="display:none" onchange="importBackup(event)">
-          </label>
-        </div>
-        <small style="color:var(--muted)">Bao gồm: To-do, Reminders, Stats, Birthdays, Notes, cài đặt nhắc uống nước/giãn cơ, Dark/Light.</small>
-      </div>
-    </section>
+  <button class="admin-trigger" onclick="toggleAdmin()"><i class="fas fa-cog"></i></button>
 
-    </section>
-
-    <section class="cta-banner reveal">
-      <h3>Sẵn sàng trình diễn hạ tầng doanh nghiệp theo phong cách bố đời?</h3>
-      <p>Bấm đặt lịch demo hoặc kéo xuống dùng ngay các công cụ productivity tích hợp. Trang đã sẵn sàng deploy GitHub Pages/Cloudflare Pages.</p>
-      <div class="hero-cta" style="justify-content:center">
-        <a class="neo-btn" href="mailto:support@mtdvps.com?subject=Demo%20Landing%20Pro">Book demo ngay</a>
-        <button class="neo-btn secondary" onclick="window.scrollTo({top:0,behavior:'smooth'})">Lên đỉnh trang</button>
-      </div>
-    </section>
-
-  <footer class="footer" role="contentinfo">
-    MTD VPS • <a href="https://mtdvps.com" style="color:#fff;text-decoration:underline">mtdvps.com</a>
-  </footer>
-  </main>
-
-  <button class="to-top" id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
-
-  <!-- QR Modal -->
   <div class="modal" id="qrModal" onclick="closeQR(event)">
-    <div class="box card" onclick="event.stopPropagation()">
-      <h3>Quét QR để mở liên kết</h3>
-      <div class="qr-wrap" id="qrcode"></div>
-      <div id="qrUrl" style="font-size:.85rem;word-break:break-all;color:#334155"></div>
-      <button class="pill-btn close-btn" onclick="document.getElementById('qrModal').classList.remove('active')">Đóng</button>
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <h3 style="margin-bottom: 10px; color: #fff;">Quét mã truy cập</h3>
+      <p style="color: var(--text-muted); font-size: 13px;" id="qrUrlDisplay"></p>
+      <div class="qr-code" id="qrCanvas"></div>
+      <button onclick="document.getElementById('qrModal').classList.remove('active')" style="background: var(--dark); color: #fff; border: 1px solid var(--border); padding: 10px 24px; border-radius: 12px; cursor: pointer;">Đóng</button>
     </div>
   </div>
 
-  <!-- Admin Panel -->
-  <div class="admin-panel" id="adminPanel">
-    <div class="admin-box card">
-      <div class="admin-header">
-        <h2>⚙️ Quản lý Link Bio</h2>
-        <button class="pill-btn" onclick="toggleAdmin()">✕ Đóng</button>
-      </div>
-
-      <div class="admin-tabs">
-        <div class="admin-tab active" onclick="switchTab('links')">🔗 Links</div>
-        <div class="admin-tab" onclick="switchTab('profile')">👤 Hồ sơ</div>
-        <div class="admin-tab" onclick="switchTab('theme')">🎨 Giao diện</div>
-      </div>
-
-      <!-- Links Management -->
-      <div class="admin-section active" id="section-links">
-        <h3 style="margin-bottom:12px">Quản lý Links</h3>
-        <button class="pill-btn" onclick="showAddLink()" style="margin-bottom:16px">➕ Thêm Link Mới</button>
-        
-        <div id="linksList"></div>
-
-        <!-- Add/Edit Form -->
-        <div id="linkForm" style="display:none;margin-top:20px;padding:16px;border:2px solid var(--brand);border-radius:12px">
-          <h4 id="formTitle">Thêm Link Mới</h4>
-          <input type="hidden" id="editIndex" value="">
-          <div class="form-group">
-            <label>Tiêu đề</label>
-            <input type="text" id="linkTitle" placeholder="VD: MTDVPS.COM">
-          </div>
-          <div class="form-group">
-            <label>Mô tả</label>
-            <input type="text" id="linkDesc" placeholder="VD: Cloud VPS, Proxy...">
-          </div>
-          <div class="form-group">
-            <label>URL</label>
-            <input type="url" id="linkUrl" placeholder="https://...">
-          </div>
-          <div class="form-group">
-            <label>Icon (Font Awesome class)</label>
-            <input type="text" id="linkIcon" placeholder="fas fa-cloud" value="fas fa-link">
-          </div>
-          <div class="form-group">
-            <label>Badge (tùy chọn)</label>
-            <input type="text" id="linkBadge" placeholder="VD: -50% HOT">
-          </div>
-          <div style="display:flex;gap:8px">
-            <button class="pill-btn" onclick="saveLink()">💾 Lưu</button>
-            <button class="pill-btn" onclick="cancelLinkForm()" style="background:#6b7280">Hủy</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Profile Settings -->
-      <div class="admin-section" id="section-profile">
-        <h3 style="margin-bottom:12px">Thông tin hồ sơ</h3>
-        <div class="form-group">
-          <label>Tên hiển thị</label>
-          <input type="text" id="profileName" placeholder="MTD VPS">
-        </div>
-        <div class="form-group">
-          <label>Mô tả</label>
-          <input type="text" id="profileDesc" placeholder="Cloud VPS • Proxy • Hosting">
-        </div>
-        <div class="form-group">
-          <label>Avatar URL</label>
-          <input type="url" id="profileAvatar" placeholder="https://i.imgur.com/...">
-        </div>
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" id="profileEmail" placeholder="support@mtdvps.com">
-        </div>
-        <div class="form-group">
-          <label>Facebook</label>
-          <input type="url" id="profileFacebook" placeholder="https://facebook.com/...">
-        </div>
-        <div class="form-group">
-          <label>YouTube</label>
-          <input type="url" id="profileYoutube" placeholder="https://youtube.com/@...">
-        </div>
-        <div class="form-group">
-          <label>TikTok</label>
-          <input type="url" id="profileTiktok" placeholder="https://tiktok.com/@...">
-        </div>
-        <button class="pill-btn" onclick="saveProfile()">💾 Lưu hồ sơ</button>
-      </div>
-
-      <!-- Theme Settings -->
-      <div class="admin-section" id="section-theme">
-        <h3 style="margin-bottom:12px">Tùy chỉnh giao diện</h3>
-        <div class="form-group">
-          <label>Màu nền gradient</label>
-          <div class="color-picker">
-            <div class="color-option" style="background:linear-gradient(-45deg,#ee7752,#e73c7e,#23a6d5,#23d5ab)" data-theme="default"></div>
-            <div class="color-option" style="background:linear-gradient(-45deg,#667eea,#764ba2,#f093fb,#4facfe)" data-theme="purple"></div>
-            <div class="color-option" style="background:linear-gradient(-45deg,#fa709a,#fee140,#30cfd0,#330867)" data-theme="sunset"></div>
-            <div class="color-option" style="background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#0f2027)" data-theme="dark"></div>
-            <div class="color-option" style="background:linear-gradient(-45deg,#56ab2f,#a8e063,#56ccf2,#2f80ed)" data-theme="nature"></div>
-          </div>
-        </div>
-        <button class="pill-btn" onclick="saveTheme()">💾 Lưu giao diện</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- QR library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <script>
-    /* ===== Utils ===== */
-    const $ = s=>document.querySelector(s);
-    const $$ = s=>document.querySelectorAll(s);
-    const LS = (k,v)=>v===undefined?JSON.parse(localStorage.getItem(k)||'null'):(localStorage.setItem(k, JSON.stringify(v)),v);
-    function toast(msg){
-      const el = document.createElement('div');
-      el.textContent = msg;
-      el.style.cssText = `position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:#111827;color:#fff;padding:10px 14px;border-radius:10px;box-shadow:0 12px 24px rgba(0,0,0,.25);z-index:1300;opacity:0;transition:.25s`;
-      document.body.appendChild(el);
-      requestAnimationFrame(()=>{el.style.opacity=1;});
-      setTimeout(()=>{el.style.opacity=0; setTimeout(()=>el.remove(),250)},1700);
-    }
-    function requestNotif(){
-      if(!('Notification' in window)) return toast('Trình duyệt không hỗ trợ Notification');
-      Notification.requestPermission().then(p=>toast(p==='granted'?'Đã bật thông báo':'Không cấp quyền'));
-    }
-    function notify(title, body){
-      if(!('Notification' in window)) return;
-      if(Notification.permission==='granted'){ new Notification(title,{body}); }
-    }
-    function fmt2(n){return String(n).padStart(2,'0')}
-
-    /* ===== Sidebar + mode ===== */
-    function toggleSidebar(){ $('#sidebar').classList.toggle('active'); $('#overlay').classList.toggle('active'); }
-    (function initMode(){ const saved = LS('mtd_mode')||'light'; if(saved==='dark'){document.body.classList.add('dark'); $('#modeText').textContent='Light';} })();
-    function toggleMode(){ document.body.classList.toggle('dark'); const isDark=document.body.classList.contains('dark'); LS('mtd_mode', isDark?'dark':'light'); $('#modeText').textContent=isDark?'Light':'Dark'; }
-
-    /* ===== Back to top ===== */
-    const toTop = $('#toTop'); window.addEventListener('scroll', ()=>{ if(window.scrollY>300) toTop.classList.add('show'); else toTop.classList.remove('show'); });
-
-    /* ===== Clock ===== */
-    function updateClock(){ const now=new Date(); $('#clock').textContent=`${fmt2(now.getHours())}:${fmt2(now.getMinutes())}:${fmt2(now.getSeconds())}`; }
-    setInterval(updateClock, 1000); updateClock();
-
-    /* ===== Weather (Open-Meteo) ===== */
-    async function loadWeather(){
-      let lat=21.0278, lon=105.8342, label="Hà Nội";
-      if(navigator.geolocation){ try{ const pos = await new Promise((res,rej)=>navigator.geolocation.getCurrentPosition(res,rej,{timeout:2500})); lat=pos.coords.latitude; lon=pos.coords.longitude; label="Vị trí của bạn"; }catch(e){} }
-      try{ const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=auto`); const d=await r.json(); const cw=d.current_weather;
-        const map={0:'Trời quang',1:'Ít mây',2:'Mây vừa',3:'Nhiều mây',45:'Sương mù',51:'Mưa phùn',61:'Mưa nhẹ',63:'Mưa vừa',65:'Mưa to',80:'Mưa rào'}; 
-        $('#weatherMain').textContent=`${Math.round(cw.temperature)}°C • ${map[cw.weathercode]||'Thời tiết'}`; $('#weatherSub').textContent=`${label} • Gió ${Math.round(cw.windspeed)} km/h`;
-      }catch(e){ $('#weatherMain').textContent='Không tải được thời tiết'; $('#weatherSub').textContent=''; }
-    } loadWeather();
-
-    /* ===== Quote ===== */
-    const quotes=["Thành công = 1% tài năng + 99% nỗ lực 💪","Muốn đi nhanh hãy đi một mình. Muốn đi xa hãy đi cùng nhau 🚀","Cơ hội không tự đến — hãy tạo ra nó 🔥","Không có thất bại, chỉ có bài học 📘","Kỷ luật là cầu nối giữa mục tiêu và thành tựu."];
-    $('#quoteBox').textContent = quotes[Math.floor(Math.random()*quotes.length)];
-
-    /* ===== Link filter + analytics ===== */
-    function filterLinks(){ const q=$('#searchInput').value.trim().toLowerCase(); $$('#linksWrap .link').forEach(a=>{ a.style.display = a.innerText.toLowerCase().includes(q)?'':'none'; }); }
-    function resetFilter(){ $('#searchInput').value=''; filterLinks(); }
-    const STAT_KEY='mtd_click_stats'; const stats=LS(STAT_KEY) || {};
-    function track(e){ const id=e.currentTarget.dataset.id; stats[id]=(stats[id]||0)+1; LS(STAT_KEY,stats); renderStats(); }
-    function renderStats(){ const tbody=$('#statTable tbody'); tbody.innerHTML=''; $$('#linksWrap .link').forEach(a=>{ const id=a.dataset.id; const name=a.querySelector('.h').textContent; const tr=document.createElement('tr'); tr.innerHTML=`<td>${name}</td><td>${stats[id]||0}</td>`; tbody.appendChild(tr); }); }
-    renderStats();
-
-    /* ===== QR + Copy ===== */
-    let qr;
-    function openQR(ev){ ev.stopPropagation(); ev.preventDefault(); const a=ev.currentTarget.closest('.link'); const url=a.dataset.url; $('#qrModal').classList.add('active'); $('#qrUrl').textContent=url; const box=$('#qrcode'); box.innerHTML=''; qr=new QRCode(box,{text:url,width:220,height:220,correctLevel:QRCode.CorrectLevel.M}); }
-    function closeQR(ev){ if(ev.target.id==='qrModal') $('#qrModal').classList.remove('active'); }
-    async function copyURL(ev){ ev.stopPropagation(); ev.preventDefault(); const a=ev.currentTarget.closest('.link'); const url=a.dataset.url; try{ await navigator.clipboard.writeText(url); toast('Đã copy link!'); }catch{ toast('Copy không thành công'); } }
-
-    /* ===== Populate time options for To-do ===== */
-    (function(){ const t=$('#dueTimeInput'); t.innerHTML='<option value="">--Giờ--</option>'; for(let h=0;h<24;h++){ for(let m of [0,15,30,45]){ const v=`${fmt2(h)}:${fmt2(m)}`; const o=document.createElement('option'); o.value=v; o.textContent=v; t.appendChild(o);} } })();
-
-    /* ===== To-do ===== */
-    let tasks = LS('mtd_tasks') || [];
-    function saveTasks(){ LS('mtd_tasks',tasks); }
-    function renderTasks(){
-      const wrap=$('#todoList'), report=$('#todoReport'); wrap.innerHTML=''; let overdue=0; const now=new Date();
-      tasks.forEach((t,i)=>{ const li=document.createElement('div'); li.className='item';
-        const dueStr = t.deadline?` (${t.deadline}${t.time?(' '+t.time):''})`:''; 
-        const isOver = t.deadline && !t.completed && new Date(`${t.deadline} ${t.time||'23:59'}`) < now;
-        if(t.completed) li.classList.add('completed'); else if(isOver){ li.classList.add('overdue'); overdue++; }
-        li.innerHTML = `
-          <input type="checkbox" ${t.completed?'checked':''} onclick="toggleTask(${i})">
-          <span>${t.text}${dueStr}${t.repeat&&t.repeat!=='none'?' • <i>'+t.repeat+'</i>':''}</span>
-          <button class="x" onclick="delTask(${i})">Xóa</button>
-        `;
-        wrap.appendChild(li);
-      });
-      report.textContent = overdue?`⚠️ ${overdue} nhiệm vụ đã quá hạn!`: '';
-    }
-    function addTask(){
-      const text=$('#taskInput').value.trim(), date=$('#dueDateInput').value, time=$('#dueTimeInput').value, rep=$('#repeatInput').value;
-      if(!text){ toast('Nhập nội dung'); return; }
-      tasks.push({text, deadline:date||'', time:time||'', repeat:rep, completed:false});
-      saveTasks(); renderTasks(); $('#taskInput').value=''; $('#dueDateInput').value=''; $('#dueTimeInput').value=''; $('#repeatInput').value='none';
-    }
-    function toggleTask(i){ tasks[i].completed=!tasks[i].completed; saveTasks(); renderTasks(); }
-    function delTask(i){ tasks.splice(i,1); saveTasks(); renderTasks(); }
-    renderTasks(); setInterval(renderTasks, 60000);
-
-    /* ===== Export .ICS (To-do + Reminders) ===== */
-    function icsEscape(s){return (s||'').replace(/[,;]/g,'\\$&')}
-    function exportICS(){
-      let lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//MTD VPS LinkBio//VI'];
-      const addEvent=(t,dt,desc)=>{ if(!dt) return; const dtstr=dt.replace(/[-:]/g,'').replace(' ','T')+'00'; lines.push('BEGIN:VEVENT',`UID:${crypto.randomUUID()}@mtdvps`,`DTSTAMP:${dtstr}Z`,`DTSTART:${dtstr}Z`, `SUMMARY:${icsEscape(t)}`, `DESCRIPTION:${icsEscape(desc||'')}`,'END:VEVENT'); };
-      tasks.forEach(x=>{ if(x.deadline){ const dt = x.deadline+(x.time?(' '+x.time):' 09:00'); addEvent(x.text, dt, 'To-Do'); } });
-      (LS('mtd_reminders')||[]).forEach(r=>{ const dt=r.date+' '+r.time; addEvent('Reminder: '+r.text, dt, r.repeat!=='none'?'Repeat: '+r.repeat:''); });
-      lines.push('END:VCALENDAR');
-      const blob=new Blob([lines.join('\n')],{type:'text/calendar'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='mtd-linkbio.ics'; a.click(); URL.revokeObjectURL(a.href);
-    }
-
-    /* ===== Reminder Center ===== */
-    let reminders = LS('mtd_reminders') || [];
-    let remTimers = {}; // id -> timeoutId
-    function saveRem(){ LS('mtd_reminders',reminders); }
-    function addReminder(){
-      const text=$('#remText').value.trim(), date=$('#remDate').value, time=$('#remTime').value, rep=$('#remRepeat').value;
-      if(!text||!date||!time){ toast('Nhập đủ nội dung, ngày, giờ'); return; }
-      const id=crypto.randomUUID();
-      reminders.push({id,text,date,time,repeat:rep,done:false}); saveRem(); renderReminders(); scheduleReminder(id);
-      $('#remText').value=''; $('#remDate').value=''; $('#remTime').value=''; $('#remRepeat').value='none';
-      toast('Đã đặt nhắc');
-    }
-    function renderReminders(){
-      const wrap=$('#remList'); wrap.innerHTML='';
-      reminders.sort((a,b)=> (a.date+a.time).localeCompare(b.date+b.time));
-      reminders.forEach((r,i)=>{
-        const due = new Date(`${r.date} ${r.time}`), now=new Date(), left = Math.max(0, due-now); 
-        const mins = Math.floor(left/60000), label = left?`${mins} phút nữa`:'Đến hạn';
-        const div=document.createElement('div'); div.className='item'; if(left===0) div.classList.add('warn');
-        div.innerHTML = `
-          <span><b>${r.text}</b> — ${r.date} ${r.time} (${r.repeat}) • <i>${label}</i></span>
-          <button class="pill-btn" onclick="snooze('${r.id}',5)">Snooze 5'</button>
-          <button class="x" onclick="delReminder('${r.id}')">Xóa</button>
-        `;
-        wrap.appendChild(div);
-      });
-    }
-    function scheduleReminder(id){
-      const r=reminders.find(x=>x.id===id); if(!r) return;
-      clearTimeout(remTimers[id]);
-      const due = new Date(`${r.date} ${r.time}`).getTime(), now=Date.now(), wait = due-now;
-      if(wait<=0){ fireReminder(r); return; }
-      remTimers[id]=setTimeout(()=>fireReminder(r), wait);
-    }
-    function fireReminder(r){
-      notify('🔔 Reminder', `${r.text} — ${r.date} ${r.time}`);
-      toast('Nhắc: '+r.text);
-      // repeat
-      if(r.repeat==='daily' || r.repeat==='weekly'){
-        const d=new Date(`${r.date} ${r.time}`);
-        if(r.repeat==='daily') d.setDate(d.getDate()+1);
-        else d.setDate(d.getDate()+7);
-        r.date = d.toISOString().slice(0,10);
-        r.time = d.toTimeString().slice(0,5);
-        saveRem(); renderReminders(); scheduleReminder(r.id);
+    /* --- DỮ LIỆU LINK (Bạn sửa ở đây là xong) --- */
+    const defaultLinks = [
+      {
+        id: 'mtdvps',
+        title: 'MTDVPS.COM',
+        desc: 'Cloud VPS, Proxy, Hosting, Mã nguồn',
+        url: 'https://mtdvps.com',
+        icon: 'fas fa-cloud',
+        badge: 'CHÍNH',
+        featured: true
+      },
+      {
+        id: 'hci',
+        title: 'HCI Enterprise VPS',
+        desc: 'Giải pháp Cloud VPS doanh nghiệp hiệu năng cao',
+        url: 'https://hci.mtdvps.com/',
+        icon: 'fas fa-server',
+        badge: 'VIP',
+        featured: true
+      },
+      {
+        id: 'mtdproxy',
+        title: 'MTD Proxy',
+        desc: 'Hệ thống Proxy IPv4/IPv6 tĩnh & xoay',
+        url: 'https://mtdproxy.com',
+        icon: 'fas fa-shield-alt',
+        badge: 'HOT'
+      },
+      {
+        id: 'mtdshop',
+        title: 'MTD Shop 247',
+        desc: 'Dịch vụ MXH, Tài khoản Premium, Tool',
+        url: 'https://mtdshop247.com/',
+        icon: 'fas fa-shopping-cart',
+        badge: ''
+      },
+      {
+        id: 'mtdgame',
+        title: 'MTD Game Store',
+        desc: 'Shop acc LQ, FF, Thu mua & Thanh lý',
+        url: 'https://mtdgame.com/',
+        icon: 'fas fa-gamepad',
+        badge: 'NEW'
+      },
+      {
+        id: 'vpn4g',
+        title: 'Shop VPN 4G',
+        desc: 'Giải pháp mạng 4G/5G tốc độ cao',
+        url: 'https://shopvpn4g.vn/',
+        icon: 'fas fa-wifi',
+        badge: ''
+      },
+      {
+        id: 'data',
+        title: 'Data Quốc Tế',
+        desc: 'VPN mở khóa mạng xã hội global',
+        url: 'https://dataquocte.com/',
+        icon: 'fas fa-globe',
+        badge: ''
+      },
+      {
+        id: 'wescan',
+        title: 'Ủng hộ / Donate',
+        desc: 'Cổng donate qua Wescan/MTDLive',
+        url: 'https://wescan.vn/mtdlive',
+        icon: 'fas fa-coffee',
+        badge: ''
+      },
+      {
+        id: 'zalo',
+        title: 'Nhóm Zalo Hỗ Trợ',
+        desc: 'Cập nhật ưu đãi & Support nhanh',
+        url: 'https://zalo.me/g/afdrwb295',
+        icon: 'fas fa-comments',
+        color: '#2563eb',
+        badge: ''
+      },
+      {
+        id: 'discord',
+        title: 'Discord Community',
+        desc: 'Tham gia cộng đồng MTD',
+        url: 'https://discord.gg/Mumgffrp5b',
+        icon: 'fab fa-discord',
+        color: '#5865F2',
+        badge: ''
       }
-    }
-    function snooze(id,mins){
-      const r=reminders.find(x=>x.id===id); if(!r) return;
-      const d=new Date(); d.setMinutes(d.getMinutes()+mins);
-      r.date=d.toISOString().slice(0,10); r.time=d.toTimeString().slice(0,5);
-      saveRem(); renderReminders(); scheduleReminder(id); toast(`Snooze ${mins} phút`);
-    }
-    function delReminder(id){ reminders = reminders.filter(x=>x.id!==id); saveRem(); renderReminders(); clearTimeout(remTimers[id]); }
-    // init schedules
-    reminders.forEach(r=>scheduleReminder(r.id)); renderReminders();
+    ];
 
-    /* ===== Hydration / Stretch ===== */
-    let hydrTimer=null, strTimer=null;
-    function toggleHydration(){
-      if(hydrTimer){ clearInterval(hydrTimer); hydrTimer=null; LS('hydr_on',false); $('#hydrStatus').textContent='Tắt'; $('#hydrBtnTxt').textContent='Bật nhắc uống nước'; return; }
-      const mins=parseInt($('#hydrInt').value||30,10); hydrTimer=setInterval(()=>{ notify('💧 Uống nước','Đặt cốc nước xuống và làm 3 ngụm nhé!'); toast('💧 Uống nước!'); }, mins*60000);
-      LS('hydr_on',true); LS('hydr_int',mins); $('#hydrStatus').textContent='Bật'; $('#hydrBtnTxt').textContent='Tắt nhắc uống nước'; toast('Đã bật nhắc uống nước');
-    }
-    function toggleStretch(){
-      if(strTimer){ clearInterval(strTimer); strTimer=null; LS('str_on',false); $('#strStatus').textContent='Tắt'; $('#strBtnTxt').textContent='Bật nhắc giãn cơ'; return; }
-      const mins=parseInt($('#strInt').value||60,10); strTimer=setInterval(()=>{ notify('🧍 Giãn cơ','Đứng dậy vươn vai/đi lại 1-2 phút'); toast('🧍 Giãn cơ!'); }, mins*60000);
-      LS('str_on',true); LS('str_int',mins); $('#strStatus').textContent='Bật'; $('#strBtnTxt').textContent='Tắt nhắc giãn cơ'; toast('Đã bật nhắc giãn cơ');
-    }
-    // restore hydration/stretch
-    (function(){
-      const ho=LS('hydr_on'), hi=LS('hydr_int')||30; $('#hydrInt').value=hi;
-      if(ho){ toggleHydration(); } // will set interval & update UI
-      const so=LS('str_on'), si=LS('str_int')||60; $('#strInt').value=si;
-      if(so){ toggleStretch(); }
-    })();
+    // Local Storage Handling
+    let links = JSON.parse(localStorage.getItem('mtd_links_v2')) || defaultLinks;
 
-    /* ===== Birthday tracker ===== */
-    let bds = LS('mtd_birthdays') || [];
-    function saveBD(){ LS('mtd_birthdays', bds); }
-    function nextBD(d){ // d: 'YYYY-MM-DD'
-      const [Y,M,Da]=d.split('-').map(Number); const now=new Date();
-      let next = new Date(now.getFullYear(), M-1, Da);
-      if(next < new Date(now.getFullYear(), now.getMonth(), now.getDate())) next.setFullYear(next.getFullYear()+1);
-      const days=Math.ceil((next - now)/(1000*60*60*24)); return {next, days};
-    }
-    function renderBD(){
-      const wrap=$('#bdList'); wrap.innerHTML='';
-      bds.sort((a,b)=> nextBD(a.date).days - nextBD(b.date).days);
-      bds.forEach((x,i)=>{ const info=nextBD(x.date); const div=document.createElement('div'); div.className='item'; div.innerHTML=`<span><b>${x.name}</b> — ${x.date} • Còn <b>${info.days}</b> ngày</span><button class="x" onclick="delBirthday(${i})">Xóa</button>`; wrap.appendChild(div); });
-    }
-    function addBirthday(){ const n=$('#bdName').value.trim(), d=$('#bdDate').value; if(!n||!d){ toast('Nhập tên và ngày'); return; } bds.push({name:n,date:d}); saveBD(); renderBD(); $('#bdName').value=''; $('#bdDate').value=''; }
-    function delBirthday(i){ bds.splice(i,1); saveBD(); renderBD(); }
-    renderBD();
+    const container = document.getElementById('linkContainer');
+    const searchInput = document.getElementById('searchInput');
 
-    /* ===== Notes ===== */
-    const noteKey='mtd_notes'; $('#noteBox').value = LS(noteKey) || ''; $('#noteBox').addEventListener('input', e=>LS(noteKey, e.target.value));
-    function clearNotes(){ $('#noteBox').value=''; LS(noteKey,''); }
-    function downloadText(){ const blob=new Blob([$('#noteBox').value||''],{type:'text/plain'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='notes.txt'; a.click(); URL.revokeObjectURL(a.href); }
+    function renderLinks() {
+      const query = searchInput.value.toLowerCase();
+      container.innerHTML = '';
 
-    /* ===== Pomodoro ===== */
-    let pomoTimer=null, pomoLeft=0, pomoMode='work';
-    function startPomo(){
-      const w=parseInt($('#pomoWork').value,10)*60, b=parseInt($('#pomoBreak').value,10)*60;
-      if(!pomoLeft){ pomoLeft = (pomoMode==='work'?w:b); }
-      if(pomoTimer) clearInterval(pomoTimer);
-      pomoTimer=setInterval(()=>{
-        pomoLeft--; const m=Math.floor(pomoLeft/60), s=pomoLeft%60; $('#pomoTime').textContent=`${fmt2(m)}:${fmt2(s)}`;
-        if(pomoLeft<=0){ clearInterval(pomoTimer); notify('⏱ Pomodoro', pomoMode==='work'?'Hết phiên làm việc! Nghỉ thôi.':'Hết phiên nghỉ! Bắt đầu làm.'); pomoMode=(pomoMode==='work'?'break':'work'); $('#pomoLabel').textContent='Chế độ: '+(pomoMode==='work'?'Work':'Break'); pomoLeft=0; }
-      },1000);
-      $('#pomoLabel').textContent='Chế độ: '+(pomoMode==='work'?'Work':'Break');
-    }
-    function stopPomo(){ clearInterval(pomoTimer); pomoTimer=null; pomoLeft=0; pomoMode='work'; $('#pomoTime').textContent=`${fmt2(parseInt($('#pomoWork').value,10))}:00`; $('#pomoLabel').textContent='Chế độ: Work'; }
+      links.forEach(link => {
+        if (link.title.toLowerCase().includes(query) || link.desc.toLowerCase().includes(query)) {
+          const a = document.createElement('a');
+          a.className = `link-card ${link.featured ? 'featured' : ''}`;
+          a.href = link.url;
+          a.target = '_blank';
+          
+          // Icon color logic
+          const iconStyle = link.color ? `color: ${link.color};` : '';
 
-    /* ===== Backup / Restore ===== */
-    function exportBackup(){
-      const payload={
-        mode: LS('mtd_mode')||'light',
-        tasks, reminders, stats, birthdays:bds,
-        notes: LS(noteKey)||'',
-        hydr_on: LS('hydr_on')||false, hydr_int: LS('hydr_int')||30,
-        str_on: LS('str_on')||false, str_int: LS('str_int')||60
-      };
-      const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
-      const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='mtd-linkbio-backup.json'; a.click(); URL.revokeObjectURL(a.href);
-    }
-    function importBackup(ev){
-      const f=ev.target.files[0]; if(!f) return; const reader=new FileReader();
-      reader.onload=()=>{ try{
-          const d=JSON.parse(reader.result);
-          if(d.mode) LS('mtd_mode', d.mode);
-          tasks=d.tasks||[]; saveTasks(); renderTasks();
-          reminders=d.reminders||[]; saveRem(); renderReminders(); reminders.forEach(r=>scheduleReminder(r.id));
-          Object.assign(stats, d.stats||{}); LS(STAT_KEY,stats); renderStats();
-          bds=d.birthdays||[]; saveBD(); renderBD();
-          LS(noteKey, d.notes||''); $('#noteBox').value=d.notes||'';
-          LS('hydr_on', !!d.hydr_on); LS('hydr_int', d.hydr_int||30); LS('str_on', !!d.str_on); LS('str_int', d.str_int||60);
-          toast('Đã nhập dữ liệu');
-          location.reload(); // để khởi tạo lại timers/mode
-        }catch(e){ toast('File không hợp lệ'); }
-      };
-      reader.readAsText(f);
-    }
-
-    /* ===== Admin Panel ===== */
-    let linksData = LS('mtd_links_data') || [];
-    let profileData = LS('mtd_profile') || {name:'MTD VPS',desc:'Cloud VPS • Proxy • Hosting • Tools',avatar:'https://i.imgur.com/GCITCIv.png',email:'support@mtdvps.com',facebook:'https://www.facebook.com/ducvps123/?locale=vi_VN',youtube:'https://www.youtube.com/@ducvps1com',tiktok:'https://www.tiktok.com/@ducvps001'};
-    let themeData = LS('mtd_theme') || 'default';
-
-    function toggleAdmin(){ $('#adminPanel').classList.toggle('active'); if($('#adminPanel').classList.contains('active')){ loadAdminData(); } }
-    function switchTab(tab){ $$('.admin-tab').forEach(t=>t.classList.remove('active')); $$('.admin-section').forEach(s=>s.classList.remove('active')); event.target.classList.add('active'); $(`#section-${tab}`).classList.add('active'); }
-
-    function loadAdminData(){
-      // Load links
-      renderLinksList();
-      // Load profile
-      $('#profileName').value = profileData.name||'';
-      $('#profileDesc').value = profileData.desc||'';
-      $('#profileAvatar').value = profileData.avatar||'';
-      $('#profileEmail').value = profileData.email||'';
-      $('#profileFacebook').value = profileData.facebook||'';
-      $('#profileYoutube').value = profileData.youtube||'';
-      $('#profileTiktok').value = profileData.tiktok||'';
-      // Load theme
-      $$('.color-option').forEach(el=>{ el.classList.remove('selected'); if(el.dataset.theme===themeData) el.classList.add('selected'); });
-    }
-
-    function renderLinksList(){
-      const wrap = $('#linksList'); wrap.innerHTML='';
-      linksData.forEach((link,i)=>{
-        const div = document.createElement('div'); div.className='link-item'; div.draggable=true; div.dataset.index=i;
-        div.innerHTML = `
-          <div class="drag-handle">☰</div>
-          <div class="info"><b>${link.title}</b><br><small>${link.url}</small></div>
-          <div class="actions">
-            <button class="btn-edit" onclick="editLink(${i})">✏️</button>
-            <button class="btn-delete" onclick="deleteLink(${i})">🗑️</button>
-          </div>
-        `;
-        div.addEventListener('dragstart', handleDragStart);
-        div.addEventListener('dragover', handleDragOver);
-        div.addEventListener('drop', handleDrop);
-        div.addEventListener('dragend', handleDragEnd);
-        wrap.appendChild(div);
-      });
-    }
-
-    let draggedIndex = null;
-    function handleDragStart(e){ draggedIndex = parseInt(e.currentTarget.dataset.index); e.currentTarget.classList.add('dragging'); }
-    function handleDragOver(e){ e.preventDefault(); }
-    function handleDrop(e){
-      e.preventDefault(); const dropIndex = parseInt(e.currentTarget.dataset.index);
-      if(draggedIndex !== dropIndex){ const item = linksData.splice(draggedIndex,1)[0]; linksData.splice(dropIndex,0,item); LS('mtd_links_data',linksData); renderLinksList(); renderPublicLinks(); }
-    }
-    function handleDragEnd(e){ e.currentTarget.classList.remove('dragging'); }
-
-    function showAddLink(){ $('#linkForm').style.display='block'; $('#formTitle').textContent='Thêm Link Mới'; $('#editIndex').value=''; $('#linkTitle').value=''; $('#linkDesc').value=''; $('#linkUrl').value=''; $('#linkIcon').value='fas fa-link'; $('#linkBadge').value=''; }
-    function cancelLinkForm(){ $('#linkForm').style.display='none'; }
-    function editLink(i){ const link=linksData[i]; $('#linkForm').style.display='block'; $('#formTitle').textContent='Chỉnh sửa Link'; $('#editIndex').value=i; $('#linkTitle').value=link.title; $('#linkDesc').value=link.desc; $('#linkUrl').value=link.url; $('#linkIcon').value=link.icon; $('#linkBadge').value=link.badge||''; }
-    function deleteLink(i){ if(confirm('Xóa link này?')){ linksData.splice(i,1); LS('mtd_links_data',linksData); renderLinksList(); renderPublicLinks(); } }
-    function saveLink(){
-      const title=$('#linkTitle').value.trim(), desc=$('#linkDesc').value.trim(), url=$('#linkUrl').value.trim(), icon=$('#linkIcon').value.trim(), badge=$('#linkBadge').value.trim(), idx=$('#editIndex').value;
-      if(!title||!url){ toast('Nhập tiêu đề và URL'); return; }
-      const link = {title,desc,url,icon:icon||'fas fa-link',badge};
-      if(idx===''){ linksData.push(link); }else{ linksData[parseInt(idx)]=link; }
-      LS('mtd_links_data',linksData); renderLinksList(); renderPublicLinks(); cancelLinkForm(); toast('Đã lưu link');
-    }
-
-    function saveProfile(){
-      profileData = {name:$('#profileName').value.trim(),desc:$('#profileDesc').value.trim(),avatar:$('#profileAvatar').value.trim(),email:$('#profileEmail').value.trim(),facebook:$('#profileFacebook').value.trim(),youtube:$('#profileYoutube').value.trim(),tiktok:$('#profileTiktok').value.trim()};
-      LS('mtd_profile',profileData); renderProfile(); toast('Đã lưu hồ sơ');
-    }
-
-    function saveTheme(){
-      const selected = $('.color-option.selected'); if(selected){ themeData=selected.dataset.theme; LS('mtd_theme',themeData); applyTheme(); toast('Đã lưu giao diện'); }
-    }
-
-    $$('.color-option').forEach(el=>el.addEventListener('click',function(){ $$('.color-option').forEach(e=>e.classList.remove('selected')); this.classList.add('selected'); }));
-
-    function applyTheme(){
-      const themes = {
-        default: {bg1:'#ee7752',bg2:'#e73c7e',bg3:'#23a6d5',bg4:'#23d5ab'},
-        purple: {bg1:'#667eea',bg2:'#764ba2',bg3:'#f093fb',bg4:'#4facfe'},
-        sunset: {bg1:'#fa709a',bg2:'#fee140',bg3:'#30cfd0',bg4:'#330867'},
-        dark: {bg1:'#0f2027',bg2:'#203a43',bg3:'#2c5364',bg4:'#0f2027'},
-        nature: {bg1:'#56ab2f',bg2:'#a8e063',bg3:'#56ccf2',bg4:'#2f80ed'}
-      };
-      const t = themes[themeData]||themes.default;
-      document.documentElement.style.setProperty('--bg1',t.bg1);
-      document.documentElement.style.setProperty('--bg2',t.bg2);
-      document.documentElement.style.setProperty('--bg3',t.bg3);
-      document.documentElement.style.setProperty('--bg4',t.bg4);
-    }
-
-    function renderProfile(){
-      $('.title').textContent = profileData.name||'MTD VPS';
-      $('.subtitle').textContent = profileData.desc||'';
-      if(profileData.avatar){ $('.avatar').style.backgroundImage = `url(${profileData.avatar})`; }
-      const socials = $('.social-links'); socials.innerHTML='';
-      if(profileData.email){ const a=document.createElement('a'); a.href=`mailto:${profileData.email}`; a.title='Email'; a.innerHTML='<i class="fas fa-envelope"></i>'; socials.appendChild(a); }
-      if(profileData.tiktok){ const a=document.createElement('a'); a.href=profileData.tiktok; a.title='TikTok'; a.innerHTML='<i class="fab fa-tiktok"></i>'; socials.appendChild(a); }
-      if(profileData.youtube){ const a=document.createElement('a'); a.href=profileData.youtube; a.title='YouTube'; a.innerHTML='<i class="fab fa-youtube"></i>'; socials.appendChild(a); }
-      if(profileData.facebook){ const a=document.createElement('a'); a.href=profileData.facebook; a.title='Facebook'; a.innerHTML='<i class="fab fa-facebook"></i>'; socials.appendChild(a); }
-    }
-
-    function renderPublicLinks(){
-      const wrap = $('#linksWrap'); 
-      // Keep existing links if no custom data
-      if(linksData.length===0) return;
-      wrap.innerHTML='';
-      linksData.forEach((link,i)=>{
-        const a = document.createElement('a'); a.className='link'; a.href=link.url; a.dataset.id=`link-${i}`; a.dataset.url=link.url; a.onclick=track;
-        a.innerHTML = `
-          <div class="icon"><i class="${link.icon}"></i></div>
-          <div class="txt"><div class="h">${link.title}</div><div class="s">${link.desc}</div></div>
-          ${link.badge?`<span class="chip">${link.badge}</span>`:''}
-          <div class="tools"><div class="tool-btn" onclick="openQR(event)"><i class="fas fa-qrcode"></i></div><div class="tool-btn" onclick="copyURL(event)"><i class="fas fa-link"></i></div></div>
-        `;
-        wrap.appendChild(a);
-      });
-      renderStats();
-    }
-
-    // Init on load
-    (function(){
-      applyTheme();
-      renderProfile();
-      if(linksData.length>0) renderPublicLinks();
-    })();
-
-    /* ===== Reveal animations ===== */
-    const revealObserver = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
+          a.innerHTML = `
+            <div class="link-icon" style="${iconStyle}"><i class="${link.icon}"></i></div>
+            <div class="link-info">
+              <div class="link-title">
+                ${link.title} 
+                ${link.badge ? `<span class="badge ${link.badge === 'HOT' ? 'badge-hot' : 'badge-new'}">${link.badge}</span>` : ''}
+              </div>
+              <div class="link-desc">${link.desc}</div>
+            </div>
+            <div class="action-btn" onclick="openQR(event, '${link.url}')"><i class="fas fa-qrcode"></i></div>
+          `;
+          container.appendChild(a);
         }
       });
-    },{threshold:0.15});
-    $$('.reveal').forEach(el=>revealObserver.observe(el));
-    setTimeout(()=>$('.hero')?.classList.add('visible'),200);
+    }
 
-    /* ===== Media wall pulse ===== */
-    (function(){
-      const cards = $$('#mediaWall figure');
-      if(cards.length===0) return;
-      let idx=0;
-      setInterval(()=>{
-        cards.forEach(c=>c.classList.remove('active'));
-        cards[idx].classList.add('active');
-        idx = (idx+1)%cards.length;
-      },4000);
-    })();
-
-    /* ===== Bio typed headline ===== */
-    (function(){
-      const el = $('#typedLine');
-      if(!el) return;
-      const phrases = [
-        '“Bio” chuẩn doanh nhân – trình diễn toàn bộ hệ sinh thái MTD.',
-        'Từ VPS đến data pipeline, tất cả gói gọn trong một link duy nhất.',
-        'Luxury motion + automation = phong cách sống của builder hiện đại.'
-      ];
-      let p = 0, c = 0, deleting = false;
-      function loop(){
-        const phrase = phrases[p];
-        c += deleting ? -1 : 1;
-        el.textContent = phrase.slice(0,c);
-        if(!deleting && c === phrase.length){
-          deleting = true;
-          setTimeout(loop, 1600);
-          return;
-        }
-        if(deleting && c === 0){
-          deleting = false;
-          p = (p+1)%phrases.length;
-        }
-        setTimeout(loop, deleting ? 45 : 75);
-      }
-      loop();
-    })();
-
-    /* ===== Bio tabs ===== */
-    (function(){
-      const tabs = $$('.bio-tab');
-      const panels = {
-        mission: $('#panel-mission'),
-        clients: $('#panel-clients'),
-        lifestyle: $('#panel-lifestyle')
-      };
-      function activate(key){
-        tabs.forEach(t=>t.classList.toggle('active', t.dataset.panel===key));
-        Object.entries(panels).forEach(([k,el])=>el && el.classList.toggle('active', k===key));
-      }
-      tabs.forEach(t=>t.addEventListener('click',()=>activate(t.dataset.panel)));
-      activate('mission');
-    })();
-
-    /* ===== GIF badge rotation ===== */
-    (function(){
-      const img = $('#gifBadgeImg');
-      const txt = $('#gifBadgeTxt');
-      if(!img || !txt) return;
-      const reels = [
-        {src:'https://media.giphy.com/media/3NtY188QaxDdC/giphy.gif',label:'Luxury boardroom energy'},
-        {src:'https://media.giphy.com/media/JWuBH9rCO2uZuHjfV8/giphy.gif',label:'Gradient skyflow vibes'},
-        {src:'https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif',label:'Neon tunnel inspiration'}
-      ];
-      let idx=0;
-      function swap(){
-        const reel = reels[idx];
-        img.src = reel.src;
-        txt.textContent = reel.label;
-        idx = (idx+1)%reels.length;
-      }
-      swap();
-      setInterval(swap, 5000);
-    })();
-
-    /* ===== Loading Screen ===== */
-    window.addEventListener('load',()=>{
-      setTimeout(()=>{
-        const loader = $('#loadingScreen');
-        if(loader) loader.classList.add('hidden');
-      },800);
-    });
-
-    /* ===== Cursor Effect ===== */
-    (function(){
-      const cursor = $('#cursorDot');
-      if(!cursor) return;
-      let mouseX=0, mouseY=0, cursorX=0, cursorY=0;
-      document.addEventListener('mousemove',(e)=>{
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        cursor.classList.add('active');
+    // QR Functions
+    let qrCodeObj = null;
+    function openQR(e, url) {
+      e.preventDefault();
+      e.stopPropagation();
+      const modal = document.getElementById('qrModal');
+      const canvas = document.getElementById('qrCanvas');
+      const display = document.getElementById('qrUrlDisplay');
+      
+      modal.classList.add('active');
+      display.textContent = url;
+      canvas.innerHTML = '';
+      
+      qrCodeObj = new QRCode(canvas, {
+        text: url,
+        width: 180,
+        height: 180,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
       });
-      document.addEventListener('mouseleave',()=>cursor.classList.remove('active'));
-      function animate(){
-        cursorX += (mouseX - cursorX) * 0.1;
-        cursorY += (mouseY - cursorY) * 0.1;
-        cursor.style.left = cursorX + 'px';
-        cursor.style.top = cursorY + 'px';
-        requestAnimationFrame(animate);
+    }
+
+    function closeQR(e) {
+      if(e.target.id === 'qrModal') {
+        document.getElementById('qrModal').classList.remove('active');
       }
-      animate();
-    })();
+    }
 
-    /* ===== Particles Background ===== */
-    (function(){
-      const container = $('#particles');
-      if(!container) return;
-      const count = 50;
-      for(let i=0;i<count;i++){
-        const p = document.createElement('div');
-        p.className = 'particle';
-        p.style.left = Math.random() * 100 + '%';
-        p.style.top = Math.random() * 100 + '%';
-        p.style.animationDelay = Math.random() * 15 + 's';
-        p.style.animationDuration = (10 + Math.random() * 10) + 's';
-        container.appendChild(p);
+    // Admin Toggle (Simple Reset for Demo)
+    function toggleAdmin() {
+      const pass = prompt("Nhập mật khẩu quản trị (Demo: reset để về mặc định)");
+      if (pass === 'reset') {
+        localStorage.removeItem('mtd_links_v2');
+        links = defaultLinks;
+        renderLinks();
+        alert("Đã reset về danh sách mặc định!");
+      } else if (pass === 'edit') {
+        alert("Tính năng Edit nâng cao đang phát triển. Vui lòng sửa trực tiếp trong code phần 'const defaultLinks'.");
       }
-    })();
+    }
 
-    /* ===== Counter Animation ===== */
-    (function(){
-      const counters = $$('.achievement-number');
-      if(counters.length===0) return;
-      const observer = new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{
-          if(entry.isIntersecting && !entry.target.dataset.animated){
-            entry.target.dataset.animated = 'true';
-            const target = parseFloat(entry.target.dataset.target);
-            const duration = 2000;
-            const step = target / (duration / 16);
-            let current = 0;
-            const timer = setInterval(()=>{
-              current += step;
-              if(current >= target){
-                current = target;
-                clearInterval(timer);
-              }
-              if(target % 1 === 0){
-                entry.target.textContent = Math.floor(current).toLocaleString();
-              } else {
-                entry.target.textContent = current.toFixed(3);
-              }
-            },16);
-          }
-        });
-      },{threshold:0.5});
-      counters.forEach(c=>observer.observe(c));
-    })();
+    // Init
+    renderLinks();
+    searchInput.addEventListener('input', renderLinks);
 
-    /* ===== Parallax Scroll Effect ===== */
-    (function(){
-      const parallaxElements = $$('.hero, .portfolio-section, .achievements-section');
-      if(parallaxElements.length===0) return;
-      let ticking = false;
-      window.addEventListener('scroll',()=>{
-        if(!ticking){
-          requestAnimationFrame(()=>{
-            const scrolled = window.pageYOffset;
-            parallaxElements.forEach((el,i)=>{
-              if(el.classList.contains('visible')){
-                const speed = 0.15 + (i * 0.05);
-                const yPos = -(scrolled * speed);
-                el.style.transform = `translateY(${yPos}px)`;
-              }
-            });
-            ticking = false;
-          });
-          ticking = true;
-        }
-      });
-    })();
-
-    /* ===== Smooth Scroll Reveal Enhancement ===== */
-    (function(){
-      const reveals = $$('.reveal');
-      const revealObserver = new IntersectionObserver((entries)=>{
-        entries.forEach((entry,i)=>{
-          if(entry.isIntersecting){
-            setTimeout(()=>{
-              entry.target.classList.add('visible');
-            }, i * 100);
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      },{threshold:0.1, rootMargin:'0px 0px -50px 0px'});
-      reveals.forEach(el=>revealObserver.observe(el));
-    })();
-
-    /* ===== Portfolio Hover Effect Enhancement ===== */
-    (function(){
-      const items = $$('.portfolio-item');
-      items.forEach(item=>{
-        item.addEventListener('mouseenter',function(){
-          this.style.zIndex = '10';
-        });
-        item.addEventListener('mouseleave',function(){
-          this.style.zIndex = '1';
-        });
-      });
-    })();
-
-    /* ===== Testimonials Auto Scroll ===== */
-    (function(){
-      const cards = $$('.testimonial-card');
-      if(cards.length===0) return;
-      let idx = 0;
-      setInterval(()=>{
-        cards.forEach((c,i)=>{
-          c.style.opacity = i === idx ? '1' : '0.7';
-          c.style.transform = i === idx ? 'scale(1.02)' : 'scale(1)';
-        });
-        idx = (idx + 1) % cards.length;
-      }, 5000);
-    })();
-
-    /* ===== Chatwoot ===== */
-    (function(d,t) {
-      var BASE_URL="https://chat-woot-web.kento28.shop/";
-      var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src=BASE_URL+"packs/js/sdk.js"; g.defer = true; g.async = true; s.parentNode.insertBefore(g,s);
-      g.onload=function(){ window.chatwootSDK.run({ websiteToken:'3fSZB9ohscy7Sy4WxTWojxoL', baseUrl:BASE_URL }) }
-    })(document,"script");
   </script>
 </body>
 </html>
